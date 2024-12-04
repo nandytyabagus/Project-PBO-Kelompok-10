@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,6 +14,18 @@ namespace Projek_SimBuku.Model
         [Key]
         public int Id_Buku { get; set; }
         [Required]
-        public string Name { get; set; }
+        public string Judul_buku { get; set; }
+        [Required]
+        public string Tahun_Terbit { get; set; }
+        [Required]
+        public byte[] Gambar {  get; set; }
+        [Required]
+        public int Stok {  get; set; }
+        [ForeignKey("M_Pengarang")]
+        public string Pengarang {  get; set; }
+        [ForeignKey("M_Genre")]
+        public string Genre {  get; set; }
+        [ForeignKey("M_Penerbit")]
+        public string Penerbit { get; set; }
     }
 }
