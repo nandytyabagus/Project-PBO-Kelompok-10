@@ -1,4 +1,5 @@
 ﻿using Projek_SimBuku.Controller;
+using Projek_SimBuku.Views.Dashboard;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,10 +15,12 @@ namespace Projek_SimBuku.Views.Buku
     public partial class Buku : UserControl
     {
         C_Homepage Controller;
+        C_Buku c_buku;
         public Buku(C_Homepage controller)
         {
             InitializeComponent();
-            Controller = controller;
+            this.Controller = controller;
+            c_buku = new C_Buku(controller, this);
         }
 
         private void panelSearch_Paint(object sender, PaintEventArgs e)

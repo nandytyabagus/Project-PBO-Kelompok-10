@@ -1,6 +1,6 @@
 ﻿namespace Projek_SimBuku.Views.Pelanggan
 {
-    partial class PeminjamanPelanggan
+    partial class Keranjang
     {
         /// <summary> 
         /// Required designer variable.

@@ -38,14 +38,14 @@ namespace Projek_SimBuku.Controller
         Homepage_pelanggan Vhomepage_Pelanggan;
         public Home Vhome;
         public RiwayatPelanggan VriwayatPelanggan;
-        public PeminjamanPelanggan VPeminjamanPelanggan;
+        public Keranjang VPeminjamanPelanggan;
         public Setting Vsetting;
         public C_Homepage(Homepage_pelanggan homepage_Pelanggan)
         {
             this.Vhomepage_Pelanggan = homepage_Pelanggan;
             Vhome = new Home(this);
             VriwayatPelanggan = new RiwayatPelanggan(this);
-            VPeminjamanPelanggan = new PeminjamanPelanggan(this);
+            VPeminjamanPelanggan = new Keranjang(this);
             Vsetting = new Setting(this);
             switchViewPelanggan(Vhome);
         }

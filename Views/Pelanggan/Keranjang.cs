@@ -11,10 +11,10 @@ using System.Windows.Forms;
 
 namespace Projek_SimBuku.Views.Pelanggan
 {
-    public partial class PeminjamanPelanggan : UserControl
+    public partial class Keranjang : UserControl
     {
         C_Homepage Controller;
-        public PeminjamanPelanggan(C_Homepage controller)
+        public Keranjang(C_Homepage controller)
         {
             InitializeComponent();
             Controller = controller;

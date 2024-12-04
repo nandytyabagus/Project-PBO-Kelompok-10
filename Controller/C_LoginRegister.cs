@@ -33,10 +33,6 @@ namespace Projek_SimBuku.Controller
             VloginRegister.panel1.Controls.Clear();
             VloginRegister.panel1.Controls.Add(form);
         }
-        public List<object> Get()
-        {
-            return new List<object>();
-        }
         public void Get(string username, string password)
         {
             DataTable data = Execute_With_Return($"SELECT * FROM Data_Akun WHERE username = '{username}' and password = '{password}'");

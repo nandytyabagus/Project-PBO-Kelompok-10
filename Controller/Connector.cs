@@ -5,6 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data;
+using Projek_SimBuku.Model;
+using static System.ComponentModel.Design.ObjectSelectorEditor;
+using System.Drawing;
 
 namespace Projek_SimBuku.Controller
 {
