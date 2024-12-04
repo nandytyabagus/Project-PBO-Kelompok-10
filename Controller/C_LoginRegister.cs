@@ -11,13 +11,13 @@ using System.Threading.Tasks;
 
 namespace Projek_SimBuku.Controller
 {
-    public class C_LoginRegister : C_MassageBox
+    public class C_LoginRegister : Connector
     {
         C_LoginRegister controller_loginRegister;
         public LoginRegister VloginRegister;
         public Login Vlogin;
         public Register Vregister;
-        Connector connector = new Connector();
+        C_MassageBox C_MassageBox = new C_MassageBox();
         M_Akun m_akun = new M_Akun();
 
         public C_LoginRegister(LoginRegister loginRegister)
@@ -25,7 +25,7 @@ namespace Projek_SimBuku.Controller
             this.VloginRegister = loginRegister;
             Vlogin = new Login(this);
             Vregister = new Register(this);
-            connector.Setup();
+            Setup();
             switchView(Vlogin);
         }
         public void switchView(UserControl form)
@@ -39,21 +39,21 @@ namespace Projek_SimBuku.Controller
         }
         public void Get(string username, string password)
         {
-            DataTable data = connector.Execute_With_Return($"SELECT * FROM Data_Akun WHERE username = '{username}' and password = '{password}'");
+            DataTable data = Execute_With_Return($"SELECT * FROM Data_Akun WHERE username = '{username}' and password = '{password}'");
             for (int i = 0; i < data.Rows.Count; i++)
             {
-                M_Akun.id_akun = int.Parse(data.Rows[i]["id_Akun"].ToString());
-                M_Akun.username = data.Rows[i]["username"].ToString();
-                M_Akun.password = data.Rows[i]["password"].ToString();
-                M_Akun.nama = data.Rows[i]["nama"].ToString();
-                M_Akun.email = data.Rows[i]["email"].ToString();
-                M_Akun.nomor_hp = data.Rows[i]["nomor_hp"].ToString();
+                m_akun.id_akun = int.Parse(data.Rows[i]["id_Akun"].ToString());
+                m_akun.username = data.Rows[i]["username"].ToString();
+                m_akun.password = data.Rows[i]["password"].ToString();
+                m_akun.nama = data.Rows[i]["nama"].ToString();
+                m_akun.email = data.Rows[i]["email"].ToString();
+                m_akun.nomor_hp = data.Rows[i]["nomor_hp"].ToString();
             }
         }
         public void Insert(object item)
         {
             Akun akun = item as Akun;
-            connector.Execute_No_Return($"INSERT INTO Data_Akun(username,password,nama,email,nomor_hp) VALUES ('{akun.Username}','{akun.Password}','{akun.Nama}','{akun.Email}','{akun.Nomor_Hp}')");
+            Execute_No_Return($"INSERT INTO Data_Akun(username,password,nama,email,nomor_hp) VALUES ('{akun.Username}','{akun.Password}','{akun.Nama}','{akun.Email}','{akun.Nomor_Hp}')");
         }
         public void Update(object data, int id)
         {
@@ -71,9 +71,9 @@ namespace Projek_SimBuku.Controller
         public void Login()
         {
             Get(Vlogin.textBoxUsername.Text, Vlogin.textBoxPassword.Text);
-            if (M_Akun.username == Vlogin.textBoxUsername.Text && M_Akun.password == Vlogin.textBoxPassword.Text)
+            if (m_akun.username == Vlogin.textBoxUsername.Text && m_akun.password == Vlogin.textBoxPassword.Text)
             {
-                showMassageBox("Berhasil Login");
+                C_MassageBox.showMassageBox("Berhasil Login");
                 Homepage_pelanggan homepage_Pelanggan = new Homepage_pelanggan();
                 VloginRegister.Hide();
                 homepage_Pelanggan.ShowDialog();
@@ -81,19 +81,19 @@ namespace Projek_SimBuku.Controller
             }
             else if (Vlogin.textBoxUsername.Text == "SimBuku" && Vlogin.textBoxPassword.Text == "Simbuku")
             {
-                showMassageBox("Berhasil Login Sebagai Admin");
+                C_MassageBox.showMassageBox("Berhasil Login Sebagai Admin");
                 HomePage homePage = new HomePage();
                 VloginRegister.Hide();
                 homePage.ShowDialog();
                 VloginRegister.Close();
             }
-            else if (M_Akun.username == Vlogin.textBoxUsername.Text || M_Akun.password != Vlogin.textBoxPassword.Text)
+            else if (m_akun.username == Vlogin.textBoxUsername.Text || m_akun.password != Vlogin.textBoxPassword.Text)
             {
                 Vlogin.textBoxPassword.Clear();
                 Vlogin.label3.Visible = true;
                 Vlogin.label3.Text = "Password Salah";
             }
-            else if (M_Akun.username != Vlogin.textBoxUsername.Text)
+            else if (m_akun.username != Vlogin.textBoxUsername.Text)
             {
                 Vlogin.textBoxUsername.Clear();
                 Vlogin.label2.Visible = true;
@@ -132,7 +132,7 @@ namespace Projek_SimBuku.Controller
             };
             if (Vregister.textBoxConfirmPass.Text != Vregister.textBoxPassword.Text)
             {
-                showMassageBox("Password Tidak Sama");
+                C_MassageBox.showMassageBox("Password Tidak Sama");
                 return;
             }
             else
@@ -140,12 +140,12 @@ namespace Projek_SimBuku.Controller
                 try
                 {
                     Insert(dataAkun);
-                    showMassageBox("Akun Berhasil Ditambahkan");
+                    C_MassageBox.showMassageBox("Akun Berhasil Ditambahkan");
                     switchView(Vlogin);
                 }
                 catch
                 {
-                    showMassageBox("Username Sudah Ada");
+                    C_MassageBox.showMassageBox("Username Sudah Ada");
                 }
             }
         }

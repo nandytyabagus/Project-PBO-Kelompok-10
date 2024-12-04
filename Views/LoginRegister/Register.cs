@@ -42,7 +42,15 @@ namespace Projek_SimBuku.Views
 
         private void buttonRegistrasi_Click(object sender, EventArgs e)
         {
+            Controller.Registrasi();
+        }
 
+        private void textBoxNomorHp_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
     }
 }

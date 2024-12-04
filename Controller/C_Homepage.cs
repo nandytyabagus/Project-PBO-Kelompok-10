@@ -17,6 +17,7 @@ namespace Projek_SimBuku.Controller
     public class C_Homepage : C_MassageBox
     {
         HomePage Vhomepage;
+        M_Akun m_akun = new M_Akun();
         public C_Homepage Controller_Homepage;
         public Dashboard Vdashboard;
         public Buku Vbuku;
@@ -77,12 +78,12 @@ namespace Projek_SimBuku.Controller
                 Vhomepage_Pelanggan.Hide();
                 loginRegister.ShowDialog();
                 Vhomepage_Pelanggan.Close();
-                AkunLogin.id_akun = 0;
-                AkunLogin.username = null;
-                AkunLogin.password = null;
-                AkunLogin.email = null;
-                AkunLogin.nama = null;
-                AkunLogin.nomor_hp = null;
+                m_akun.id_akun = 0;
+                m_akun.username = null;
+                m_akun.password = null;
+                m_akun.email = null;
+                m_akun.nama = null;
+                m_akun.nomor_hp = null;
             }
         }
     }

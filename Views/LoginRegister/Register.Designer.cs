@@ -266,10 +266,12 @@
             textBoxNomorHp.Font = new Font("Myanmar Text", 11F, FontStyle.Bold);
             textBoxNomorHp.ForeColor = Color.Black;
             textBoxNomorHp.Location = new Point(62, 13);
+            textBoxNomorHp.MaxLength = 13;
             textBoxNomorHp.Name = "textBoxNomorHp";
             textBoxNomorHp.PlaceholderText = "Nomor HP";
             textBoxNomorHp.Size = new Size(234, 35);
             textBoxNomorHp.TabIndex = 1;
+            textBoxNomorHp.KeyPress += textBoxNomorHp_KeyPress;
             // 
             // panel_Username
             // 
