@@ -383,22 +383,22 @@
         private Panel panel2;
         private Panel panel3;
         private Panel panel4;
-        private Label label1;
-        private Label label3;
-        private Label label4;
-        private Label label5;
-        private Label label6;
-        private Label label8;
-        private Label label7;
-        private Label label9;
-        private Label label2;
-        private Label label10;
-        private Label label12;
-        private Label label11;
         private Panel panel5;
         private Panel panel6;
-        private Button button3;
-        private Button button2;
-        private Button button1;
+        private Label label1;
+        private Label label2;
+        private Label label3;
+        private Label label4;
+        public Label label5;
+        public Label label6;
+        public Label label8;
+        public Label label7;
+        public Label label9;
+        private Label label10;
+        private Label label11;
+        private Label label12;
+        public Button button3;
+        public Button button2;
+        public Button button1;
     }
 }

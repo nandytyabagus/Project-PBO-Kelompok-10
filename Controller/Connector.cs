@@ -66,7 +66,7 @@ namespace Projek_SimBuku.Controller
                 "id_akun INT NOT NULL," +
                 "id_buku INT NOT NULL," +
                 "jumlah INT NOT NULL," +
-                "FOREIGN KEY (id_akun) REFERENCES Data_Akun(id_Akun)," + // Perbaikan nama tabel referensi
+                "FOREIGN KEY (id_akun) REFERENCES Data_Akun(id_Akun)," +
                 "FOREIGN KEY (id_buku) REFERENCES buku(id_buku))");
 
             Execute_No_Return("CREATE TABLE IF NOT EXISTS metode_pembayaran (" +
@@ -82,6 +82,7 @@ namespace Projek_SimBuku.Controller
                 "harga_sewa DECIMAL(10, 2) NOT NULL," +
                 "harga_denda DECIMAL(10, 2)," +
                 "tanggal_pengambilan DATE," +
+                "tanggal_pengembalian DATE," +
                 "FOREIGN KEY (id_keranjang) REFERENCES keranjang(id_keranjang)," +
                 "FOREIGN KEY (id_metode_pembayaran) REFERENCES metode_pembayaran(id_metode_pembayaran))");
 

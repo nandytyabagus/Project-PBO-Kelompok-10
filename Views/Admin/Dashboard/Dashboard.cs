@@ -14,10 +14,14 @@ namespace Projek_SimBuku.Views.Dashboard
     public partial class Dashboard : UserControl
     {
         C_Homepage Controller;
-        Dashboard dashboard;
+        C_Dashboard c_Dashboard;
         public Dashboard(C_Homepage controller)
         {
             InitializeComponent();
+            this.Controller = controller;
+            c_Dashboard = new C_Dashboard(controller, this);
+            c_Dashboard.LoadAndShowInfo();
         }
+
     }
 }
