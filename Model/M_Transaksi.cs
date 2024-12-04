@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Projek_SimBuku.Model
 {
-    internal class M_Transaksi
+    public class M_Transaksi
     {
+
     }
 }

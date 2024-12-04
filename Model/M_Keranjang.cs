@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Projek_SimBuku.Model
 {
-    internal class M_Peminjaman
+    internal class M_Keranjang
     {
     }
 }

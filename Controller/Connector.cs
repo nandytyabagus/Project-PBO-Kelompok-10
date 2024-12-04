@@ -29,7 +29,7 @@ namespace Projek_SimBuku.Controller
         public void Setup()
         {
             Execute_No_Return("CREATE TABLE IF NOT EXISTS Data_Akun (" +
-                "id_Akun  serial NOT NULL UNIQUE PRIMARY KEY," +
+                "id_Akun  SERIAL NOT NULL UNIQUE PRIMARY KEY," +
                 "username VARCHAR(50) NOT NULL UNIQUE," +
                 "password VARCHAR(50) NOT NULL ," +
                 "nama VARCHAR(100) NOT NULL," +
@@ -37,19 +37,19 @@ namespace Projek_SimBuku.Controller
                 "nomor_Hp VARCHAR(13) NOT NULL UNIQUE)");
 
             Execute_No_Return("CREATE TABLE IF NOT EXISTS pengarang (" +
-                "id_pengarang SERIAL PRIMARY KEY," +
+                "id_pengarang SERIAL NOT NULL UNIQUE PRIMARY KEY," +
                 "nama_pengarang VARCHAR(50) NOT NULL");
 
             Execute_No_Return("CREATE TABLE IF NOT EXISTS genre (" +
-                "id_genre SERIAL PRIMARY KEY," +
+                "id_genre SERIAL NOT NULL UNIQUE PRIMARY KEY," +
                 "genre VARCHAR(20) NOT NULL");
 
             Execute_No_Return("CREATE TABLE IF NOT EXISTS penerbit (" +
-                "id_penerbit SERIAL PRIMARY KEY," +
+                "id_penerbit SERIAL NOT NULL UNIQUE PRIMARY KEY," +
                 "penerbit VARCHAR(50) NOT NULL");
 
             Execute_No_Return("CREATE TABLE IF NOT EXISTS buku (" +
-                "id_buku SERIAL PRIMARY KEY," +
+                "id_buku SERIAL NOT NULL UNIQUE PRIMARY KEY," +
                 "judul_buku VARCHAR(50) NOT NULL," +
                 "tahun_terbit INT NOT NULL," +
                 "gambar BYTEA," +
@@ -62,7 +62,7 @@ namespace Projek_SimBuku.Controller
                 "FOREIGN KEY (id_penerbit) REFERENCES penerbit(id_penerbit)");
 
             Execute_No_Return("CREATE TABLE IF NOT EXISTS keranjang (" +
-                "id_keranjang SERIAL PRIMARY KEY," +
+                "id_keranjang SERIAL NOT NULL UNIQUE PRIMARY KEY," +
                 "id_akun INT NOT NULL," +
                 "id_buku INT NOT NULL," +
                 "jumlah INT NOT NULL," +
@@ -70,20 +70,25 @@ namespace Projek_SimBuku.Controller
                 "FOREIGN KEY (id_buku) REFERENCES buku(id_buku)");
 
             Execute_No_Return("CREATE TABLE IF NOT EXISTS metode_pembayaran (" +
-                "id_metode_pembayaran SERIAL PRIMARY KEY," +
+                "id_metode_pembayaran SERIAL NOT NULL UNIQUE PRIMARY KEY," +
                 "metode VARCHAR(50) NOT NULL");
 
             Execute_No_Return("CREATE TABLE IF NOT EXISTS transaksi (" +
-                "id_transaksi SERIAL PRIMARY KEY," +
+                "id_transaksi SERIAL NOT NULL UNIQUE PRIMARY KEY," +
                 "id_keranjang INT NOT NULL," +
                 "id_metode_pembayaran INT NOT NULL," +
-                "tanggal_transaksi DATE NOT NULL," +
+                "Tanggal_transaksi TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP," +
                 "status VARCHAR(50) NOT NULL," +
                 "harga_sewa DECIMAL(10, 2) NOT NULL," +
                 "harga_denda DECIMAL(10, 2)," +
                 "tanggal_pengambilan DATE," +
                 "FOREIGN KEY (id_keranjang) REFERENCES keranjang(id_keranjang)," +
                 "FOREIGN KEY (id_metode_pembayaran) REFERENCES metode_pembayaran(id_metode_pembayaran)");
+            try
+            {
+                Execute_No_Return("INSERT INTO metode_pembayaran(metode) VALUES ('Cash','Qris')");
+            }
+            catch { }
         }
         public void Execute_No_Return(string Querry)
         {

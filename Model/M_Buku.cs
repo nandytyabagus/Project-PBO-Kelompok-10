@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Projek_SimBuku.Model
 {
-    internal class M_Buku
+    public class M_Buku
     {
+
     }
 }
