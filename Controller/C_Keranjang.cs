@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Projek_SimBuku.Controller
 {
-    internal class C_Keranjang
+    internal class C_Keranjang : Connector
     {
     }
 }
