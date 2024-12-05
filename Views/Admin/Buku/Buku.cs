@@ -30,7 +30,19 @@ namespace Projek_SimBuku.Views.Buku
 
         private void Buku_Load(object sender, EventArgs e)
         {
+            c_buku.Load();
+        }
 
+        private void TabelBuku_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (0 == e.RowIndex && e.ColumnIndex == TabelBuku.Columns["Delete"].Index)
+            {
+                return;
+            }
+            if (e.ColumnIndex == TabelBuku.Columns["Edit"].Index)
+            {
+
+            }
         }
     }
 }

@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using Projek_SimBuku.Views.Buku;
 using System.Data;
 using Projek_SimBuku.Model;
+using MailKit;
 
 namespace Projek_SimBuku.Controller
 {
@@ -43,5 +44,53 @@ namespace Projek_SimBuku.Controller
             }
             return bukuList;
         }
+        //public int insert(object obj)
+        //{
+
+        //}
+        public void Delete(int id)
+        {
+
+        }
+        public void Update(object obj, int id)
+        {
+
+        }
+        public void Load()
+        {
+            Vbuku.TabelBuku.DataSource = null;
+            Vbuku.TabelBuku.Columns.Clear();
+
+            DataGridViewButtonColumn Delete = new DataGridViewButtonColumn
+            {
+                Name = "Delete",
+                UseColumnTextForButtonValue = true,
+                Text = "Delete"
+            };
+
+            DataGridViewButtonColumn Edit = new DataGridViewButtonColumn
+            {
+                Name = "Edit",
+                UseColumnTextForButtonValue = true,
+                Text = "Edit"
+            };
+
+            Vbuku.TabelBuku.DataSource = GetListBuku();
+
+            Vbuku.TabelBuku.Columns["Id_Buku"].Visible = false;
+            Vbuku.TabelBuku.Columns["Judul_buku"].HeaderText = "Judul";
+            Vbuku.TabelBuku.Columns["Tahun_Terbit"].HeaderText = "Tahun Terbit";
+            Vbuku.TabelBuku.Columns["Stok"].HeaderText = "Jumlah";
+            Vbuku.TabelBuku.Columns["Pengarang"].HeaderText = "Pengarang";
+            Vbuku.TabelBuku.Columns["Genre"].HeaderText = "Genre";
+            Vbuku.TabelBuku.Columns["Penerbit"].HeaderText = "Penerbit";
+
+            Vbuku.TabelBuku.Columns.Add(Edit);
+            Vbuku.TabelBuku.Columns.Add(Delete);
+
+            Vbuku.TabelBuku.Columns["Edit"].HeaderText = "";
+            Vbuku.TabelBuku.Columns["Delete"].HeaderText = "";
+        }
+
     }
 }

@@ -42,5 +42,9 @@ namespace Projek_SimBuku.Controller
             }
             return bukuList;
         }
+        public void Katalog()
+        {
+
+        }
     }
 }

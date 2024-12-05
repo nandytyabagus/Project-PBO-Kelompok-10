@@ -1,3 +1,5 @@
+using Projek_SimBuku.Views;
+
 namespace Projek_SimBuku
 {
     internal static class Program
@@ -11,7 +13,7 @@ namespace Projek_SimBuku
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new LoginRegister());
+            Application.Run(new HomePage());
         }
     }
 }

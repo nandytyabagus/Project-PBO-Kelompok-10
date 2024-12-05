@@ -30,24 +30,46 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Home));
             panel3 = new Panel();
+            flowLayoutPanel1 = new FlowLayoutPanel();
+            Katalog = new Panel();
             panel5 = new Panel();
             panel4 = new Panel();
             Search = new TextBox();
             button1 = new Button();
             panel3.SuspendLayout();
+            flowLayoutPanel1.SuspendLayout();
             panel4.SuspendLayout();
             SuspendLayout();
             // 
             // panel3
             // 
             panel3.BackColor = Color.Transparent;
-            panel3.BackgroundImage = Properties.Resources._2df56124_0a5c_431b_9c93_b3fd95214eef;
+            panel3.BackgroundImage = Properties.Resources.c086f66e_0baf_426c_8627_adea8b1f6719;
+            panel3.BackgroundImageLayout = ImageLayout.Stretch;
+            panel3.Controls.Add(flowLayoutPanel1);
             panel3.Controls.Add(panel5);
             panel3.Controls.Add(panel4);
-            panel3.Location = new Point(60, 60);
+            panel3.Location = new Point(60, 30);
             panel3.Name = "panel3";
-            panel3.Size = new Size(1800, 770);
+            panel3.Size = new Size(1800, 830);
             panel3.TabIndex = 6;
+            // 
+            // flowLayoutPanel1
+            // 
+            flowLayoutPanel1.Controls.Add(Katalog);
+            flowLayoutPanel1.Location = new Point(35, 170);
+            flowLayoutPanel1.Name = "flowLayoutPanel1";
+            flowLayoutPanel1.Size = new Size(1730, 622);
+            flowLayoutPanel1.TabIndex = 8;
+            // 
+            // Katalog
+            // 
+            Katalog.BackColor = Color.Transparent;
+            Katalog.BackgroundImage = Properties.Resources.bg_Katalog;
+            Katalog.Location = new Point(3, 3);
+            Katalog.Name = "Katalog";
+            Katalog.Size = new Size(555, 293);
+            Katalog.TabIndex = 0;
             // 
             // panel5
             // 
@@ -100,6 +122,7 @@
             Name = "Home";
             Size = new Size(1920, 890);
             panel3.ResumeLayout(false);
+            flowLayoutPanel1.ResumeLayout(false);
             panel4.ResumeLayout(false);
             panel4.PerformLayout();
             ResumeLayout(false);
@@ -112,5 +135,7 @@
         private Panel panel4;
         private TextBox Search;
         private Button button1;
+        public FlowLayoutPanel flowLayoutPanel1;
+        public Panel Katalog;
     }
 }

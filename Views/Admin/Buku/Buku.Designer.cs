@@ -28,15 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             panel1 = new Panel();
             Search = new TextBox();
             button1 = new Button();
             buttonTambahBuku = new Button();
             panel2 = new Panel();
-            dataGridView1 = new DataGridView();
+            TabelBuku = new DataGridView();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)TabelBuku).BeginInit();
             SuspendLayout();
             // 
             // panel1
@@ -89,21 +91,53 @@
             // 
             panel2.BackColor = Color.Transparent;
             panel2.BackgroundImage = Properties.Resources._38ad706e_f194_40e2_8a7e_48a4a97401b1;
-            panel2.Controls.Add(dataGridView1);
+            panel2.Controls.Add(TabelBuku);
             panel2.Location = new Point(50, 180);
             panel2.Name = "panel2";
             panel2.Size = new Size(1418, 750);
             panel2.TabIndex = 4;
             // 
-            // dataGridView1
+            // TabelBuku
             // 
-            dataGridView1.BackgroundColor = Color.White;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(20, 20);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.Size = new Size(1378, 710);
-            dataGridView1.TabIndex = 0;
+            TabelBuku.AllowUserToAddRows = false;
+            TabelBuku.AllowUserToDeleteRows = false;
+            TabelBuku.AllowUserToResizeColumns = false;
+            TabelBuku.AllowUserToResizeRows = false;
+            TabelBuku.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            TabelBuku.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.DisplayedCells;
+            TabelBuku.BackgroundColor = Color.White;
+            TabelBuku.BorderStyle = BorderStyle.None;
+            TabelBuku.CellBorderStyle = DataGridViewCellBorderStyle.None;
+            TabelBuku.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = Color.Transparent;
+            dataGridViewCellStyle1.Font = new Font("Myanmar Text", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.ForeColor = Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            TabelBuku.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            TabelBuku.ColumnHeadersHeight = 29;
+            TabelBuku.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.Window;
+            dataGridViewCellStyle2.Font = new Font("Myanmar Text", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle2.ForeColor = Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            TabelBuku.DefaultCellStyle = dataGridViewCellStyle2;
+            TabelBuku.Location = new Point(20, 20);
+            TabelBuku.Margin = new Padding(3, 4, 3, 4);
+            TabelBuku.Name = "TabelBuku";
+            TabelBuku.ReadOnly = true;
+            TabelBuku.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            TabelBuku.RowHeadersVisible = false;
+            TabelBuku.RowHeadersWidth = 51;
+            TabelBuku.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            TabelBuku.Size = new Size(1378, 710);
+            TabelBuku.TabIndex = 0;
+            TabelBuku.CellContentClick += TabelBuku_CellContentClick;
             // 
             // Buku
             // 
@@ -120,7 +154,7 @@
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)TabelBuku).EndInit();
             ResumeLayout(false);
         }
 
@@ -131,6 +165,6 @@
         private TextBox Search;
         private Button buttonTambahBuku;
         private Panel panel2;
-        private DataGridView dataGridView1;
+        public DataGridView TabelBuku;
     }
 }
