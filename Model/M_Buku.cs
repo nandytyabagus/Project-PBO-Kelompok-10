@@ -27,5 +27,8 @@ namespace Projek_SimBuku.Model
         public string Genre {  get; set; }
         [ForeignKey("M_Penerbit")]
         public string Penerbit { get; set; }
+        public virtual M_Pengarang pengarang { get; set; }
+        public virtual M_Genre genre { get; set; }
+        public virtual M_Penerbit penerbit { get; set; }
     }
 }
