@@ -44,5 +44,10 @@ namespace Projek_SimBuku.Views.Buku
 
             }
         }
+
+        private void TabelBuku_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

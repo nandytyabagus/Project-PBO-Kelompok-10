@@ -45,16 +45,10 @@
             label11 = new Label();
             label4 = new Label();
             label7 = new Label();
-            panel5 = new Panel();
-            button3 = new Button();
-            button2 = new Button();
-            button1 = new Button();
-            panel6 = new Panel();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             panel3.SuspendLayout();
             panel4.SuspendLayout();
-            panel5.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
@@ -297,68 +291,12 @@
             label7.Text = "000";
             label7.TextAlign = ContentAlignment.MiddleLeft;
             // 
-            // panel5
-            // 
-            panel5.BackColor = Color.FromArgb(20, 0, 0, 0);
-            panel5.Controls.Add(button3);
-            panel5.Controls.Add(button2);
-            panel5.Controls.Add(button1);
-            panel5.Controls.Add(panel6);
-            panel5.Location = new Point(65, 353);
-            panel5.Name = "panel5";
-            panel5.Size = new Size(1387, 616);
-            panel5.TabIndex = 4;
-            // 
-            // button3
-            // 
-            button3.BackColor = Color.FromArgb(61, 65, 75);
-            button3.FlatAppearance.BorderSize = 0;
-            button3.FlatStyle = FlatStyle.Flat;
-            button3.Location = new Point(1227, 35);
-            button3.Name = "button3";
-            button3.Size = new Size(103, 47);
-            button3.TabIndex = 3;
-            button3.Text = "YEAR";
-            button3.UseVisualStyleBackColor = false;
-            // 
-            // button2
-            // 
-            button2.BackColor = Color.FromArgb(61, 65, 75);
-            button2.FlatAppearance.BorderSize = 0;
-            button2.FlatStyle = FlatStyle.Flat;
-            button2.Location = new Point(1124, 35);
-            button2.Name = "button2";
-            button2.Size = new Size(103, 47);
-            button2.TabIndex = 2;
-            button2.Text = "MONTH";
-            button2.UseVisualStyleBackColor = false;
-            // 
-            // button1
-            // 
-            button1.BackColor = Color.FromArgb(61, 65, 75);
-            button1.FlatAppearance.BorderSize = 0;
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.Location = new Point(1021, 35);
-            button1.Name = "button1";
-            button1.Size = new Size(103, 47);
-            button1.TabIndex = 1;
-            button1.Text = "DAY";
-            button1.UseVisualStyleBackColor = false;
-            // 
-            // panel6
-            // 
-            panel6.Location = new Point(54, 106);
-            panel6.Name = "panel6";
-            panel6.Size = new Size(1279, 456);
-            panel6.TabIndex = 0;
-            // 
             // Dashboard
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             BackgroundImage = Properties.Resources.Frame_16;
-            Controls.Add(panel5);
             Controls.Add(panel3);
             Controls.Add(panel4);
             Controls.Add(panel1);
@@ -373,7 +311,6 @@
             panel3.PerformLayout();
             panel4.ResumeLayout(false);
             panel4.PerformLayout();
-            panel5.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -383,8 +320,6 @@
         private Panel panel2;
         private Panel panel3;
         private Panel panel4;
-        private Panel panel5;
-        private Panel panel6;
         private Label label1;
         private Label label2;
         private Label label3;
@@ -397,8 +332,5 @@
         private Label label10;
         private Label label11;
         private Label label12;
-        public Button button3;
-        public Button button2;
-        public Button button1;
     }
 }

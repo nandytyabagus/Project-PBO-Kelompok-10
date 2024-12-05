@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginRegister));
             panel1 = new Panel();
             panel2 = new Panel();
             button_Minimized = new Button();
@@ -90,6 +91,7 @@
             Controls.Add(panel1);
             Controls.Add(panel2);
             FormBorderStyle = FormBorderStyle.None;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "LoginRegister";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Form1";

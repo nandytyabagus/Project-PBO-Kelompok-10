@@ -133,6 +133,9 @@
   <data name="Frame 24 (3)" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Frame 24 (3).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Rectangle 71" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Rectangle 71.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Frame 8" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Frame 8.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -144,6 +147,9 @@
   </data>
   <data name="2df56124-0a5c-431b-9c93-b3fd95214eef" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\2df56124-0a5c-431b-9c93-b3fd95214eef.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Logo Email" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Logo Email.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Frame 24 (2)" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Frame 24 (2).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -172,8 +178,8 @@
   <data name="Frame 11 (2)" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Frame 11 (2).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Frame 13 (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Frame 13 (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="674a0da2-4664-42d3-ae76-f0cf52f0e4871" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\674a0da2-4664-42d3-ae76-f0cf52f0e4871.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Frame 22 (5)" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Frame 22 (5).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -205,11 +211,14 @@
   <data name="Untitled" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Untitled.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Logo Email" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Logo Email.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Frame 13 (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Frame 13 (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="c086f66e-0baf-426c-8627-adea8b1f6719" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\c086f66e-0baf-426c-8627-adea8b1f6719.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="bg Katalog" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bg Katalog.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Biru Langit Novel Book Cover1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Biru Langit Novel Book Cover1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Frame 22 (4)" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Frame 22 (4).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -253,8 +262,8 @@
   <data name="Frame 23" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Frame 23.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="674a0da2-4664-42d3-ae76-f0cf52f0e4871" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\674a0da2-4664-42d3-ae76-f0cf52f0e4871.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Biru Langit Novel Book Cover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Biru Langit Novel Book Cover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Frame 17" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Frame 17.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -262,8 +271,8 @@
   <data name="Frame 2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Frame 2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Rectangle 71" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Rectangle 71.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="c086f66e-0baf-426c-8627-adea8b1f6719" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\c086f66e-0baf-426c-8627-adea8b1f6719.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="7d72fdb8-53c5-4b02-8afc-59e6a8f86106" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\7d72fdb8-53c5-4b02-8afc-59e6a8f86106.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -271,7 +280,7 @@
   <data name="Frame 9" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Frame 9.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="bg Katalog" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\bg Katalog.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="buku" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\buku.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

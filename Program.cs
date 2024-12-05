@@ -1,4 +1,5 @@
 using Projek_SimBuku.Views;
+using Projek_SimBuku.Views.Admin.Buku;
 
 namespace Projek_SimBuku
 {
@@ -13,7 +14,7 @@ namespace Projek_SimBuku
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new HomePage());
+            Application.Run(new LoginRegister());
         }
     }
 }
