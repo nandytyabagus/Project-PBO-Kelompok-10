@@ -14,11 +14,40 @@ namespace Projek_SimBuku.Controller
     {
         C_Homepage Homepage;
         Peminjaman vpeminjaman;
-        M_Transaksi m_transaksi = new M_Transaksi();
+        M_Peminjaman m_peminjaman = new M_Peminjaman();
         public C_Peminjaman(C_Homepage homepage, Peminjaman peminjaman)
         {
             Homepage = homepage;
             vpeminjaman = peminjaman;
+        }
+        public List<M_Peminjaman> GetDataPeminjaman()
+        {
+            List<M_Peminjaman> Peminjaman = new List<M_Peminjaman>();
+            DataTable data = Execute_With_Return("SELECT t.id_transaksi, t.status, t.harga_sewa, t.tanggal_pengambilan, a.nama, b.judul_buku FROM transaksi t JOIN keranjang k ON t.id_keranjang = k.id_keranjang JOIN data_akun a ON k.id_akun = a.id_akun JOIN buku b ON k.id_buku = b.id_buku;");
+
+            for (int i = 0; i < data.Rows.Count; i++)
+            {
+                M_Peminjaman m_Peminjaman = new M_Peminjaman
+                {
+                    Id_Transaksi = Convert.ToInt32(data.Rows[i]["id_transaksi"]),
+                    status = data.Rows[i]["status"].ToString(),
+                    harga_sewa = Convert.ToDecimal(data.Rows[i]["harga_sewa"]),
+                    tanggal_pengambilan = data.Rows[i]["tanggal_pengambilan"].ToString(),
+                    Keranjang = new M_Keranjang
+                    {
+                        Akun = new M_Akun
+                        {
+                            nama = data.Rows[i]["nama"].ToString()
+                        },
+                        Buku = new M_Buku
+                        {
+                            Judul_buku = data.Rows[i]["judul_buku"].ToString()
+                        }
+                    }
+                };
+                Peminjaman.Add(m_Peminjaman);
+            }
+            return Peminjaman;
         }
         public void Insert()
         {
@@ -37,9 +66,9 @@ namespace Projek_SimBuku.Controller
                 HeaderText = ""
             };
 
-            vpeminjaman.dataPeminjaman.DataSource = Homepage.GetDataTransaksi();
+            vpeminjaman.dataPeminjaman.DataSource = GetDataPeminjaman();
 
-            vpeminjaman.dataPeminjaman.Columns["id_transaksi"].Visible = false;
+            vpeminjaman.dataPeminjaman.Columns["Id_Transaksi"].Visible = false;
 
             vpeminjaman.dataPeminjaman.Columns["nama"].HeaderText = "Nama Pelanggan";
             vpeminjaman.dataPeminjaman.Columns["Judul_buku"].HeaderText = "Buku";
