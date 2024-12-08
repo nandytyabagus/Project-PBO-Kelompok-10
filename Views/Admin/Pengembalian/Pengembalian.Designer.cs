@@ -28,31 +28,31 @@
         /// </summary>
         private void InitializeComponent()
         {
-            dataGridView1 = new DataGridView();
+            dataPengembalian = new DataGridView();
             panel2 = new Panel();
             panel1 = new Panel();
             Search = new TextBox();
             button1 = new Button();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataPengembalian).BeginInit();
             panel2.SuspendLayout();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
-            // dataGridView1
+            // dataPengembalian
             // 
-            dataGridView1.BackgroundColor = Color.White;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(20, 20);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.Size = new Size(1378, 710);
-            dataGridView1.TabIndex = 0;
+            dataPengembalian.BackgroundColor = Color.White;
+            dataPengembalian.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataPengembalian.Location = new Point(20, 20);
+            dataPengembalian.Name = "dataPengembalian";
+            dataPengembalian.RowHeadersWidth = 51;
+            dataPengembalian.Size = new Size(1378, 710);
+            dataPengembalian.TabIndex = 0;
             // 
             // panel2
             // 
             panel2.BackColor = Color.Transparent;
             panel2.BackgroundImage = Properties.Resources._38ad706e_f194_40e2_8a7e_48a4a97401b1;
-            panel2.Controls.Add(dataGridView1);
+            panel2.Controls.Add(dataPengembalian);
             panel2.Location = new Point(50, 180);
             panel2.Name = "panel2";
             panel2.Size = new Size(1418, 750);
@@ -102,7 +102,8 @@
             Controls.Add(panel1);
             Name = "Pengembalian";
             Size = new Size(1518, 1040);
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            Load += Pengembalian_Load;
+            ((System.ComponentModel.ISupportInitialize)dataPengembalian).EndInit();
             panel2.ResumeLayout(false);
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
@@ -111,7 +112,7 @@
 
         #endregion
 
-        private DataGridView dataGridView1;
+        public DataGridView dataPengembalian;
         private Panel panel2;
         private Panel panel1;
         private TextBox Search;

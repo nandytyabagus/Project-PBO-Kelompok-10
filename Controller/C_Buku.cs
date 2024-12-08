@@ -33,11 +33,11 @@ namespace Projek_SimBuku.Controller
                     Id_Buku = Convert.ToInt32(data.Rows[i]["Id_Buku"]),
                     Judul_buku = data.Rows[i]["Judul_Buku"].ToString(),
                     Tahun_Terbit = data.Rows[i]["Tahun_Terbit"].ToString(),
-                    Gambar = data.Rows[i]["Gambar"] as byte[],
                     Stok = Convert.ToInt32(data.Rows[i]["Stok"]),
+                    Gambar = data.Rows[i]["Gambar"] as byte[],
                     Pengarang = data.Rows[i]["Nama_pengarang"].ToString(),
-                    Genre = data.Rows[i]["genre"].ToString(),
-                    Penerbit = data.Rows[i]["penerbit"].ToString()
+                    Genre = data.Rows[i]["Genre"].ToString(),
+                    Penerbit = data.Rows[i]["Penerbit"].ToString()
                 };
 
                 bukuList.Add(m_buku);

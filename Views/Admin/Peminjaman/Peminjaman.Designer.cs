@@ -40,13 +40,27 @@
             // 
             // dataPeminjaman
             // 
+            dataPeminjaman.AllowUserToAddRows = false;
+            dataPeminjaman.AllowUserToDeleteRows = false;
+            dataPeminjaman.AllowUserToResizeColumns = false;
+            dataPeminjaman.AllowUserToResizeRows = false;
+            dataPeminjaman.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataPeminjaman.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.DisplayedCells;
             dataPeminjaman.BackgroundColor = Color.White;
-            dataPeminjaman.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataPeminjaman.BorderStyle = BorderStyle.None;
+            dataPeminjaman.CellBorderStyle = DataGridViewCellBorderStyle.None;
+            dataPeminjaman.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dataPeminjaman.ColumnHeadersHeight = 29;
+            dataPeminjaman.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             dataPeminjaman.Location = new Point(20, 20);
             dataPeminjaman.Name = "dataPeminjaman";
+            dataPeminjaman.ReadOnly = true;
+            dataPeminjaman.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dataPeminjaman.RowHeadersVisible = false;
             dataPeminjaman.RowHeadersWidth = 51;
             dataPeminjaman.Size = new Size(1378, 710);
             dataPeminjaman.TabIndex = 0;
+            dataPeminjaman.UseWaitCursor = true;
             dataPeminjaman.CellContentClick += dataPeminjaman_CellContentClick;
             // 
             // panel2
