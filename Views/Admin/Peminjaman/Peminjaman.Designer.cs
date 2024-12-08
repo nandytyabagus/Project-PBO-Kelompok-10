@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             dataPeminjaman = new DataGridView();
             panel2 = new Panel();
             panel1 = new Panel();
@@ -50,6 +51,14 @@
             dataPeminjaman.BorderStyle = BorderStyle.None;
             dataPeminjaman.CellBorderStyle = DataGridViewCellBorderStyle.None;
             dataPeminjaman.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = Color.White;
+            dataGridViewCellStyle1.Font = new Font("Myanmar Text", 10.8F, FontStyle.Bold);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dataPeminjaman.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dataPeminjaman.ColumnHeadersHeight = 29;
             dataPeminjaman.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             dataPeminjaman.Location = new Point(20, 20);

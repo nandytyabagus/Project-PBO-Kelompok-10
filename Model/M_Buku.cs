@@ -21,6 +21,8 @@ namespace Projek_SimBuku.Model
         public byte[] Gambar {  get; set; }
         [Required]
         public int Stok {  get; set; }
+        [Required]
+        public string keterangan { get; set; }
         [ForeignKey("M_Pengarang")]
         public string Pengarang {  get; set; }
         [ForeignKey("M_Genre")]

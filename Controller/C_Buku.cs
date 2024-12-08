@@ -9,6 +9,7 @@ using Projek_SimBuku.Views.Buku;
 using System.Data;
 using Projek_SimBuku.Model;
 using MailKit;
+using Projek_SimBuku.Views.Admin.Buku;
 
 namespace Projek_SimBuku.Controller
 {
@@ -16,15 +17,24 @@ namespace Projek_SimBuku.Controller
     {
         C_Homepage c_hompage;
         Buku Vbuku;
-        public C_Buku(C_Homepage homepage,Buku buku)
+        FormBuku form;
+        public EditBuku edit;
+        public TambahBuku tambah;
+        public DetailBuku detail;
+        public C_Buku(C_Homepage homepage, Buku buku)
         {
             c_hompage = homepage;
             Vbuku = buku;
         }
+        public void SwitchView(UserControl view)
+        {
+            form.panel1.Controls.Clear();
+            form.panel1.Controls.Add(view);
+        }
         public List<M_Buku> GetListBuku()
         {
             List<M_Buku> bukuList = new List<M_Buku>();
-            DataTable data = Execute_With_Return("SELECT Buku.Id_Buku, Buku.Judul_Buku, Buku.Tahun_Terbit, Buku.Stok, Buku.Gambar, pengarang.Nama_pengarang, genre.genre, penerbit.penerbit FROM Buku JOIN pengarang ON Buku.Id_pengarang = pengarang.Id_pengarang JOIN genre ON Buku.Id_genre = genre.Id_genre JOIN penerbit ON Buku.Id_penerbit = penerbit.Id_penerbit;");
+            DataTable data = Execute_With_Return("SELECT Buku.Id_Buku, Buku.Judul_Buku, Buku.Tahun_Terbit, Buku.Stok, Buku.Gambar, Buku.keterangan, pengarang.Nama_pengarang, genre.genre, penerbit.penerbit FROM Buku JOIN pengarang ON Buku.Id_pengarang = pengarang.Id_pengarang JOIN genre ON Buku.Id_genre = genre.Id_genre JOIN penerbit ON Buku.Id_penerbit = penerbit.Id_penerbit;");
 
             for (int i = 0; i < data.Rows.Count; i++)
             {
@@ -35,6 +45,7 @@ namespace Projek_SimBuku.Controller
                     Tahun_Terbit = data.Rows[i]["Tahun_Terbit"].ToString(),
                     Stok = Convert.ToInt32(data.Rows[i]["Stok"]),
                     Gambar = data.Rows[i]["Gambar"] as byte[],
+                    keterangan = data.Rows[i]["keterangan"].ToString(),
                     Pengarang = data.Rows[i]["Nama_pengarang"].ToString(),
                     Genre = data.Rows[i]["Genre"].ToString(),
                     Penerbit = data.Rows[i]["Penerbit"].ToString()
@@ -44,17 +55,27 @@ namespace Projek_SimBuku.Controller
             }
             return bukuList;
         }
-        //public int insert(object obj)
-        //{
-
-        //}
-        public void Delete(int id)
+        public void insert(object obj)
         {
-
+            M_Buku buku = obj as M_Buku;
+            Execute_No_Return("");
+        }
+        public void Delete(M_Buku buku)
+        {
+            
         }
         public void Update(object obj, int id)
         {
 
+        }
+        public void TambahData()
+        {
+            form = new FormBuku(this, new TambahBuku(this));
+            form.ShowDialog();
+        }
+        public void Close()
+        {
+            form.Close();
         }
         public void Load()
         {

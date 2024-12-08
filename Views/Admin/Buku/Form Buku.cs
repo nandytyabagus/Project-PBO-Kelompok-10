@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Projek_SimBuku.Controller;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,11 +11,14 @@ using System.Windows.Forms;
 
 namespace Projek_SimBuku.Views.Admin.Buku
 {
-    public partial class Detail_Buku : Form
+    public partial class FormBuku : Form
     {
-        public Detail_Buku()
+        C_Buku buku;
+        public FormBuku(C_Buku c_Buku, UserControl view)
         {
             InitializeComponent();
+            this.buku = c_Buku;
+            this.panel1.Controls.Add(view);
         }
     }
 }

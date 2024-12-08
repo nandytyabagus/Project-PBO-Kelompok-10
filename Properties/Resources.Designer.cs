@@ -46,7 +46,7 @@ namespace Projek_SimBuku.Properties {
                 return resourceMan;
             }
         }
-        
+
         /// <summary>
         ///   Overrides the current thread's CurrentUICulture property for all
         ///   resource lookups using this strongly typed resource class.
@@ -69,6 +69,54 @@ namespace Projek_SimBuku.Properties {
             get
             {
                 object obj = ResourceManager.GetObject("buku", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap d8685e26_2b28_4247_88e3_5c22995dc93a
+        {
+            get
+            {
+                object obj = ResourceManager.GetObject("d8685e26_2b28_4247_88e3_5c22995dc93a", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _2ef3ac18_4526_4ba3_80d0_31462196c559
+        {
+            get
+            {
+                object obj = ResourceManager.GetObject("2ef3ac18_4526_4ba3_80d0_31462196c559", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap b8330ddc_2ddd_47ba_b5bb_610cf34a6bd3
+        {
+            get
+            {
+                object obj = ResourceManager.GetObject("b8330ddc_2ddd_47ba_b5bb_610cf34a6bd3", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap a9e594f2_377a_466c_8214_e4cfd957c25e
+        {
+            get
+            {
+                object obj = ResourceManager.GetObject("a9e594f2_377a_466c_8214_e4cfd957c25e", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

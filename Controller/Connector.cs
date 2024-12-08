@@ -57,6 +57,7 @@ namespace Projek_SimBuku.Controller
                 "tahun_terbit INT NOT NULL," +
                 "gambar BYTEA," +
                 "stok INT NOT NULL," +
+                "keterangan TEXT," +
                 "id_pengarang INT NOT NULL," +
                 "id_genre INT NOT NULL," +
                 "id_penerbit INT NOT NULL," +
@@ -138,29 +139,6 @@ namespace Projek_SimBuku.Controller
                 Data.Load(Querry.ExecuteReader());
                 return Data;
             }
-        }
-        public object Execute_Single_Return(string querry)
-        {
-            object Data;
-            using (conn = new NpgsqlConnection(addres))
-            {
-                conn = new NpgsqlConnection(addres);
-                NpgsqlCommand cmd = new NpgsqlCommand();
-                cmd.Connection = conn;
-                cmd.CommandText = querry;
-                Data = cmd.ExecuteScalar();
-            }
-            return Data;
-        }
-        public object Execute_Single_Return(NpgsqlCommand command)
-        {
-            object Data;
-            using (conn = new NpgsqlConnection(addres))
-            {
-                command.Connection = conn;
-                Data = command.ExecuteScalar();
-            }
-            return Data;
         }
     }
 }

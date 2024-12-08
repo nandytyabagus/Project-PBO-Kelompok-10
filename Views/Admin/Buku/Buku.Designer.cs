@@ -86,6 +86,7 @@
             buttonTambahBuku.Size = new Size(380, 80);
             buttonTambahBuku.TabIndex = 3;
             buttonTambahBuku.UseVisualStyleBackColor = false;
+            buttonTambahBuku.Click += buttonTambahBuku_Click;
             // 
             // panel2
             // 

@@ -28,7 +28,7 @@ namespace Projek_SimBuku.Controller
             //akun.nomor_hp = ;
             M_Akun data = obj as M_Akun;
             string querry = $"UPDATE Data_Akun SET password = '{data.password}', nama = '{data.nama}', email = '{data.email}', nomor_hp = '{data.nomor_hp}' WHERE akun_id = {akun.id_akun}";
-            Execute_Single_Return(querry);
+            Execute_No_Return(querry);
         }
     }
 }

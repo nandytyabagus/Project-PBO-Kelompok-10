@@ -1,4 +1,5 @@
 ﻿using Projek_SimBuku.Controller;
+using Projek_SimBuku.Views.Admin.Buku;
 using Projek_SimBuku.Views.Dashboard;
 using System;
 using System.Collections.Generic;
@@ -16,6 +17,7 @@ namespace Projek_SimBuku.Views.Buku
     {
         C_Homepage Controller;
         C_Buku c_buku;
+        TambahBuku tambah;
         public Buku(C_Homepage controller)
         {
             InitializeComponent();
@@ -47,7 +49,12 @@ namespace Projek_SimBuku.Views.Buku
 
         private void TabelBuku_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            
+        }
 
+        private void buttonTambahBuku_Click(object sender, EventArgs e)
+        {
+            c_buku.TambahData();
         }
     }
 }

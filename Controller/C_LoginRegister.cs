@@ -55,14 +55,6 @@ namespace Projek_SimBuku.Controller
         {
 
         }
-        public class Akun
-        {
-            public string Username { get; set; }
-            public string Password { get; set; }
-            public string Nama { get; set; }
-            public string Email { get; set; }
-            public string Nomor_Hp { get; set; }
-        }
 
         public void Login()
         {
@@ -144,6 +136,14 @@ namespace Projek_SimBuku.Controller
                     C_MassageBox.showMassageBox("Username Sudah Ada");
                 }
             }
+        }
+        public class Akun
+        {
+            public string Username { get; set; }
+            public string Password { get; set; }
+            public string Nama { get; set; }
+            public string Email { get; set; }
+            public string Nomor_Hp { get; set; }
         }
     }
 }
