@@ -21,8 +21,8 @@ namespace Projek_SimBuku.Controller
         public List<M_Pengembalian> GetDataPengembalian()
         {
             List<M_Pengembalian> Pengembalian = new List<M_Pengembalian>();
-            DataTable data = Execute_With_Return("SELECT t.id_transaksi, t.status, t.denda, t.tanggal_pengembalian, a.nama, b.judul_buku FROM transaksi t JOIN keranjang k ON t.id_keranjang = k.id_keranjang JOIN data_akun a ON k.id_akun = a.id_akun JOIN buku b ON k.id_buku = b.id_buku;");
-
+            DataTable data = Execute_With_Return("SELECT t.id_transaksi, t.status, t.harga_denda AS denda, t.tanggal_pengembalian, a.nama, b.judul_buku FROM transaksi t JOIN keranjang k ON t.id_keranjang = k.id_keranjang JOIN data_akun a ON k.id_akun = a.id_akun JOIN buku b ON k.id_buku = b.id_buku;");
+            
             for (int i = 0; i < data.Rows.Count; i++)
             {
                 M_Pengembalian m_Pengembalian = new M_Pengembalian

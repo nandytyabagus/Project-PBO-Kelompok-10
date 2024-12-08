@@ -24,13 +24,12 @@ namespace Projek_SimBuku.Model
         public string tanggal_pengambilan { get; set; }
         [Required]
         public string tanggal_pengembalian { get; set; }
-        [ForeignKey("M_Keranjang")] 
-        public int id_keranjang { get; set; }
-        [ForeignKey("M_MetodePembayaran")] 
-        public int id_metode_pembayaran { get; set; }
+        [ForeignKey("M_Keranjang")]
+        public int Jumlah { get; set; }
+        [ForeignKey("M_MetodePembayaran")]
+        public int metode { get; set; }
         public virtual M_Keranjang Keranjang { get; set; }
-        public virtual M_Metode_Pembayaran MetodePembayaran { get; set; }
-        [NotMapped] 
+        [NotMapped]
         public string judul_buku => Keranjang?.Buku?.Judul_buku;
         [NotMapped]
         public string nama => Keranjang?.Akun?.nama;
