@@ -17,7 +17,7 @@ namespace Projek_SimBuku.Views.Buku
     {
         C_Homepage Controller;
         C_Buku c_buku;
-        TambahBuku tambah;
+        tambah vtambah;
         public Buku(C_Homepage controller)
         {
             InitializeComponent();
@@ -54,7 +54,8 @@ namespace Projek_SimBuku.Views.Buku
 
         private void buttonTambahBuku_Click(object sender, EventArgs e)
         {
-            c_buku.TambahData();
+            tambah Tambah = new tambah(c_buku);
+            Tambah.ShowDialog();
         }
     }
 }

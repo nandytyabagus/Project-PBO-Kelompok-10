@@ -49,6 +49,7 @@
             panel4 = new Panel();
             panel2 = new Panel();
             panel1 = new Panel();
+            button2 = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel5.SuspendLayout();
             panel3.SuspendLayout();
@@ -281,11 +282,28 @@
             panel1.Size = new Size(450, 55);
             panel1.TabIndex = 32;
             // 
+            // button2
+            // 
+            button2.BackColor = Color.Transparent;
+            button2.BackgroundImage = (Image)resources.GetObject("button2.BackgroundImage");
+            button2.BackgroundImageLayout = ImageLayout.Stretch;
+            button2.FlatAppearance.BorderSize = 0;
+            button2.FlatStyle = FlatStyle.Flat;
+            button2.Font = new Font("Myanmar Text", 16.2F, FontStyle.Bold);
+            button2.ForeColor = Color.FromArgb(61, 65, 75);
+            button2.Location = new Point(860, 745);
+            button2.Name = "button2";
+            button2.Size = new Size(250, 50);
+            button2.TabIndex = 48;
+            button2.Text = "Kembali";
+            button2.UseVisualStyleBackColor = false;
+            // 
             // DetailBuku
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
+            Controls.Add(button2);
             Controls.Add(label4);
             Controls.Add(label5);
             Controls.Add(label6);
@@ -340,5 +358,6 @@
         private Panel panel4;
         private Panel panel2;
         private Panel panel1;
+        public Button button2;
     }
 }

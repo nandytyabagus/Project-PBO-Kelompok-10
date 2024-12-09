@@ -16,21 +16,18 @@ namespace Projek_SimBuku.Model
         [Required]
         public string Judul_buku { get; set; }
         [Required]
-        public string Tahun_Terbit { get; set; }
+        public int Tahun_Terbit { get; set; }
         [Required]
         public byte[] Gambar {  get; set; }
         [Required]
         public int Stok {  get; set; }
         [Required]
         public string keterangan { get; set; }
-        [ForeignKey("M_Pengarang")]
+        [Required]
         public string Pengarang {  get; set; }
+        [Required]
+        public string Penerbit { get; set; }
         [ForeignKey("M_Genre")]
         public string Genre {  get; set; }
-        [ForeignKey("M_Penerbit")]
-        public string Penerbit { get; set; }
-        public virtual M_Pengarang pengarang { get; set; }
-        public virtual M_Genre genre { get; set; }
-        public virtual M_Penerbit penerbit { get; set; }
     }
 }

@@ -39,17 +39,9 @@ namespace Projek_SimBuku.Controller
                 "email VARCHAR(50) NOT NULL UNIQUE," +
                 "nomor_Hp VARCHAR(13) NOT NULL UNIQUE)");
 
-            Execute_No_Return("CREATE TABLE IF NOT EXISTS pengarang (" +
-                "id_pengarang SERIAL NOT NULL UNIQUE PRIMARY KEY," +
-                "nama_pengarang VARCHAR(50) NOT NULL)");
-
             Execute_No_Return("CREATE TABLE IF NOT EXISTS genre (" +
                 "id_genre SERIAL NOT NULL UNIQUE PRIMARY KEY," +
                 "genre VARCHAR(20) NOT NULL)");
-
-            Execute_No_Return("CREATE TABLE IF NOT EXISTS penerbit (" +
-                "id_penerbit SERIAL NOT NULL UNIQUE PRIMARY KEY," +
-                "penerbit VARCHAR(50) NOT NULL)");
 
             Execute_No_Return("CREATE TABLE IF NOT EXISTS buku (" +
                 "id_buku SERIAL NOT NULL UNIQUE PRIMARY KEY," +
@@ -58,12 +50,10 @@ namespace Projek_SimBuku.Controller
                 "gambar BYTEA," +
                 "stok INT NOT NULL," +
                 "keterangan TEXT," +
-                "id_pengarang INT NOT NULL," +
+                "penerbit VARCHAR(50) NOT NULL," +
+                "pengarang VARCHAR(50) NOT NULL," +
                 "id_genre INT NOT NULL," +
-                "id_penerbit INT NOT NULL," +
-                "FOREIGN KEY (id_pengarang) REFERENCES pengarang(id_pengarang)," +
-                "FOREIGN KEY (id_genre) REFERENCES genre(id_genre)," +
-                "FOREIGN KEY (id_penerbit) REFERENCES penerbit(id_penerbit))");
+                "FOREIGN KEY (id_genre) REFERENCES genre(id_genre))");
 
             Execute_No_Return("CREATE TABLE IF NOT EXISTS keranjang (" +
                 "id_keranjang SERIAL NOT NULL UNIQUE PRIMARY KEY," +
@@ -94,6 +84,14 @@ namespace Projek_SimBuku.Controller
             {
                 Execute_No_Return("INSERT INTO metode_pembayaran(metode) VALUES ('Cash')");
                 Execute_No_Return("INSERT INTO metode_pembayaran(metode) VALUES ('Qris')");
+                Execute_No_Return("INSERT INTO genre(genre) VALUES ('Novel')");
+                Execute_No_Return("INSERT INTO genre(genre) VALUES ('Fiksi')");
+                Execute_No_Return("INSERT INTO genre(genre) VALUES ('Non Fiksi')");
+                Execute_No_Return("INSERT INTO genre(genre) VALUES ('Horor')");
+                Execute_No_Return("INSERT INTO genre(genre) VALUES ('Ilmiah')");
+                Execute_No_Return("INSERT INTO genre(genre) VALUES ('Fantasi')");
+                Execute_No_Return("INSERT INTO genre(genre) VALUES ('Romantis')");
+
             }
             catch { }
         }

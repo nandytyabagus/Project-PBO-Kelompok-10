@@ -11,18 +11,24 @@ using System.Windows.Forms;
 
 namespace Projek_SimBuku.Views.Admin.Buku
 {
-    public partial class TambahBuku : UserControl
+    public partial class tambah : Form
     {
         C_Buku buku;
-        public TambahBuku(C_Buku c_Buku)
+        public tambah(C_Buku c_Buku)
         {
             InitializeComponent();
-            buku = c_Buku;
+            this.buku = c_Buku;
+            //buku.genre();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            buku.Close();
+            this.Close();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            buku.Simpan();
         }
     }
 }

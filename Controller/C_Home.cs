@@ -30,7 +30,7 @@ namespace Projek_SimBuku.Controller
                 {
                     Id_Buku = int.Parse(data.Rows[i]["Id_Buku"].ToString()),
                     Judul_buku = data.Rows[i]["Judul_Buku"].ToString(),
-                    Tahun_Terbit = data.Rows[i]["Tahun_Terbit"].ToString(),
+                    Tahun_Terbit = int.Parse(data.Rows[i]["Tahun_Terbit"].ToString()),
                     Stok = int.Parse(data.Rows[i]["Stok"].ToString()),
                     Gambar = data.Rows[i]["Gambar"] as byte[],
                     Pengarang = data.Rows[i]["Nama_pengarang"].ToString(),
