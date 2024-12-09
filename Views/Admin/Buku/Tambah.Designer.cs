@@ -30,7 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(tambah));
             label = new Label();
-            boxgenre = new ComboBox();
             panel2 = new Panel();
             panel4 = new Panel();
             penerbit = new TextBox();
@@ -54,6 +53,7 @@
             pengarang = new TextBox();
             label6 = new Label();
             panel8 = new Panel();
+            BoxGenre = new ComboBox();
             panel2.SuspendLayout();
             panel4.SuspendLayout();
             panel3.SuspendLayout();
@@ -76,24 +76,12 @@
             label.Text = "Keterangan";
             label.TextAlign = ContentAlignment.MiddleLeft;
             // 
-            // boxgenre
-            // 
-            boxgenre.AllowDrop = true;
-            boxgenre.FlatStyle = FlatStyle.Flat;
-            boxgenre.Font = new Font("Myanmar Text", 11F, FontStyle.Bold);
-            boxgenre.ForeColor = Color.Black;
-            boxgenre.FormattingEnabled = true;
-            boxgenre.Location = new Point(21, 8);
-            boxgenre.Name = "boxgenre";
-            boxgenre.Size = new Size(410, 40);
-            boxgenre.TabIndex = 32;
-            // 
             // panel2
             // 
             panel2.BackColor = Color.Transparent;
             panel2.BackgroundImage = (Image)resources.GetObject("panel2.BackgroundImage");
             panel2.BackgroundImageLayout = ImageLayout.Stretch;
-            panel2.Controls.Add(boxgenre);
+            panel2.Controls.Add(BoxGenre);
             panel2.Location = new Point(597, 316);
             panel2.Name = "panel2";
             panel2.Size = new Size(450, 55);
@@ -358,6 +346,17 @@
             panel8.Size = new Size(450, 55);
             panel8.TabIndex = 54;
             // 
+            // BoxGenre
+            // 
+            BoxGenre.DropDownStyle = ComboBoxStyle.DropDownList;
+            BoxGenre.FlatStyle = FlatStyle.Flat;
+            BoxGenre.Font = new Font("Myanmar Text", 11F, FontStyle.Bold);
+            BoxGenre.FormattingEnabled = true;
+            BoxGenre.Location = new Point(21, 8);
+            BoxGenre.Name = "BoxGenre";
+            BoxGenre.Size = new Size(410, 40);
+            BoxGenre.TabIndex = 71;
+            // 
             // tambah
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -408,7 +407,6 @@
         #endregion
 
         private Label label;
-        public ComboBox boxgenre;
         private Panel panel2;
         private Panel panel4;
         public TextBox penerbit;
@@ -432,5 +430,6 @@
         public TextBox pengarang;
         private Label label6;
         private Panel panel8;
+        public ComboBox BoxGenre;
     }
 }

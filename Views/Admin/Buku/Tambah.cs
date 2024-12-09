@@ -18,7 +18,7 @@ namespace Projek_SimBuku.Views.Admin.Buku
         {
             InitializeComponent();
             this.buku = c_Buku;
-            //buku.genre();
+            buku.genre(this);
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -28,7 +28,8 @@ namespace Projek_SimBuku.Views.Admin.Buku
 
         private void button3_Click(object sender, EventArgs e)
         {
-            buku.Simpan();
+            buku.Tambahbuku(this);
+            this.Close();
         }
     }
 }

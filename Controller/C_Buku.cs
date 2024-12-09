@@ -11,75 +11,48 @@ using Projek_SimBuku.Model;
 using MailKit;
 using Projek_SimBuku.Views.Admin.Buku;
 using static System.Runtime.InteropServices.JavaScript.JSType;
+using Npgsql;
+using System.ComponentModel.DataAnnotations;
 
 namespace Projek_SimBuku.Controller
 {
     public class C_Buku : Connector
     {
+        HomePage homePage;
         C_Homepage c_hompage;
         Buku Vbuku;
         FormBuku form;
+        tambah Tambah;
         public EditBuku edit;
-        public tambah Tambah;
         public DetailBuku detail;
         public C_Buku(C_Homepage homepage, Buku buku)
         {
             c_hompage = homepage;
             Vbuku = buku;
         }
+        public C_Buku(FormBuku formBuku)
+        {
+            form = formBuku;
+            edit = new EditBuku(this);
+            detail = new DetailBuku(this);
+        }
+        public C_Buku(tambah tambah)
+        {
+            Tambah = tambah;
+        }
         public void SwitchView(UserControl view)
         {
             form.panel1.Controls.Clear();
             form.panel1.Controls.Add(view);
         }
-        public void Simpan()
+        public void genre(tambah view)
         {
-            //string judulBuku = Tambah.judul.Text;
-            //int tahunTerbit = int.Parse(Tambah.tahunterbit.Text);
-            //int stok = int.Parse(Tambah.Jumlah.Text);
-            //byte[] gambar = null;
-            //string keterangan = Tambah.keterangan.Text;
-            //string Pengarang = Tambah.pengarang.Text;
-            //string Genre = Tambah.boxgenre.SelectedText;
-            //string Penerbit = Tambah.penerbit.Text;
-
-            //M_Buku m_buku = new M_Buku
-            //{
-            //    Judul_buku = judulBuku,
-            //    Tahun_Terbit = tahunTerbit,
-            //    Stok = stok,
-            //    Gambar = gambar,
-            //    keterangan = keterangan,
-            //    Pengarang = Pengarang,
-            //    Genre = Genre,
-            //    Penerbit = Penerbit
-            //};
-            //insert(m_buku);
+            DataTable data = Execute_With_Return("SELECT * FROM genre");
+            view.BoxGenre.DataSource = data;
+            view.BoxGenre.DisplayMember = "genre";
+            view.BoxGenre.ValueMember = "id_genre";
+            view.BoxGenre.DropDownStyle = ComboBoxStyle.DropDownList;
         }
-        //public void genre()
-        //{
-        //    Tambah.boxgenre.DataSource = get();
-        //    Tambah.boxgenre.DisplayMember = "genre";
-        //    Tambah.boxgenre.ValueMember = "id_genre";
-        //    Tambah.boxgenre.DropDownStyle = ComboBoxStyle.DropDownList;
-        //}
-
-        //public List<M_Genre> get()
-        //{
-        //    List<M_Genre> List = new List<M_Genre>();
-        //    DataTable data = Execute_With_Return("SELECT * FROM genre");
-        //    for (int i = 0; i < data.Rows.Count; i++)
-        //    {
-        //        M_Genre genre = new M_Genre
-        //        {
-        //            Id_Genre = Convert.ToInt32(data.Rows[i]["id_genre"]),
-        //            Genre = data.Rows[i]["genre"].ToString()
-        //        };
-        //        List.Add(genre);
-        //    }
-        //    return List;
-        //}
-
         public void Load()
         {
             Vbuku.TabelBuku.DataSource = null;
@@ -141,9 +114,29 @@ namespace Projek_SimBuku.Controller
             }
             return bukuList;
         }
-        public void insert(M_Buku m_Buku)
+        public void Tambahbuku(tambah view)
         {
-            Execute_No_Return($"INSERT INTO Buku (Judul_Buku, Tahun_Terbit, Stok, Gambar, keterangan, Pengarang, Id_Genre, Penerbit) VALUES ('{m_Buku.Judul_buku}','{m_Buku.Tahun_Terbit}','{m_Buku.Stok}','{m_Buku.Gambar}','{m_Buku.keterangan}','{m_Buku.Pengarang}','{Tambah.boxgenre.SelectedValue}','{m_Buku.Penerbit}')");
+            DataBaru data = new DataBaru()
+            {
+                judul = view.judul.Text,
+                tahun_terbit = int.Parse(view.tahunterbit.Text),
+                gambar = null,
+                stok = int.Parse(view.Jumlah.Text),
+                keterangan = view.keterangan.Text,
+                Pengarang = view.pengarang.Text,
+                Penerbit = view.penerbit.Text,
+                Genre = (int)view.BoxGenre.SelectedValue,
+            };
+            try
+            {
+                insert(data);
+            }
+            catch { }
+        }
+        public void insert(object item)
+        {
+            DataBaru dataBaru = item as DataBaru;
+            Execute_No_Return($"INSERT INTO Buku (Judul_Buku, Tahun_Terbit, Stok, keterangan, Pengarang, id_Genre, Penerbit) VALUES ('{dataBaru.judul}','{dataBaru.tahun_terbit}','{dataBaru.stok}','{dataBaru.keterangan}','{dataBaru.Pengarang}','{dataBaru.Genre}','{dataBaru.Penerbit}')");
         }
         public void Delete(int id)
         {
@@ -152,6 +145,17 @@ namespace Projek_SimBuku.Controller
         public void Update(object obj, int id)
         {
 
+        }
+        public class DataBaru
+        {
+            public string judul { get; set; }
+            public int tahun_terbit { get; set; }
+            public byte[] gambar { get; set; }
+            public int stok { get; set; }
+            public string keterangan { get; set; }
+            public string Pengarang { get; set; }
+            public string Penerbit { get; set; }
+            public int Genre { get; set; }
         }
     }
 }

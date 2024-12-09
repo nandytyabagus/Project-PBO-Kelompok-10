@@ -10,7 +10,7 @@ namespace Projek_SimBuku.Model
 {
     public class M_Buku
     {
-        
+
         [Key]
         public int Id_Buku { get; set; }
         [Required]
@@ -18,16 +18,16 @@ namespace Projek_SimBuku.Model
         [Required]
         public int Tahun_Terbit { get; set; }
         [Required]
-        public byte[] Gambar {  get; set; }
+        public byte[] Gambar { get; set; }
         [Required]
-        public int Stok {  get; set; }
+        public int Stok { get; set; }
         [Required]
         public string keterangan { get; set; }
         [Required]
-        public string Pengarang {  get; set; }
+        public string Pengarang { get; set; }
         [Required]
         public string Penerbit { get; set; }
         [ForeignKey("M_Genre")]
-        public string Genre {  get; set; }
+        public string Genre { get; set; }
     }
 }
