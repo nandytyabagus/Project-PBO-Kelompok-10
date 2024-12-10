@@ -30,27 +30,29 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditBuku));
             label2 = new Label();
-            comboBox1 = new ComboBox();
-            textBox1 = new TextBox();
+            comboBoxGenre = new ComboBox();
+            textBoxJudul = new TextBox();
             panel4 = new Panel();
-            textBox4 = new TextBox();
+            textBoxPenerbit = new TextBox();
             panel1 = new Panel();
-            textBox6 = new TextBox();
+            textBoxTahunTerbit = new TextBox();
             panel6 = new Panel();
-            textBox3 = new TextBox();
+            textBoxPengarang = new TextBox();
             panel3 = new Panel();
-            textBox5 = new TextBox();
+            textBoxJumlah = new TextBox();
             panel2 = new Panel();
             label4 = new Label();
             label5 = new Label();
             label6 = new Label();
             button3 = new Button();
-            button2 = new Button();
             button1 = new Button();
             pictureBox1 = new PictureBox();
             label3 = new Label();
             label1 = new Label();
             panel5 = new Panel();
+            label = new Label();
+            panel7 = new Panel();
+            keterangan = new TextBox();
             panel4.SuspendLayout();
             panel1.SuspendLayout();
             panel6.SuspendLayout();
@@ -58,6 +60,7 @@
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel5.SuspendLayout();
+            panel7.SuspendLayout();
             SuspendLayout();
             // 
             // label2
@@ -73,117 +76,117 @@
             label2.Text = "Genre";
             label2.TextAlign = ContentAlignment.MiddleLeft;
             // 
-            // comboBox1
+            // comboBoxGenre
             // 
-            comboBox1.FlatStyle = FlatStyle.Flat;
-            comboBox1.Font = new Font("Myanmar Text", 11F, FontStyle.Bold);
-            comboBox1.ForeColor = Color.Black;
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(24, 8);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(410, 40);
-            comboBox1.TabIndex = 32;
+            comboBoxGenre.FlatStyle = FlatStyle.Flat;
+            comboBoxGenre.Font = new Font("Myanmar Text", 11F, FontStyle.Bold);
+            comboBoxGenre.ForeColor = Color.Black;
+            comboBoxGenre.FormattingEnabled = true;
+            comboBoxGenre.Location = new Point(24, 8);
+            comboBoxGenre.Name = "comboBoxGenre";
+            comboBoxGenre.Size = new Size(410, 40);
+            comboBoxGenre.TabIndex = 32;
             // 
-            // textBox1
+            // textBoxJudul
             // 
-            textBox1.BorderStyle = BorderStyle.None;
-            textBox1.Font = new Font("Myanmar Text", 11F, FontStyle.Bold);
-            textBox1.ForeColor = Color.Black;
-            textBox1.Location = new Point(24, 10);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(410, 35);
-            textBox1.TabIndex = 0;
+            textBoxJudul.BorderStyle = BorderStyle.None;
+            textBoxJudul.Font = new Font("Myanmar Text", 11F, FontStyle.Bold);
+            textBoxJudul.ForeColor = Color.Black;
+            textBoxJudul.Location = new Point(24, 10);
+            textBoxJudul.Name = "textBoxJudul";
+            textBoxJudul.Size = new Size(410, 35);
+            textBoxJudul.TabIndex = 0;
             // 
             // panel4
             // 
             panel4.BackColor = Color.Transparent;
             panel4.BackgroundImage = (Image)resources.GetObject("panel4.BackgroundImage");
             panel4.BackgroundImageLayout = ImageLayout.Stretch;
-            panel4.Controls.Add(textBox4);
+            panel4.Controls.Add(textBoxPenerbit);
             panel4.Location = new Point(604, 95);
             panel4.Name = "panel4";
             panel4.Size = new Size(450, 55);
             panel4.TabIndex = 36;
             // 
-            // textBox4
+            // textBoxPenerbit
             // 
-            textBox4.BorderStyle = BorderStyle.None;
-            textBox4.Font = new Font("Myanmar Text", 11F, FontStyle.Bold);
-            textBox4.ForeColor = Color.Black;
-            textBox4.Location = new Point(24, 10);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(410, 35);
-            textBox4.TabIndex = 0;
+            textBoxPenerbit.BorderStyle = BorderStyle.None;
+            textBoxPenerbit.Font = new Font("Myanmar Text", 11F, FontStyle.Bold);
+            textBoxPenerbit.ForeColor = Color.Black;
+            textBoxPenerbit.Location = new Point(24, 10);
+            textBoxPenerbit.Name = "textBoxPenerbit";
+            textBoxPenerbit.Size = new Size(410, 35);
+            textBoxPenerbit.TabIndex = 0;
             // 
             // panel1
             // 
             panel1.BackColor = Color.Transparent;
             panel1.BackgroundImage = (Image)resources.GetObject("panel1.BackgroundImage");
             panel1.BackgroundImageLayout = ImageLayout.Stretch;
-            panel1.Controls.Add(textBox1);
+            panel1.Controls.Add(textBoxJudul);
             panel1.Location = new Point(94, 95);
             panel1.Name = "panel1";
             panel1.Size = new Size(450, 55);
             panel1.TabIndex = 33;
             // 
-            // textBox6
+            // textBoxTahunTerbit
             // 
-            textBox6.BorderStyle = BorderStyle.None;
-            textBox6.Font = new Font("Myanmar Text", 11F, FontStyle.Bold);
-            textBox6.ForeColor = Color.Black;
-            textBox6.Location = new Point(24, 10);
-            textBox6.Name = "textBox6";
-            textBox6.Size = new Size(410, 35);
-            textBox6.TabIndex = 0;
+            textBoxTahunTerbit.BorderStyle = BorderStyle.None;
+            textBoxTahunTerbit.Font = new Font("Myanmar Text", 11F, FontStyle.Bold);
+            textBoxTahunTerbit.ForeColor = Color.Black;
+            textBoxTahunTerbit.Location = new Point(24, 10);
+            textBoxTahunTerbit.Name = "textBoxTahunTerbit";
+            textBoxTahunTerbit.Size = new Size(410, 35);
+            textBoxTahunTerbit.TabIndex = 0;
             // 
             // panel6
             // 
             panel6.BackColor = Color.Transparent;
             panel6.BackgroundImage = (Image)resources.GetObject("panel6.BackgroundImage");
             panel6.BackgroundImageLayout = ImageLayout.Stretch;
-            panel6.Controls.Add(textBox6);
+            panel6.Controls.Add(textBoxTahunTerbit);
             panel6.Location = new Point(604, 201);
             panel6.Name = "panel6";
             panel6.Size = new Size(450, 55);
             panel6.TabIndex = 35;
             // 
-            // textBox3
+            // textBoxPengarang
             // 
-            textBox3.BorderStyle = BorderStyle.None;
-            textBox3.Font = new Font("Myanmar Text", 11F, FontStyle.Bold);
-            textBox3.ForeColor = Color.Black;
-            textBox3.Location = new Point(24, 10);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(410, 35);
-            textBox3.TabIndex = 0;
+            textBoxPengarang.BorderStyle = BorderStyle.None;
+            textBoxPengarang.Font = new Font("Myanmar Text", 11F, FontStyle.Bold);
+            textBoxPengarang.ForeColor = Color.Black;
+            textBoxPengarang.Location = new Point(24, 10);
+            textBoxPengarang.Name = "textBoxPengarang";
+            textBoxPengarang.Size = new Size(410, 35);
+            textBoxPengarang.TabIndex = 0;
             // 
             // panel3
             // 
             panel3.BackColor = Color.Transparent;
             panel3.BackgroundImage = (Image)resources.GetObject("panel3.BackgroundImage");
             panel3.BackgroundImageLayout = ImageLayout.Stretch;
-            panel3.Controls.Add(textBox3);
+            panel3.Controls.Add(textBoxPengarang);
             panel3.Location = new Point(94, 316);
             panel3.Name = "panel3";
             panel3.Size = new Size(450, 55);
             panel3.TabIndex = 34;
             // 
-            // textBox5
+            // textBoxJumlah
             // 
-            textBox5.BorderStyle = BorderStyle.None;
-            textBox5.Font = new Font("Myanmar Text", 11F, FontStyle.Bold);
-            textBox5.ForeColor = Color.Black;
-            textBox5.Location = new Point(24, 10);
-            textBox5.Name = "textBox5";
-            textBox5.Size = new Size(410, 35);
-            textBox5.TabIndex = 0;
+            textBoxJumlah.BorderStyle = BorderStyle.None;
+            textBoxJumlah.Font = new Font("Myanmar Text", 11F, FontStyle.Bold);
+            textBoxJumlah.ForeColor = Color.Black;
+            textBoxJumlah.Location = new Point(24, 10);
+            textBoxJumlah.Name = "textBoxJumlah";
+            textBoxJumlah.Size = new Size(410, 35);
+            textBoxJumlah.TabIndex = 0;
             // 
             // panel2
             // 
             panel2.BackColor = Color.Transparent;
             panel2.BackgroundImage = (Image)resources.GetObject("panel2.BackgroundImage");
             panel2.BackgroundImageLayout = ImageLayout.Stretch;
-            panel2.Controls.Add(comboBox1);
+            panel2.Controls.Add(comboBoxGenre);
             panel2.Location = new Point(604, 316);
             panel2.Name = "panel2";
             panel2.Size = new Size(450, 55);
@@ -234,28 +237,12 @@
             button3.FlatStyle = FlatStyle.Flat;
             button3.Font = new Font("Myanmar Text", 16.2F, FontStyle.Bold);
             button3.ForeColor = Color.FromArgb(61, 65, 75);
-            button3.Location = new Point(864, 680);
+            button3.Location = new Point(864, 761);
             button3.Name = "button3";
             button3.Size = new Size(250, 50);
             button3.TabIndex = 44;
             button3.Text = "Simpan";
             button3.UseVisualStyleBackColor = false;
-            // 
-            // button2
-            // 
-            button2.BackColor = Color.Transparent;
-            button2.BackgroundImage = (Image)resources.GetObject("button2.BackgroundImage");
-            button2.BackgroundImageLayout = ImageLayout.Stretch;
-            button2.FlatAppearance.BorderSize = 0;
-            button2.FlatStyle = FlatStyle.Flat;
-            button2.Font = new Font("Myanmar Text", 16.2F, FontStyle.Bold);
-            button2.ForeColor = Color.FromArgb(61, 65, 75);
-            button2.Location = new Point(864, 745);
-            button2.Name = "button2";
-            button2.Size = new Size(250, 50);
-            button2.TabIndex = 43;
-            button2.Text = "Batal";
-            button2.UseVisualStyleBackColor = false;
             // 
             // button1
             // 
@@ -311,18 +298,54 @@
             panel5.BackColor = Color.Transparent;
             panel5.BackgroundImage = (Image)resources.GetObject("panel5.BackgroundImage");
             panel5.BackgroundImageLayout = ImageLayout.Stretch;
-            panel5.Controls.Add(textBox5);
+            panel5.Controls.Add(textBoxJumlah);
             panel5.Location = new Point(94, 201);
             panel5.Name = "panel5";
             panel5.Size = new Size(450, 55);
             panel5.TabIndex = 38;
+            // 
+            // label
+            // 
+            label.BackColor = Color.Transparent;
+            label.Font = new Font("Myanmar Text", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label.ForeColor = Color.White;
+            label.Location = new Point(615, 398);
+            label.Name = "label";
+            label.Size = new Size(188, 36);
+            label.TabIndex = 72;
+            label.Text = "Keterangan";
+            label.TextAlign = ContentAlignment.MiddleLeft;
+            // 
+            // panel7
+            // 
+            panel7.BackColor = Color.Transparent;
+            panel7.BackgroundImage = (Image)resources.GetObject("panel7.BackgroundImage");
+            panel7.BackgroundImageLayout = ImageLayout.Stretch;
+            panel7.Controls.Add(keterangan);
+            panel7.Location = new Point(604, 437);
+            panel7.Name = "panel7";
+            panel7.Size = new Size(450, 144);
+            panel7.TabIndex = 71;
+            // 
+            // keterangan
+            // 
+            keterangan.BorderStyle = BorderStyle.None;
+            keterangan.Font = new Font("Myanmar Text", 11F, FontStyle.Bold);
+            keterangan.ForeColor = Color.Black;
+            keterangan.Location = new Point(21, 10);
+            keterangan.Multiline = true;
+            keterangan.Name = "keterangan";
+            keterangan.Size = new Size(410, 122);
+            keterangan.TabIndex = 0;
             // 
             // EditBuku
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
+            Controls.Add(label);
             Controls.Add(label2);
+            Controls.Add(panel7);
             Controls.Add(panel4);
             Controls.Add(panel1);
             Controls.Add(panel6);
@@ -332,7 +355,6 @@
             Controls.Add(label5);
             Controls.Add(label6);
             Controls.Add(button3);
-            Controls.Add(button2);
             Controls.Add(button1);
             Controls.Add(pictureBox1);
             Controls.Add(label3);
@@ -340,6 +362,7 @@
             Controls.Add(panel5);
             Name = "EditBuku";
             Size = new Size(1160, 850);
+            Load += EditBuku_Load;
             panel4.ResumeLayout(false);
             panel4.PerformLayout();
             panel1.ResumeLayout(false);
@@ -352,32 +375,36 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panel5.ResumeLayout(false);
             panel5.PerformLayout();
+            panel7.ResumeLayout(false);
+            panel7.PerformLayout();
             ResumeLayout(false);
         }
 
         #endregion
 
         private Label label2;
-        private ComboBox comboBox1;
-        public TextBox textBox1;
+        public ComboBox comboBoxGenre;
+        public TextBox textBoxJudul;
         private Panel panel4;
-        public TextBox textBox4;
+        public TextBox textBoxPenerbit;
         private Panel panel1;
-        public TextBox textBox6;
+        public TextBox textBoxTahunTerbit;
         private Panel panel6;
-        public TextBox textBox3;
+        public TextBox textBoxPengarang;
         private Panel panel3;
-        public TextBox textBox5;
+        public TextBox textBoxJumlah;
         private Panel panel2;
         private Label label4;
         private Label label5;
         private Label label6;
         public Button button3;
-        public Button button2;
         public Button button1;
         public PictureBox pictureBox1;
         private Label label3;
         private Label label1;
         private Panel panel5;
+        private Label label;
+        private Panel panel7;
+        public TextBox keterangan;
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Projek_SimBuku.Controller;
+using Projek_SimBuku.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Projek_SimBuku.Views.Admin.Buku
 {
@@ -18,6 +20,11 @@ namespace Projek_SimBuku.Views.Admin.Buku
         {
             InitializeComponent();
             buku = c_Buku;
+        }
+
+        private void EditBuku_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

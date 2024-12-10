@@ -62,6 +62,7 @@
             Search.PlaceholderText = "Search";
             Search.Size = new Size(272, 39);
             Search.TabIndex = 1;
+            Search.TextChanged += Search_TextChanged;
             // 
             // button1
             // 

@@ -10,7 +10,6 @@ using System.Data;
 using Projek_SimBuku.Model;
 using MailKit;
 using Projek_SimBuku.Views.Admin.Buku;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 using Npgsql;
 using System.ComponentModel.DataAnnotations;
 
@@ -24,6 +23,8 @@ namespace Projek_SimBuku.Controller
         tambah Tambah;
         public EditBuku edit;
         public DetailBuku detail;
+        M_Buku MBuku;
+
         public C_Buku(C_Homepage homepage, Buku buku)
         {
             c_hompage = homepage;
@@ -31,16 +32,12 @@ namespace Projek_SimBuku.Controller
             edit = new EditBuku(this);
             detail = new DetailBuku(this);
         }
-        public void showEdit(M_Buku data)
+        public C_Buku(FormBuku formBuku)
         {
-            FormBuku formBuku = new FormBuku(this,data,edit);
-            formBuku.ShowDialog();
+            form = formBuku;
+            edit = new EditBuku(this);
+            detail = new DetailBuku(this);
         }
-        //public void showDetail()
-        //{
-        //    form.ShowDialog();
-        //    SwitchView(detail);
-        //}
         public void genre(tambah view)
         {
             DataTable data = Execute_With_Return("SELECT * FROM genre");
@@ -67,8 +64,7 @@ namespace Projek_SimBuku.Controller
                 UseColumnTextForButtonValue = true,
                 Text = "Edit"
             };
-            var dataList = GetListBuku();
-            Vbuku.TabelBuku.DataSource = dataList;
+            Vbuku.TabelBuku.DataSource = GetListBuku();
 
             Vbuku.TabelBuku.Columns["Id_Buku"].Visible = false;
             Vbuku.TabelBuku.Columns["keterangan"].Visible = false;
@@ -134,6 +130,66 @@ namespace Projek_SimBuku.Controller
                 Load();
             }
             catch { }
+        }
+        public void showEdit(M_Buku data)
+        {
+            FormBuku formBuku = new FormBuku(this, data, edit);
+            formBuku.ShowDialog();
+        }
+        public void DeleteBuku(int id)
+        {
+            Delete(id);
+        }
+
+        //public void showDetail()
+        //{
+        //    form.ShowDialog();
+        //    SwitchView(detail);
+        //}
+        public void SearchBuku(string keyword)
+        {
+            var filteredData = GetListBuku().Where(b => 
+            b.Judul_buku.Contains(keyword, StringComparison.OrdinalIgnoreCase) || 
+            b.Pengarang.Contains(keyword, StringComparison.OrdinalIgnoreCase) || 
+            b.Genre.Contains(keyword, StringComparison.OrdinalIgnoreCase) || 
+            b.Penerbit.Contains(keyword, StringComparison.OrdinalIgnoreCase)).ToList();
+
+
+            DataGridViewButtonColumn Delete = new DataGridViewButtonColumn
+            {
+                Name = "Delete",
+                UseColumnTextForButtonValue = true,
+                Text = "Delete"
+            };
+
+            DataGridViewButtonColumn Edit = new DataGridViewButtonColumn
+            {
+                Name = "Edit",
+                UseColumnTextForButtonValue = true,
+                Text = "Edit"
+            };
+
+            Vbuku.TabelBuku.DataSource = null;
+            Vbuku.TabelBuku.Columns.Clear();
+            Vbuku.TabelBuku.DataSource = filteredData;
+
+            Vbuku.TabelBuku.Columns["Id_Buku"].Visible = false;
+            Vbuku.TabelBuku.Columns["keterangan"].Visible = false;
+            Vbuku.TabelBuku.Columns["gambar"].Visible = false;
+            Vbuku.TabelBuku.Columns["Judul_buku"].HeaderText = "Judul";
+            Vbuku.TabelBuku.Columns["Tahun_Terbit"].HeaderText = "Tahun Terbit";
+            Vbuku.TabelBuku.Columns["Stok"].HeaderText = "Jumlah";
+            Vbuku.TabelBuku.Columns["Pengarang"].HeaderText = "Pengarang";
+            Vbuku.TabelBuku.Columns["Genre"].HeaderText = "Genre";
+            Vbuku.TabelBuku.Columns["Penerbit"].HeaderText = "Penerbit";
+            
+            Vbuku.TabelBuku.Columns.Add(Edit);
+            Vbuku.TabelBuku.Columns.Add(Delete);
+
+            Vbuku.TabelBuku.Columns["Edit"].HeaderText = "";
+            Vbuku.TabelBuku.Columns["Delete"].HeaderText = "";
+
+            Vbuku.TabelBuku.Refresh();
         }
         public void insert(object item)
         {
