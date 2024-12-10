@@ -13,7 +13,6 @@ namespace Projek_SimBuku.Controller
 {
     public class C_LoginRegister : Connector
     {
-        C_LoginRegister controller_loginRegister;
         public LoginRegister VloginRegister;
         public Login Vlogin;
         public Register Vregister;

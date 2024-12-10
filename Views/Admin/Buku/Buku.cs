@@ -1,4 +1,5 @@
 ﻿using Projek_SimBuku.Controller;
+using Projek_SimBuku.Model;
 using Projek_SimBuku.Views.Admin.Buku;
 using Projek_SimBuku.Views.Dashboard;
 using System;
@@ -17,12 +18,12 @@ namespace Projek_SimBuku.Views.Buku
     {
         C_Homepage Controller;
         C_Buku c_buku;
-        tambah vtambah;
         public Buku(C_Homepage controller)
         {
             InitializeComponent();
             this.Controller = controller;
             c_buku = new C_Buku(controller, this);
+            c_buku.Load();
         }
 
         private void panelSearch_Paint(object sender, PaintEventArgs e)
@@ -37,15 +38,33 @@ namespace Projek_SimBuku.Views.Buku
 
         private void TabelBuku_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (0 == e.RowIndex && e.ColumnIndex == TabelBuku.Columns["Delete"].Index)
+            if (e.RowIndex >= 0)
             {
-                return;
-            }
-            if (e.ColumnIndex == TabelBuku.Columns["Edit"].Index)
-            {
-
+                int idBuku = Convert.ToInt32(TabelBuku.Rows[e.RowIndex].Cells["Id_Buku"].Value);
+                if (e.ColumnIndex == TabelBuku.Columns["Delete"].Index)
+                {
+                    c_buku.Delete(idBuku);
+                    c_buku.Load();
+                }
+                else if (e.ColumnIndex == TabelBuku.Columns["Edit"].Index)
+                {
+                    M_Buku buku = new M_Buku
+                    {
+                        Id_Buku = idBuku,
+                        Judul_buku = TabelBuku.Rows[e.RowIndex].Cells["Judul_buku"].Value.ToString(),
+                        Tahun_Terbit = Convert.ToInt32(TabelBuku.Rows[e.RowIndex].Cells["Tahun_Terbit"].Value),
+                        Stok = Convert.ToInt32(TabelBuku.Rows[e.RowIndex].Cells["Stok"].Value),
+                        Pengarang = TabelBuku.Rows[e.RowIndex].Cells["Pengarang"].Value.ToString(),
+                        Genre = TabelBuku.Rows[e.RowIndex].Cells["Genre"].Value.ToString(),
+                        Penerbit = TabelBuku.Rows[e.RowIndex].Cells["Penerbit"].Value.ToString(),
+                        keterangan = TabelBuku.Rows[e.RowIndex].Cells["keterangan"].Value.ToString(),
+                        Gambar = TabelBuku.Rows[e.RowIndex].Cells["gambar"].Value as byte[]
+                    };
+                    c_buku.showEdit(buku);
+                }
             }
         }
+
 
         private void TabelBuku_CellClick(object sender, DataGridViewCellEventArgs e)
         {

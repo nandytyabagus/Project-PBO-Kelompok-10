@@ -18,7 +18,6 @@ namespace Projek_SimBuku.Controller
 {
     public class C_Buku : Connector
     {
-        HomePage homePage;
         C_Homepage c_hompage;
         Buku Vbuku;
         FormBuku form;
@@ -29,22 +28,19 @@ namespace Projek_SimBuku.Controller
         {
             c_hompage = homepage;
             Vbuku = buku;
-        }
-        public C_Buku(FormBuku formBuku)
-        {
-            form = formBuku;
             edit = new EditBuku(this);
             detail = new DetailBuku(this);
         }
-        public C_Buku(tambah tambah)
+        public void showEdit(M_Buku data)
         {
-            Tambah = tambah;
+            FormBuku formBuku = new FormBuku(this,data,edit);
+            formBuku.ShowDialog();
         }
-        public void SwitchView(UserControl view)
-        {
-            form.panel1.Controls.Clear();
-            form.panel1.Controls.Add(view);
-        }
+        //public void showDetail()
+        //{
+        //    form.ShowDialog();
+        //    SwitchView(detail);
+        //}
         public void genre(tambah view)
         {
             DataTable data = Execute_With_Return("SELECT * FROM genre");
@@ -71,12 +67,12 @@ namespace Projek_SimBuku.Controller
                 UseColumnTextForButtonValue = true,
                 Text = "Edit"
             };
-
-            Vbuku.TabelBuku.DataSource = GetListBuku();
+            var dataList = GetListBuku();
+            Vbuku.TabelBuku.DataSource = dataList;
 
             Vbuku.TabelBuku.Columns["Id_Buku"].Visible = false;
             Vbuku.TabelBuku.Columns["keterangan"].Visible = false;
-            Vbuku.TabelBuku.Columns["gambar"].Visible = false ;
+            Vbuku.TabelBuku.Columns["gambar"].Visible = false;
             Vbuku.TabelBuku.Columns["Judul_buku"].HeaderText = "Judul";
             Vbuku.TabelBuku.Columns["Tahun_Terbit"].HeaderText = "Tahun Terbit";
             Vbuku.TabelBuku.Columns["Stok"].HeaderText = "Jumlah";
@@ -89,31 +85,36 @@ namespace Projek_SimBuku.Controller
 
             Vbuku.TabelBuku.Columns["Edit"].HeaderText = "";
             Vbuku.TabelBuku.Columns["Delete"].HeaderText = "";
+
+            Vbuku.TabelBuku.Refresh();
         }
+
+
         public List<M_Buku> GetListBuku()
         {
             List<M_Buku> bukuList = new List<M_Buku>();
             DataTable data = Execute_With_Return("SELECT Buku.Id_Buku, Buku.Judul_Buku, Buku.Tahun_Terbit, Buku.Stok, Buku.Gambar, Buku.keterangan, Buku.pengarang, Buku.penerbit, genre.genre  FROM Buku JOIN Genre ON Buku.Id_Genre = Genre.Id_Genre;");
 
-            for (int i = 0; i < data.Rows.Count; i++)
+            foreach (DataRow row in data.Rows)
             {
                 M_Buku m_buku = new M_Buku
                 {
-                    Id_Buku = Convert.ToInt32(data.Rows[i]["Id_Buku"]),
-                    Judul_buku = data.Rows[i]["Judul_Buku"].ToString(),
-                    Tahun_Terbit = Convert.ToInt32(data.Rows[i]["Tahun_Terbit"]),
-                    Stok = Convert.ToInt32(data.Rows[i]["Stok"]),
-                    Gambar = data.Rows[i]["Gambar"] as byte[],
-                    keterangan = data.Rows[i]["keterangan"].ToString(),
-                    Pengarang = data.Rows[i]["pengarang"].ToString(),
-                    Genre = data.Rows[i]["Genre"].ToString(),
-                    Penerbit = data.Rows[i]["Penerbit"].ToString()
+                    Id_Buku = Convert.ToInt32(row["Id_Buku"]),
+                    Judul_buku = row["Judul_Buku"].ToString(),
+                    Tahun_Terbit = Convert.ToInt32(row["Tahun_Terbit"]),
+                    Stok = Convert.ToInt32(row["Stok"]),
+                    Gambar = row["Gambar"] as byte[],
+                    keterangan = row["keterangan"].ToString(),
+                    Pengarang = row["pengarang"].ToString(),
+                    Genre = row["Genre"].ToString(),
+                    Penerbit = row["Penerbit"].ToString()
                 };
 
                 bukuList.Add(m_buku);
             }
             return bukuList;
         }
+
         public void Tambahbuku(tambah view)
         {
             DataBaru data = new DataBaru()
@@ -130,6 +131,7 @@ namespace Projek_SimBuku.Controller
             try
             {
                 insert(data);
+                Load();
             }
             catch { }
         }

@@ -105,10 +105,9 @@
             TabelBuku.AllowUserToResizeColumns = false;
             TabelBuku.AllowUserToResizeRows = false;
             TabelBuku.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            TabelBuku.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.DisplayedCells;
             TabelBuku.BackgroundColor = Color.White;
             TabelBuku.BorderStyle = BorderStyle.None;
-            TabelBuku.CellBorderStyle = DataGridViewCellBorderStyle.None;
+            TabelBuku.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             TabelBuku.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = Color.Transparent;
@@ -128,6 +127,7 @@
             dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
             TabelBuku.DefaultCellStyle = dataGridViewCellStyle2;
+            TabelBuku.EnableHeadersVisualStyles = false;
             TabelBuku.Location = new Point(20, 20);
             TabelBuku.Margin = new Padding(3, 4, 3, 4);
             TabelBuku.Name = "TabelBuku";
@@ -136,6 +136,7 @@
             TabelBuku.RowHeadersVisible = false;
             TabelBuku.RowHeadersWidth = 51;
             TabelBuku.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            TabelBuku.ScrollBars = ScrollBars.Vertical;
             TabelBuku.Size = new Size(1378, 710);
             TabelBuku.TabIndex = 0;
             TabelBuku.CellClick += TabelBuku_CellClick;
