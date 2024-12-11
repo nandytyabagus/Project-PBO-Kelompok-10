@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Views\Admin\Buku\Tambah.cs">
+    <Compile Update="Views\Admin\Buku\TambahEditDetail.cs">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>

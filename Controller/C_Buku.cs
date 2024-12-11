@@ -12,6 +12,8 @@ using MailKit;
 using Projek_SimBuku.Views.Admin.Buku;
 using Npgsql;
 using System.ComponentModel.DataAnnotations;
+using static System.Runtime.InteropServices.JavaScript.JSType;
+using static Projek_SimBuku.Controller.C_Buku;
 
 namespace Projek_SimBuku.Controller
 {
@@ -19,26 +21,15 @@ namespace Projek_SimBuku.Controller
     {
         C_Homepage c_hompage;
         Buku Vbuku;
-        FormBuku form;
-        tambah Tambah;
-        public EditBuku edit;
-        public DetailBuku detail;
-        M_Buku MBuku;
-
+        CRUtambah vCRUtambah;
+        M_Buku m_Buku;
         public C_Buku(C_Homepage homepage, Buku buku)
         {
             c_hompage = homepage;
             Vbuku = buku;
-            edit = new EditBuku(this);
-            detail = new DetailBuku(this);
+
         }
-        public C_Buku(FormBuku formBuku)
-        {
-            form = formBuku;
-            edit = new EditBuku(this);
-            detail = new DetailBuku(this);
-        }
-        public void genre(tambah view)
+        public void genre(CRUtambah view)
         {
             DataTable data = Execute_With_Return("SELECT * FROM genre");
             view.BoxGenre.DataSource = data;
@@ -63,6 +54,11 @@ namespace Projek_SimBuku.Controller
                 Name = "Edit",
                 UseColumnTextForButtonValue = true,
                 Text = "Edit"
+            }; DataGridViewButtonColumn Detail = new DataGridViewButtonColumn
+            {
+                Name = "Detail",
+                UseColumnTextForButtonValue = true,
+                Text = "Detail"
             };
             Vbuku.TabelBuku.DataSource = GetListBuku();
 
@@ -78,9 +74,11 @@ namespace Projek_SimBuku.Controller
 
             Vbuku.TabelBuku.Columns.Add(Edit);
             Vbuku.TabelBuku.Columns.Add(Delete);
+            Vbuku.TabelBuku.Columns.Add(Detail);
 
             Vbuku.TabelBuku.Columns["Edit"].HeaderText = "";
             Vbuku.TabelBuku.Columns["Delete"].HeaderText = "";
+            Vbuku.TabelBuku.Columns["Detail"].HeaderText = "";
 
             Vbuku.TabelBuku.Refresh();
         }
@@ -111,7 +109,7 @@ namespace Projek_SimBuku.Controller
             return bukuList;
         }
 
-        public void Tambahbuku(tambah view)
+        public void Tambahbuku(CRUtambah view)
         {
             DataBaru data = new DataBaru()
             {
@@ -131,21 +129,11 @@ namespace Projek_SimBuku.Controller
             }
             catch { }
         }
-        public void showEdit(M_Buku data)
-        {
-            FormBuku formBuku = new FormBuku(this, data, edit);
-            formBuku.ShowDialog();
-        }
         public void DeleteBuku(int id)
         {
             Delete(id);
+            Load();
         }
-
-        //public void showDetail()
-        //{
-        //    form.ShowDialog();
-        //    SwitchView(detail);
-        //}
         public void SearchBuku(string keyword)
         {
             var filteredData = GetListBuku().Where(b => 
@@ -190,6 +178,19 @@ namespace Projek_SimBuku.Controller
             Vbuku.TabelBuku.Columns["Delete"].HeaderText = "";
 
             Vbuku.TabelBuku.Refresh();
+        }
+        public void ShowDataBuku()
+        {
+            if (m_Buku != null) 
+            {
+                vCRUtambah.judul.Text = m_Buku.Judul_buku;
+                vCRUtambah.tahunterbit.Text = m_Buku.Tahun_Terbit.ToString();
+                vCRUtambah.Jumlah.Text = m_Buku.Stok.ToString();
+                vCRUtambah.pengarang.Text = m_Buku.Pengarang;
+                vCRUtambah.BoxGenre.SelectedText = m_Buku.Genre;
+                vCRUtambah.penerbit.Text = m_Buku.Penerbit;
+                vCRUtambah.keterangan.Text = m_Buku.keterangan;
+            }
         }
         public void insert(object item)
         {

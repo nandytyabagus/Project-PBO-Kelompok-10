@@ -1,6 +1,6 @@
 ﻿namespace Projek_SimBuku.Views.Admin.Buku
 {
-    partial class tambah
+    partial class CRUtambah
     {
         /// <summary>
         /// Required designer variable.
@@ -28,9 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(tambah));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CRUtambah));
             label = new Label();
             panel2 = new Panel();
+            BoxGenre = new ComboBox();
             panel4 = new Panel();
             penerbit = new TextBox();
             judul = new TextBox();
@@ -53,7 +54,6 @@
             pengarang = new TextBox();
             label6 = new Label();
             panel8 = new Panel();
-            BoxGenre = new ComboBox();
             panel2.SuspendLayout();
             panel4.SuspendLayout();
             panel3.SuspendLayout();
@@ -86,6 +86,17 @@
             panel2.Name = "panel2";
             panel2.Size = new Size(450, 55);
             panel2.TabIndex = 56;
+            // 
+            // BoxGenre
+            // 
+            BoxGenre.DropDownStyle = ComboBoxStyle.DropDownList;
+            BoxGenre.FlatStyle = FlatStyle.Flat;
+            BoxGenre.Font = new Font("Myanmar Text", 11F, FontStyle.Bold);
+            BoxGenre.FormattingEnabled = true;
+            BoxGenre.Location = new Point(21, 8);
+            BoxGenre.Name = "BoxGenre";
+            BoxGenre.Size = new Size(410, 40);
+            BoxGenre.TabIndex = 71;
             // 
             // panel4
             // 
@@ -346,18 +357,7 @@
             panel8.Size = new Size(450, 55);
             panel8.TabIndex = 54;
             // 
-            // BoxGenre
-            // 
-            BoxGenre.DropDownStyle = ComboBoxStyle.DropDownList;
-            BoxGenre.FlatStyle = FlatStyle.Flat;
-            BoxGenre.Font = new Font("Myanmar Text", 11F, FontStyle.Bold);
-            BoxGenre.FormattingEnabled = true;
-            BoxGenre.Location = new Point(21, 8);
-            BoxGenre.Name = "BoxGenre";
-            BoxGenre.Size = new Size(410, 40);
-            BoxGenre.TabIndex = 71;
-            // 
-            // tambah
+            // CRUtambah
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -384,9 +384,10 @@
             Controls.Add(panel8);
             DoubleBuffered = true;
             FormBorderStyle = FormBorderStyle.None;
-            Name = "tambah";
+            Name = "CRUtambah";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Tambah_Buku";
+            Load += CRUtambah_Load;
             panel2.ResumeLayout(false);
             panel4.ResumeLayout(false);
             panel4.PerformLayout();

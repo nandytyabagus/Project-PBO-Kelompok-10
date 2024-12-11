@@ -140,7 +140,6 @@
             TabelBuku.ScrollBars = ScrollBars.Vertical;
             TabelBuku.Size = new Size(1378, 710);
             TabelBuku.TabIndex = 0;
-            TabelBuku.CellClick += TabelBuku_CellClick;
             TabelBuku.CellContentClick += TabelBuku_CellContentClick;
             // 
             // Buku
