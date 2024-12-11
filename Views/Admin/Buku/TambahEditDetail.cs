@@ -45,7 +45,7 @@ namespace Projek_SimBuku.Views.Admin.Buku
         {
             if (EditMode)
             {
-                //UpdateBuku(); 
+                buku.EditBuku(this,data.Id_Buku);
             }
             else
             {
@@ -60,10 +60,25 @@ namespace Projek_SimBuku.Views.Admin.Buku
             {
                 if (data.Gambar != null && data.Gambar.Length > 0) pictureBox1.Image = new Bitmap(new MemoryStream(data.Gambar));
                 judul.Text = data.Judul_buku;
+                Jumlah.Text = data.Stok.ToString();
+                pengarang.Text = data.Pengarang;
+                penerbit.Text = data.Penerbit;
+                tahunterbit.Text = data.Tahun_Terbit.ToString();
+                BoxGenre.SelectedText = data.Genre;
+                keterangan.Text = data.keterangan;
             }
-            //MessageBox.Show(data.Gambar.ToString());
-          
-
+            else if (DetailMode)
+            {
+                if (data.Gambar != null && data.Gambar.Length > 0) pictureBox1.Image = new Bitmap(new MemoryStream(data.Gambar));
+                judul.Text = data.Judul_buku;
+                Jumlah.Text = data.Stok.ToString();
+                pengarang.Text = data.Pengarang;
+                penerbit.Text = data.Penerbit;
+                tahunterbit.Text = data.Tahun_Terbit.ToString();
+                BoxGenre.SelectedText = data.Genre;
+                keterangan.Text = data.keterangan;
+                Enabled = false;
+            }
         }
     }
 }

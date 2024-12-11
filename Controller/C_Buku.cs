@@ -72,13 +72,13 @@ namespace Projek_SimBuku.Controller
             Vbuku.TabelBuku.Columns["Genre"].HeaderText = "Genre";
             Vbuku.TabelBuku.Columns["Penerbit"].HeaderText = "Penerbit";
 
+            Vbuku.TabelBuku.Columns.Add(Detail);
             Vbuku.TabelBuku.Columns.Add(Edit);
             Vbuku.TabelBuku.Columns.Add(Delete);
-            Vbuku.TabelBuku.Columns.Add(Detail);
 
+            Vbuku.TabelBuku.Columns["Detail"].HeaderText = "";
             Vbuku.TabelBuku.Columns["Edit"].HeaderText = "";
             Vbuku.TabelBuku.Columns["Delete"].HeaderText = "";
-            Vbuku.TabelBuku.Columns["Detail"].HeaderText = "";
 
             Vbuku.TabelBuku.Refresh();
         }
@@ -129,6 +129,27 @@ namespace Projek_SimBuku.Controller
             }
             catch { }
         }
+        public void EditBuku(CRUtambah view,int id)
+        {
+            DataBaru data = new DataBaru()
+            {
+                judul = view.judul.Text,
+                tahun_terbit = int.Parse(view.tahunterbit.Text),
+                gambar = (byte[])new ImageConverter().ConvertTo(view.pictureBox1.Image, typeof(byte[])),
+                stok = int.Parse(view.Jumlah.Text),
+                keterangan = view.keterangan.Text,
+                Pengarang = view.pengarang.Text,
+                Penerbit = view.penerbit.Text,
+                Genre = (int)view.BoxGenre.SelectedValue,
+            };
+            try
+            {
+                Update(data,id);
+                Load();
+            }
+            catch { }
+        }
+
         public void DeleteBuku(int id)
         {
             Delete(id);
@@ -155,6 +176,11 @@ namespace Projek_SimBuku.Controller
                 Name = "Edit",
                 UseColumnTextForButtonValue = true,
                 Text = "Edit"
+            }; DataGridViewButtonColumn Detail = new DataGridViewButtonColumn
+            {
+                Name = "Detail",
+                UseColumnTextForButtonValue = true,
+                Text = "Detail"
             };
 
             Vbuku.TabelBuku.DataSource = null;
@@ -170,10 +196,12 @@ namespace Projek_SimBuku.Controller
             Vbuku.TabelBuku.Columns["Pengarang"].HeaderText = "Pengarang";
             Vbuku.TabelBuku.Columns["Genre"].HeaderText = "Genre";
             Vbuku.TabelBuku.Columns["Penerbit"].HeaderText = "Penerbit";
-            
+
+            Vbuku.TabelBuku.Columns.Add(Detail);
             Vbuku.TabelBuku.Columns.Add(Edit);
             Vbuku.TabelBuku.Columns.Add(Delete);
 
+            Vbuku.TabelBuku.Columns["Detail"].HeaderText = "";
             Vbuku.TabelBuku.Columns["Edit"].HeaderText = "";
             Vbuku.TabelBuku.Columns["Delete"].HeaderText = "";
 
@@ -203,10 +231,12 @@ namespace Projek_SimBuku.Controller
         }
         public void Update(object obj, int id)
         {
-
+            DataBaru dataBaru = obj as DataBaru;
+            Execute_No_Return($"UPDATE Buku SET Judul_Buku = '{dataBaru.judul}', Tahun_Terbit = '{dataBaru.tahun_terbit}', Stok = '{dataBaru.stok}', keterangan = '{dataBaru.keterangan}', Pengarang = '{dataBaru.Pengarang}', id_Genre = '{dataBaru.Genre}', Penerbit = '{dataBaru.Penerbit}' WHERE id_Buku = '{id}'");
         }
         public class DataBaru
         {
+            public int id {  get; set; }
             public string judul { get; set; }
             public int tahun_terbit { get; set; }
             public byte[] gambar { get; set; }
