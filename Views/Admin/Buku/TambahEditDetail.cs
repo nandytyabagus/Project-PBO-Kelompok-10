@@ -1,13 +1,8 @@
 ﻿using Projek_SimBuku.Controller;
 using Projek_SimBuku.Model;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
 using System.Windows.Forms;
 
 namespace Projek_SimBuku.Views.Admin.Buku
@@ -18,21 +13,21 @@ namespace Projek_SimBuku.Views.Admin.Buku
         bool EditMode;
         bool DetailMode;
         M_Buku data;
+
         public CRUtambah(C_Buku c_Buku)
         {
             InitializeComponent();
             this.buku = c_Buku;
             buku.genre(this);
             EditMode = false;
-            DetailMode = false;
         }
-        public CRUtambah(M_Buku data, C_Buku c_Buku)
+
+        public CRUtambah(M_Buku data, C_Buku c_Buku,bool value)
         {
             InitializeComponent();
             this.buku = c_Buku;
             buku.genre(this);
-            EditMode = true;
-            DetailMode = true;
+            EditMode = value;
             this.data = data;
         }
 
@@ -45,7 +40,7 @@ namespace Projek_SimBuku.Views.Admin.Buku
         {
             if (EditMode)
             {
-                buku.EditBuku(this,data.Id_Buku);
+                buku.EditBuku(this, data.Id_Buku);
             }
             else
             {
@@ -67,7 +62,7 @@ namespace Projek_SimBuku.Views.Admin.Buku
                 BoxGenre.SelectedText = data.Genre;
                 keterangan.Text = data.keterangan;
             }
-            else if (DetailMode)
+            if (EditMode == false)
             {
                 if (data.Gambar != null && data.Gambar.Length > 0) pictureBox1.Image = new Bitmap(new MemoryStream(data.Gambar));
                 judul.Text = data.Judul_buku;
@@ -77,8 +72,20 @@ namespace Projek_SimBuku.Views.Admin.Buku
                 tahunterbit.Text = data.Tahun_Terbit.ToString();
                 BoxGenre.SelectedText = data.Genre;
                 keterangan.Text = data.keterangan;
-                Enabled = false;
+
+                button1.Visible = false;
+                button2.Text = "Kembali";
+                button3.Visible = false;
+
+                judul.Enabled = false;
+                Jumlah.Enabled = false;
+                pengarang.Enabled = false;
+                penerbit.Enabled = false;
+                tahunterbit.Enabled = false;
+                BoxGenre.Enabled = false;
+                keterangan.Enabled = false;
             }
+
         }
     }
 }

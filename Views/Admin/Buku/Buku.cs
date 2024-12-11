@@ -42,7 +42,19 @@ namespace Projek_SimBuku.Views.Buku
         { 
             if (e.RowIndex >= 0) 
             { 
-                int idBuku = Convert.ToInt32(TabelBuku.Rows[e.RowIndex].Cells["Id_Buku"].Value); 
+                int idBuku = Convert.ToInt32(TabelBuku.Rows[e.RowIndex].Cells["Id_Buku"].Value);
+                M_Buku buku = new M_Buku
+                {
+                    Id_Buku = idBuku,
+                    Judul_buku = TabelBuku.Rows[e.RowIndex].Cells["Judul_buku"].Value.ToString(),
+                    Tahun_Terbit = Convert.ToInt32(TabelBuku.Rows[e.RowIndex].Cells["Tahun_Terbit"].Value),
+                    Stok = Convert.ToInt32(TabelBuku.Rows[e.RowIndex].Cells["Stok"].Value),
+                    Pengarang = TabelBuku.Rows[e.RowIndex].Cells["Pengarang"].Value.ToString(),
+                    Genre = TabelBuku.Rows[e.RowIndex].Cells["Genre"].Value.ToString(),
+                    Penerbit = TabelBuku.Rows[e.RowIndex].Cells["Penerbit"].Value.ToString(),
+                    keterangan = TabelBuku.Rows[e.RowIndex].Cells["keterangan"].Value.ToString(),
+                    Gambar = (byte[])TabelBuku.Rows[e.RowIndex].Cells["gambar"].Value
+                };
                 if (e.ColumnIndex == TabelBuku.Columns["Delete"].Index) 
                 { 
                     Controller.Delete(idBuku); 
@@ -50,36 +62,12 @@ namespace Projek_SimBuku.Views.Buku
                 }
                 else if (e.ColumnIndex == TabelBuku.Columns["Edit"].Index) 
                 { 
-                    M_Buku buku = new M_Buku 
-                    { 
-                        Id_Buku = idBuku, 
-                        Judul_buku = TabelBuku.Rows[e.RowIndex].Cells["Judul_buku"].Value.ToString(), 
-                        Tahun_Terbit = Convert.ToInt32(TabelBuku.Rows[e.RowIndex].Cells["Tahun_Terbit"].Value), 
-                        Stok = Convert.ToInt32(TabelBuku.Rows[e.RowIndex].Cells["Stok"].Value), 
-                        Pengarang = TabelBuku.Rows[e.RowIndex].Cells["Pengarang"].Value.ToString(), 
-                        Genre = TabelBuku.Rows[e.RowIndex].Cells["Genre"].Value.ToString(), 
-                        Penerbit = TabelBuku.Rows[e.RowIndex].Cells["Penerbit"].Value.ToString(), 
-                        keterangan = TabelBuku.Rows[e.RowIndex].Cells["keterangan"].Value.ToString(), 
-                        Gambar = (byte[]) TabelBuku.Rows[e.RowIndex].Cells["gambar"].Value
-                    };
-                    CRUtambah formTambah = new CRUtambah(buku, Controller); 
+                    CRUtambah formTambah = new CRUtambah(buku, Controller,true); 
                     formTambah.ShowDialog();
                 }
                 else if (e.ColumnIndex == TabelBuku.Columns["Detail"].Index)
                 {
-                    M_Buku buku = new M_Buku
-                    {
-                        Id_Buku = idBuku,
-                        Judul_buku = TabelBuku.Rows[e.RowIndex].Cells["Judul_buku"].Value.ToString(),
-                        Tahun_Terbit = Convert.ToInt32(TabelBuku.Rows[e.RowIndex].Cells["Tahun_Terbit"].Value),
-                        Stok = Convert.ToInt32(TabelBuku.Rows[e.RowIndex].Cells["Stok"].Value),
-                        Pengarang = TabelBuku.Rows[e.RowIndex].Cells["Pengarang"].Value.ToString(),
-                        Genre = TabelBuku.Rows[e.RowIndex].Cells["Genre"].Value.ToString(),
-                        Penerbit = TabelBuku.Rows[e.RowIndex].Cells["Penerbit"].Value.ToString(),
-                        keterangan = TabelBuku.Rows[e.RowIndex].Cells["keterangan"].Value.ToString(),
-                        Gambar = (byte[])TabelBuku.Rows[e.RowIndex].Cells["gambar"].Value
-                    };
-                    CRUtambah formTambah = new CRUtambah(buku, Controller);
+                    CRUtambah formTambah = new CRUtambah(buku, Controller,false);
                     formTambah.ShowDialog();
                 }
             } 
