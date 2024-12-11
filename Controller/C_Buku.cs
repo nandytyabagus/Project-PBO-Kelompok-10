@@ -97,7 +97,7 @@ namespace Projek_SimBuku.Controller
                     Judul_buku = row["Judul_Buku"].ToString(),
                     Tahun_Terbit = Convert.ToInt32(row["Tahun_Terbit"]),
                     Stok = Convert.ToInt32(row["Stok"]),
-                    Gambar = row["Gambar"] as byte[],
+                    Gambar = row["Gambar"] != DBNull.Value ? (byte[])row["Gambar"] : new byte[0],
                     keterangan = row["keterangan"].ToString(),
                     Pengarang = row["pengarang"].ToString(),
                     Genre = row["Genre"].ToString(),
@@ -115,7 +115,7 @@ namespace Projek_SimBuku.Controller
             {
                 judul = view.judul.Text,
                 tahun_terbit = int.Parse(view.tahunterbit.Text),
-                gambar = null,
+                gambar = (byte[]) new ImageConverter().ConvertTo(view.pictureBox1.Image, typeof(byte[])),
                 stok = int.Parse(view.Jumlah.Text),
                 keterangan = view.keterangan.Text,
                 Pengarang = view.pengarang.Text,

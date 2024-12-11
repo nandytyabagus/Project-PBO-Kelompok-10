@@ -59,7 +59,7 @@ namespace Projek_SimBuku.Views.Buku
                         Genre = TabelBuku.Rows[e.RowIndex].Cells["Genre"].Value.ToString(), 
                         Penerbit = TabelBuku.Rows[e.RowIndex].Cells["Penerbit"].Value.ToString(), 
                         keterangan = TabelBuku.Rows[e.RowIndex].Cells["keterangan"].Value.ToString(), 
-                        Gambar = TabelBuku.Rows[e.RowIndex].Cells["gambar"].Value as byte[] 
+                        Gambar = (byte[]) TabelBuku.Rows[e.RowIndex].Cells["gambar"].Value
                     };
                     CRUtambah formTambah = new CRUtambah(buku, Controller); 
                     formTambah.ShowDialog();

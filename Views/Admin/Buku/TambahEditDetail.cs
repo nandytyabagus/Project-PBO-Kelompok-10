@@ -17,6 +17,7 @@ namespace Projek_SimBuku.Views.Admin.Buku
         C_Buku buku;
         bool EditMode;
         bool DetailMode;
+        M_Buku data;
         public CRUtambah(C_Buku c_Buku)
         {
             InitializeComponent();
@@ -32,6 +33,7 @@ namespace Projek_SimBuku.Views.Admin.Buku
             buku.genre(this);
             EditMode = true;
             DetailMode = true;
+            this.data = data;
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -54,7 +56,14 @@ namespace Projek_SimBuku.Views.Admin.Buku
 
         private void CRUtambah_Load(object sender, EventArgs e)
         {
-            buku.ShowDataBuku();
+            if (EditMode)
+            {
+                if (data.Gambar != null && data.Gambar.Length > 0) pictureBox1.Image = new Bitmap(new MemoryStream(data.Gambar));
+                judul.Text = data.Judul_buku;
+            }
+            //MessageBox.Show(data.Gambar.ToString());
+          
+
         }
     }
 }
