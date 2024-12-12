@@ -20,13 +20,18 @@ namespace Projek_SimBuku.Controller
     public class C_Homepage : C_MassageBox
     {
         HomePage Vhomepage;
-        M_Akun m_akun = new M_Akun();
         public C_Homepage Controller_Homepage;
         public Dashboard Vdashboard;
         public Buku Vbuku;
         public Peminjaman Vpeminjaman;
         public Pengembalian VPengembalian;
         public Transaksi Vtransaksi;
+        M_Akun m_akun = new M_Akun();
+        M_Buku m_Buku = new M_Buku();
+        M_Keranjang m_Keranjang = new M_Keranjang();
+        M_Peminjaman m_Peminjaman = new M_Peminjaman();
+        M_Pengembalian m_Pengembalian = new M_Pengembalian();
+        M_Transaksi m_Transaksi = new M_Transaksi();
         public C_Homepage(HomePage homePage)
         {
             this.Vhomepage = homePage;
@@ -71,6 +76,11 @@ namespace Projek_SimBuku.Controller
                 Vhomepage.Hide();
                 loginRegister.ShowDialog();
                 Vhomepage.Close();
+                m_akun = null;
+                m_Buku = null;
+                m_Peminjaman = null;
+                m_Pengembalian = null;
+                m_Transaksi = null;
             }
         }
         public void logOut_Pelanggan()
@@ -81,12 +91,10 @@ namespace Projek_SimBuku.Controller
                 Vhomepage_Pelanggan.Hide();
                 loginRegister.ShowDialog();
                 Vhomepage_Pelanggan.Close();
-                m_akun.id_akun = 0;
-                m_akun.username = null;
-                m_akun.password = null;
-                m_akun.email = null;
-                m_akun.nama = null;
-                m_akun.nomor_hp = null;
+                m_akun = null;
+                m_Buku = null;
+                m_Keranjang = null;
+                m_Transaksi = null;
             }
         }
     }

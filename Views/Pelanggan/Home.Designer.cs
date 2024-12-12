@@ -30,15 +30,19 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Home));
             panel3 = new Panel();
+            vScrollBar1 = new VScrollBar();
             flowLayoutPanel1 = new FlowLayoutPanel();
             Katalog = new Panel();
+            pictureBox1 = new PictureBox();
             panel5 = new Panel();
             panel4 = new Panel();
             Search = new TextBox();
             button1 = new Button();
-            vScrollBar1 = new VScrollBar();
+            label1 = new Label();
             panel3.SuspendLayout();
             flowLayoutPanel1.SuspendLayout();
+            Katalog.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel4.SuspendLayout();
             SuspendLayout();
             // 
@@ -56,23 +60,42 @@
             panel3.Size = new Size(1800, 830);
             panel3.TabIndex = 6;
             // 
+            // vScrollBar1
+            // 
+            vScrollBar1.Location = new Point(1772, 149);
+            vScrollBar1.Name = "vScrollBar1";
+            vScrollBar1.Size = new Size(20, 647);
+            vScrollBar1.TabIndex = 9;
+            // 
             // flowLayoutPanel1
             // 
             flowLayoutPanel1.Controls.Add(Katalog);
-            flowLayoutPanel1.Location = new Point(0, 131);
+            flowLayoutPanel1.Location = new Point(35, 131);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(1765, 699);
+            flowLayoutPanel1.Size = new Size(1730, 672);
             flowLayoutPanel1.TabIndex = 8;
             // 
             // Katalog
             // 
-            Katalog.BackColor = Color.Transparent;
-            Katalog.BackgroundImage = Properties.Resources.bg_Katalog;
+            Katalog.BackColor = Color.White;
+            Katalog.BackgroundImageLayout = ImageLayout.Stretch;
+            Katalog.Controls.Add(pictureBox1);
+            Katalog.Controls.Add(label1);
             Katalog.Location = new Point(35, 30);
             Katalog.Margin = new Padding(35, 30, 0, 0);
             Katalog.Name = "Katalog";
-            Katalog.Size = new Size(555, 293);
+            Katalog.Size = new Size(250, 400);
             Katalog.TabIndex = 0;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(15, 15);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(220, 320);
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox1.TabIndex = 0;
+            pictureBox1.TabStop = false;
             // 
             // panel5
             // 
@@ -116,12 +139,15 @@
             button1.TabIndex = 0;
             button1.UseVisualStyleBackColor = true;
             // 
-            // vScrollBar1
+            // label1
             // 
-            vScrollBar1.Location = new Point(1768, 149);
-            vScrollBar1.Name = "vScrollBar1";
-            vScrollBar1.Size = new Size(20, 647);
-            vScrollBar1.TabIndex = 9;
+            label1.Font = new Font("Sitka Banner", 10.1999989F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label1.Location = new Point(15, 337);
+            label1.Name = "label1";
+            label1.Size = new Size(220, 62);
+            label1.TabIndex = 1;
+            label1.Text = "Judul Buku";
+            label1.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // Home
             // 
@@ -133,6 +159,8 @@
             Size = new Size(1920, 890);
             panel3.ResumeLayout(false);
             flowLayoutPanel1.ResumeLayout(false);
+            Katalog.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panel4.ResumeLayout(false);
             panel4.PerformLayout();
             ResumeLayout(false);
@@ -148,5 +176,7 @@
         public FlowLayoutPanel flowLayoutPanel1;
         public Panel Katalog;
         private VScrollBar vScrollBar1;
+        public PictureBox pictureBox1;
+        public Label label1;
     }
 }
