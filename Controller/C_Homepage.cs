@@ -14,6 +14,7 @@ using System.Text;
 using System.Threading.Tasks;
 using static System.ComponentModel.Design.ObjectSelectorEditor;
 using System.Windows.Forms;
+using Projek_SimBuku.Views.Pelanggan.Home;
 
 namespace Projek_SimBuku.Controller
 {
@@ -44,17 +45,19 @@ namespace Projek_SimBuku.Controller
         }
 
         Homepage_pelanggan Vhomepage_Pelanggan;
-        public Home Vhome;
+        public HomeKatalog Vhome;
         public RiwayatPelanggan VriwayatPelanggan;
         public Keranjang VPeminjamanPelanggan;
         public Setting Vsetting;
+        public DetailBuku vDetailBuku;
         public C_Homepage(Homepage_pelanggan homepage_Pelanggan)
         {
             this.Vhomepage_Pelanggan = homepage_Pelanggan;
-            Vhome = new Home(this);
+            Vhome = new HomeKatalog(this);
             VriwayatPelanggan = new RiwayatPelanggan(this);
             VPeminjamanPelanggan = new Keranjang(this);
             Vsetting = new Setting(this);
+            vDetailBuku = new DetailBuku(this);
             switchViewPelanggan(Vhome);
         }
 

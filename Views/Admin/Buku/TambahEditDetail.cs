@@ -61,7 +61,7 @@ namespace Projek_SimBuku.Views.Admin.Buku
                 pengarang.Text = data.Pengarang;
                 penerbit.Text = data.Penerbit;
                 tahunterbit.Text = data.Tahun_Terbit.ToString();
-                BoxGenre.SelectedText = data.Genre;
+                BoxGenre.Text = data.Genre;
                 keterangan.Text = data.keterangan;
 
                 if (EditMode)
@@ -88,7 +88,7 @@ namespace Projek_SimBuku.Views.Admin.Buku
         private void button1_Click(object sender, EventArgs e)
         {
             OpenFileDialog open = new OpenFileDialog();
-            open.Filter = "Choose Image(*.JPG;*.PNG)|*.jpg;*.png";
+            open.Filter = "Choose Image(*.JPG;*.PNG;*.JPEG)|*.jpg;*.png;*.jpeg";
 
             if (open.ShowDialog() == DialogResult.OK)
             {

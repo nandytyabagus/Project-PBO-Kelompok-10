@@ -23,7 +23,7 @@ namespace Projek_SimBuku.Views
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Controller.Vhome = new Home(Controller);
+            Controller.Vhome = new HomeKatalog(Controller);
             Controller.switchViewPelanggan(Controller.Vhome);
         }
 

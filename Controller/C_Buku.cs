@@ -247,7 +247,21 @@ namespace Projek_SimBuku.Controller
         public void Update(object obj, int id)
         {
             DataBaru dataBaru = obj as DataBaru;
-            Execute_No_Return($"UPDATE Buku SET Judul_Buku = '{dataBaru.judul}', Tahun_Terbit = '{dataBaru.tahun_terbit}', Stok = '{dataBaru.stok}', keterangan = '{dataBaru.keterangan}', Pengarang = '{dataBaru.Pengarang}', id_Genre = '{dataBaru.Genre}', Penerbit = '{dataBaru.Penerbit}' WHERE id_Buku = '{id}'");
+            using (NpgsqlCommand cmd = new NpgsqlCommand())
+            {
+                cmd.CommandText = $"UPDATE Buku SET Judul_Buku = @Judul_Buku, Tahun_Terbit = @Tahun_Terbit, Stok = @Stok, keterangan = @Keterangan, Pengarang = @Pengarang, id_Genre = @id_Genre, Penerbit = @Penerbit, gambar = @foto WHERE Id_Buku = {id}";
+
+                cmd.Parameters.AddWithValue("@Judul_Buku", dataBaru.judul);
+                cmd.Parameters.AddWithValue("@Tahun_Terbit", dataBaru.tahun_terbit);
+                cmd.Parameters.AddWithValue("@Stok", dataBaru.stok);
+                cmd.Parameters.AddWithValue("@Keterangan", dataBaru.keterangan);
+                cmd.Parameters.AddWithValue("@Pengarang", dataBaru.Pengarang);
+                cmd.Parameters.AddWithValue("@id_Genre", dataBaru.Genre);
+                cmd.Parameters.AddWithValue("@Penerbit", dataBaru.Penerbit);
+                cmd.Parameters.AddWithValue("@foto", NpgsqlTypes.NpgsqlDbType.Bytea, dataBaru.gambar);
+
+                Execute_No_Return(cmd);
+            }
         }
         public class DataBaru
         {
