@@ -54,7 +54,8 @@ namespace Projek_SimBuku.Controller
                 Name = "Edit",
                 UseColumnTextForButtonValue = true,
                 Text = "Edit"
-            }; DataGridViewButtonColumn Detail = new DataGridViewButtonColumn
+            };
+            DataGridViewButtonColumn Detail = new DataGridViewButtonColumn
             {
                 Name = "Detail",
                 UseColumnTextForButtonValue = true,
@@ -223,7 +224,21 @@ namespace Projek_SimBuku.Controller
         public void insert(object item)
         {
             DataBaru dataBaru = item as DataBaru;
-            Execute_No_Return($"INSERT INTO Buku (Judul_Buku, Tahun_Terbit, Stok, keterangan, Pengarang, id_Genre, Penerbit) VALUES ('{dataBaru.judul}','{dataBaru.tahun_terbit}','{dataBaru.stok}','{dataBaru.keterangan}','{dataBaru.Pengarang}','{dataBaru.Genre}','{dataBaru.Penerbit}')");
+            using (NpgsqlCommand cmd = new NpgsqlCommand())
+            {
+                cmd.CommandText = "INSERT INTO Buku (Judul_Buku, Tahun_Terbit, Stok, keterangan, Pengarang, id_Genre, Penerbit, gambar) VALUES (@Judul_Buku, @Tahun_Terbit, @Stok, @Keterangan, @Pengarang, @id_Genre, @Penerbit, @foto)";
+
+                cmd.Parameters.AddWithValue("@Judul_Buku", dataBaru.judul);
+                cmd.Parameters.AddWithValue("@Tahun_Terbit", dataBaru.tahun_terbit);
+                cmd.Parameters.AddWithValue("@Stok", dataBaru.stok);
+                cmd.Parameters.AddWithValue("@Keterangan", dataBaru.keterangan);
+                cmd.Parameters.AddWithValue("@Pengarang", dataBaru.Pengarang);
+                cmd.Parameters.AddWithValue("@id_Genre", dataBaru.Genre);
+                cmd.Parameters.AddWithValue("@Penerbit", dataBaru.Penerbit);
+                cmd.Parameters.AddWithValue("@foto", NpgsqlTypes.NpgsqlDbType.Bytea, dataBaru.gambar);
+
+                Execute_No_Return(cmd);
+            }
         }
         public void Delete(int id)
         {

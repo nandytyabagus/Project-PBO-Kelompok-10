@@ -36,6 +36,7 @@
             panel4 = new Panel();
             Search = new TextBox();
             button1 = new Button();
+            vScrollBar1 = new VScrollBar();
             panel3.SuspendLayout();
             flowLayoutPanel1.SuspendLayout();
             panel4.SuspendLayout();
@@ -46,6 +47,7 @@
             panel3.BackColor = Color.Transparent;
             panel3.BackgroundImage = Properties.Resources.c086f66e_0baf_426c_8627_adea8b1f6719;
             panel3.BackgroundImageLayout = ImageLayout.Stretch;
+            panel3.Controls.Add(vScrollBar1);
             panel3.Controls.Add(flowLayoutPanel1);
             panel3.Controls.Add(panel5);
             panel3.Controls.Add(panel4);
@@ -57,16 +59,17 @@
             // flowLayoutPanel1
             // 
             flowLayoutPanel1.Controls.Add(Katalog);
-            flowLayoutPanel1.Location = new Point(35, 170);
+            flowLayoutPanel1.Location = new Point(0, 131);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(1730, 622);
+            flowLayoutPanel1.Size = new Size(1765, 699);
             flowLayoutPanel1.TabIndex = 8;
             // 
             // Katalog
             // 
             Katalog.BackColor = Color.Transparent;
             Katalog.BackgroundImage = Properties.Resources.bg_Katalog;
-            Katalog.Location = new Point(3, 3);
+            Katalog.Location = new Point(35, 30);
+            Katalog.Margin = new Padding(35, 30, 0, 0);
             Katalog.Name = "Katalog";
             Katalog.Size = new Size(555, 293);
             Katalog.TabIndex = 0;
@@ -113,6 +116,13 @@
             button1.TabIndex = 0;
             button1.UseVisualStyleBackColor = true;
             // 
+            // vScrollBar1
+            // 
+            vScrollBar1.Location = new Point(1768, 149);
+            vScrollBar1.Name = "vScrollBar1";
+            vScrollBar1.Size = new Size(20, 647);
+            vScrollBar1.TabIndex = 9;
+            // 
             // Home
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -137,5 +147,6 @@
         private Button button1;
         public FlowLayoutPanel flowLayoutPanel1;
         public Panel Katalog;
+        private VScrollBar vScrollBar1;
     }
 }

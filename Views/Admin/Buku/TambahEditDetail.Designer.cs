@@ -268,6 +268,7 @@
             button1.Size = new Size(80, 80);
             button1.TabIndex = 62;
             button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
             // 
             // pictureBox1
             // 

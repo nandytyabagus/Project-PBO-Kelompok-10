@@ -62,12 +62,12 @@ namespace Projek_SimBuku.Views.Buku
                 }
                 else if (e.ColumnIndex == TabelBuku.Columns["Edit"].Index) 
                 { 
-                    CRUtambah formTambah = new CRUtambah(buku, Controller,true); 
+                    CRUtambah formTambah = new CRUtambah(buku, Controller,true,false); 
                     formTambah.ShowDialog();
                 }
                 else if (e.ColumnIndex == TabelBuku.Columns["Detail"].Index)
                 {
-                    CRUtambah formTambah = new CRUtambah(buku, Controller,false);
+                    CRUtambah formTambah = new CRUtambah(buku, Controller,false,true);
                     formTambah.ShowDialog();
                 }
             } 
@@ -75,8 +75,8 @@ namespace Projek_SimBuku.Views.Buku
 
         private void buttonTambahBuku_Click(object sender, EventArgs e)
         {
-            CRUtambah Tambah = new CRUtambah(Controller);
-            Tambah.ShowDialog();
+            CRUtambah formTambah = new CRUtambah(Controller);
+            formTambah.ShowDialog();
         }
 
         private void Search_TextChanged(object sender, EventArgs e)
