@@ -177,7 +177,8 @@ namespace Projek_SimBuku.Controller
                 Name = "Edit",
                 UseColumnTextForButtonValue = true,
                 Text = "Edit"
-            }; DataGridViewButtonColumn Detail = new DataGridViewButtonColumn
+            }; 
+            DataGridViewButtonColumn Detail = new DataGridViewButtonColumn
             {
                 Name = "Detail",
                 UseColumnTextForButtonValue = true,

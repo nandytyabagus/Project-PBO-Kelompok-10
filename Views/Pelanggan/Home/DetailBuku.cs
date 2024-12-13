@@ -21,5 +21,10 @@ namespace Projek_SimBuku.Views.Pelanggan.Home
             this.Controller = controller;
             c_home = new C_Home(controller, this);
         }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

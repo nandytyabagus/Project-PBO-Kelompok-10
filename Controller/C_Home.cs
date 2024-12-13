@@ -73,10 +73,6 @@ namespace Projek_SimBuku.Controller
             }
             return true;
         }
-        public void showDetailBuku()
-        {
-            c_Homepage.switchViewPelanggan(vdetailBuku);
-        }
         public void CreateKatalog(M_Buku buku)
         {
             Panel Katalog = new Panel
@@ -100,7 +96,10 @@ namespace Projek_SimBuku.Controller
                 TabIndex = 1,
                 TabStop = false,
             };
-            Foto.DoubleClick += (object sender, EventArgs e) => { showDetailBuku(); };
+            Foto.DoubleClick += (object sender, EventArgs e) => 
+            {
+                c_Homepage.switchViewPelanggan(c_Homepage.vDetailBuku);
+            };
 
             System.Windows.Forms.Label judul = new System.Windows.Forms.Label
             {
