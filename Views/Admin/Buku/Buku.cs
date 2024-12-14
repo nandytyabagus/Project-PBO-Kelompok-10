@@ -19,7 +19,6 @@ namespace Projek_SimBuku.Views.Buku
     {
         C_Homepage _homepage;
         C_Buku Controller;
-        M_Buku m_buku;
         public Buku(C_Homepage c_Homepage)
         {
             InitializeComponent();

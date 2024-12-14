@@ -209,19 +209,6 @@ namespace Projek_SimBuku.Controller
 
             Vbuku.TabelBuku.Refresh();
         }
-        public void ShowDataBuku()
-        {
-            if (m_Buku != null) 
-            {
-                vCRUtambah.judul.Text = m_Buku.Judul_buku;
-                vCRUtambah.tahunterbit.Text = m_Buku.Tahun_Terbit.ToString();
-                vCRUtambah.Jumlah.Text = m_Buku.Stok.ToString();
-                vCRUtambah.pengarang.Text = m_Buku.Pengarang;
-                vCRUtambah.BoxGenre.SelectedText = m_Buku.Genre;
-                vCRUtambah.penerbit.Text = m_Buku.Penerbit;
-                vCRUtambah.keterangan.Text = m_Buku.keterangan;
-            }
-        }
         public void insert(object item)
         {
             DataBaru dataBaru = item as DataBaru;

@@ -1,6 +1,6 @@
-﻿namespace Projek_SimBuku.Views.Pelanggan.Home
+﻿namespace Projek_SimBuku.Views.Pelanggan
 {
-    partial class DetailBuku
+    partial class RiwayatPelanggan
     {
         /// <summary> 
         /// Required designer variable.
@@ -28,50 +28,49 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DetailBuku));
             panel1 = new Panel();
-            pictureBox1 = new PictureBox();
+            dataGridView1 = new DataGridView();
             panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
             // panel1
             // 
             panel1.BackColor = Color.Transparent;
-            panel1.BackgroundImage = (Image)resources.GetObject("panel1.BackgroundImage");
-            panel1.BackgroundImageLayout = ImageLayout.Stretch;
-            panel1.Controls.Add(pictureBox1);
+            panel1.BackgroundImage = Properties.Resources.c086f66e_0baf_426c_8627_adea8b1f6719;
+            panel1.Controls.Add(dataGridView1);
             panel1.Location = new Point(60, 60);
             panel1.Name = "panel1";
             panel1.Size = new Size(1800, 770);
-            panel1.TabIndex = 0;
-            panel1.Paint += panel1_Paint;
+            panel1.TabIndex = 1;
             // 
-            // pictureBox1
+            // dataGridView1
             // 
-            pictureBox1.Location = new Point(70, 70);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(450, 630);
-            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox1.TabIndex = 0;
-            pictureBox1.TabStop = false;
+            dataGridView1.BackgroundColor = Color.White;
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Location = new Point(20, 20);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.RowHeadersWidth = 51;
+            dataGridView1.Size = new Size(1760, 730);
+            dataGridView1.TabIndex = 0;
             // 
-            // DetailBuku
+            // RiwayatPelanggan
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             Controls.Add(panel1);
-            Name = "DetailBuku";
+            Name = "RiwayatPelanggan";
             Size = new Size(1920, 890);
+            Load += RiwayatPelanggan_Load;
             panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
 
         private Panel panel1;
-        private PictureBox pictureBox1;
+        public DataGridView dataGridView1;
     }
 }

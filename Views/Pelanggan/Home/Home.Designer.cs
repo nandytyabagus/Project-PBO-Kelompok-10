@@ -89,7 +89,6 @@
             // 
             // pictureBox1
             // 
-            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
             pictureBox1.Location = new Point(15, 15);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(220, 320);
@@ -136,7 +135,7 @@
             Search.PlaceholderText = "Search";
             Search.Size = new Size(272, 39);
             Search.TabIndex = 1;
-            Search.TextChanged += this.Search_TextChanged;
+            Search.TextChanged += Search_TextChanged;
             // 
             // button1
             // 

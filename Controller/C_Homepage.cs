@@ -49,7 +49,6 @@ namespace Projek_SimBuku.Controller
         public RiwayatPelanggan VriwayatPelanggan;
         public Keranjang VPeminjamanPelanggan;
         public Setting Vsetting;
-        public DetailBuku vDetailBuku;
         public C_Homepage(Homepage_pelanggan homepage_Pelanggan)
         {
             this.Vhomepage_Pelanggan = homepage_Pelanggan;
@@ -57,7 +56,6 @@ namespace Projek_SimBuku.Controller
             VriwayatPelanggan = new RiwayatPelanggan(this);
             VPeminjamanPelanggan = new Keranjang(this);
             Vsetting = new Setting(this);
-            vDetailBuku = new DetailBuku(this);
             switchViewPelanggan(Vhome);
         }
 
@@ -93,7 +91,7 @@ namespace Projek_SimBuku.Controller
                 LoginRegister loginRegister = new LoginRegister();
                 Vhomepage_Pelanggan.Hide();
                 loginRegister.ShowDialog();
-                Vhomepage_Pelanggan.Close();
+                Vhomepage_Pelanggan.Close(); 
                 m_akun = null;
                 m_Buku = null;
                 m_Keranjang = null;

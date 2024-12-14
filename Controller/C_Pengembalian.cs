@@ -35,7 +35,7 @@ namespace Projek_SimBuku.Controller
                     {
                         Akun = new M_Akun
                         {
-                            nama = data.Rows[i]["Nama Akun"].ToString()
+                            //nama = data.Rows[i]["Nama Akun"].ToString()
                         },
                         Buku = new M_Buku
                         {

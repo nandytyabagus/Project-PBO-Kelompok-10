@@ -59,7 +59,6 @@ namespace Projek_SimBuku.Controller
                 "id_keranjang SERIAL NOT NULL UNIQUE PRIMARY KEY," +
                 "id_akun INT NOT NULL," +
                 "id_buku INT NOT NULL," +
-                "jumlah INT NOT NULL," +
                 "FOREIGN KEY (id_akun) REFERENCES Data_Akun(id_Akun)," +
                 "FOREIGN KEY (id_buku) REFERENCES buku(id_buku))");
 
@@ -80,20 +79,20 @@ namespace Projek_SimBuku.Controller
                 "FOREIGN KEY (id_keranjang) REFERENCES keranjang(id_keranjang)," +
                 "FOREIGN KEY (id_metode_pembayaran) REFERENCES metode_pembayaran(id_metode_pembayaran))");
 
-            try
-            {
-                Execute_No_Return("INSERT INTO metode_pembayaran(metode) VALUES ('Cash')");
-                Execute_No_Return("INSERT INTO metode_pembayaran(metode) VALUES ('Qris')");
-                Execute_No_Return("INSERT INTO genre(genre) VALUES ('Novel')");
-                Execute_No_Return("INSERT INTO genre(genre) VALUES ('Fiksi')");
-                Execute_No_Return("INSERT INTO genre(genre) VALUES ('Non Fiksi')");
-                Execute_No_Return("INSERT INTO genre(genre) VALUES ('Horor')");
-                Execute_No_Return("INSERT INTO genre(genre) VALUES ('Ilmiah')");
-                Execute_No_Return("INSERT INTO genre(genre) VALUES ('Fantasi')");
-                Execute_No_Return("INSERT INTO genre(genre) VALUES ('Romantis')");
+            //try
+            //{
+            //    Execute_No_Return("INSERT INTO metode_pembayaran(metode) VALUES ('Cash')");
+            //    Execute_No_Return("INSERT INTO metode_pembayaran(metode) VALUES ('Qris')");
+            //    Execute_No_Return("INSERT INTO genre(genre) VALUES ('Novel')");
+            //    Execute_No_Return("INSERT INTO genre(genre) VALUES ('Fiksi')");
+            //    Execute_No_Return("INSERT INTO genre(genre) VALUES ('Non Fiksi')");
+            //    Execute_No_Return("INSERT INTO genre(genre) VALUES ('Horor')");
+            //    Execute_No_Return("INSERT INTO genre(genre) VALUES ('Ilmiah')");
+            //    Execute_No_Return("INSERT INTO genre(genre) VALUES ('Fantasi')");
+            //    Execute_No_Return("INSERT INTO genre(genre) VALUES ('Romantis')");
 
-            }
-            catch { }
+            //}
+            //catch { }
         }
 
         public void Execute_No_Return(string Querry)

@@ -1,4 +1,5 @@
-﻿using Projek_SimBuku.Model;
+﻿using Org.BouncyCastle.Asn1;
+using Projek_SimBuku.Model;
 using Projek_SimBuku.Properties;
 using Projek_SimBuku.Views;
 using Projek_SimBuku.Views.Buku;
@@ -13,6 +14,7 @@ using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Projek_SimBuku.Controller
 {
@@ -20,19 +22,14 @@ namespace Projek_SimBuku.Controller
     {
         C_Homepage c_Homepage;
         HomeKatalog Vhome;
-        DetailBuku vdetailBuku;
+        M_Buku mbuku;
+        M_Akun m_Akun;
+        Detail vdetail;
         public C_Home(C_Homepage homepage, HomeKatalog home)
         {
             c_Homepage = homepage;
             Vhome = home;
         }
-
-        public C_Home(C_Homepage controller, DetailBuku detailBuku)
-        {
-            c_Homepage = controller;
-            vdetailBuku = detailBuku;
-        }
-
         public List<M_Buku> GetListBuku()
         {
             List<M_Buku> bukuList = new List<M_Buku>();
@@ -75,46 +72,95 @@ namespace Projek_SimBuku.Controller
         }
         public void CreateKatalog(M_Buku buku)
         {
-            Panel Katalog = new Panel
+            if (buku.Gambar != null && buku.Gambar.Length > 0)
             {
-                BackColor = Color.White,
-                BackgroundImageLayout = ImageLayout.Stretch,
-                Location = new Point(35, 30),
-                Margin = new Padding(35, 30, 0, 0),
-                Name = "Katalog",
-                Size = new Size(250, 400),
-                TabIndex = 0,
-            };
+                Panel Katalog = new Panel
+                {
+                    BackColor = Color.White,
+                    BackgroundImageLayout = ImageLayout.Stretch,
+                    Location = new Point(35, 30),
+                    Margin = new Padding(35, 30, 0, 0),
+                    Name = "Katalog",
+                    Size = new Size(250, 400),
+                    TabIndex = 0,
+                };
 
-            PictureBox Foto = new PictureBox 
-            {
-                Image = new Bitmap(new MemoryStream(buku.Gambar)),
-                Location = new Point(15, 15),
-                Name = "pictureBox1",
-                Size = new Size(220, 320),
-                SizeMode = PictureBoxSizeMode.StretchImage,
-                TabIndex = 1,
-                TabStop = false,
-            };
-            Foto.DoubleClick += (object sender, EventArgs e) => 
-            {
-                c_Homepage.switchViewPelanggan(c_Homepage.vDetailBuku);
-            };
+                PictureBox Foto = new PictureBox
+                {
+                    Image = new Bitmap(new MemoryStream(buku.Gambar)),
+                    Location = new Point(15, 15),
+                    Name = "pictureBox1",
+                    Size = new Size(220, 320),
+                    SizeMode = PictureBoxSizeMode.StretchImage,
+                    TabIndex = 1,
+                    TabStop = false,
+                };
+                Foto.DoubleClick += (object sender, EventArgs e) =>
+                {
+                    Detail detail = new Detail(this,buku);
+                    detail.ShowDialog();
+                };
 
-            System.Windows.Forms.Label judul = new System.Windows.Forms.Label
-            {
-                Font = new Font("Sitka Banner", 10.1999989F, FontStyle.Regular, GraphicsUnit.Point, 0),
-                Location = new Point(15, 337),
-                Name = "label1",
-                Size = new Size(220, 62),
-                TabIndex = 0,
-                Text = buku.Judul_buku,
-                TextAlign = ContentAlignment.MiddleCenter,
-            };
+                System.Windows.Forms.Label judul = new System.Windows.Forms.Label
+                {
+                    Font = new Font("Sitka Banner", 10.1999989F, FontStyle.Regular, GraphicsUnit.Point, 0),
+                    Location = new Point(15, 337),
+                    Name = "label1",
+                    Size = new Size(220, 62),
+                    TabIndex = 0,
+                    Text = buku.Judul_buku,
+                    TextAlign = ContentAlignment.MiddleCenter,
+                };
 
-            Katalog.Controls.Add(Foto);
-            Katalog.Controls.Add(judul);
-            Vhome.flowLayoutPanel1.Controls.Add(Katalog);
+                Katalog.Controls.Add(Foto);
+                Katalog.Controls.Add(judul);
+                Vhome.flowLayoutPanel1.Controls.Add(Katalog);
+            }
+            else
+            {
+                Panel Katalog = new Panel
+                {
+                    BackColor = Color.White,
+                    BackgroundImageLayout = ImageLayout.Stretch,
+                    Location = new Point(35, 30),
+                    Margin = new Padding(35, 30, 0, 0),
+                    Name = "Katalog",
+                    Size = new Size(250, 400),
+                    TabIndex = 0,
+                };
+
+                PictureBox Foto = new PictureBox
+                {
+                    Image = Properties.Resources.Frame_11__1_,
+                    Location = new Point(15, 15),
+                    Name = "pictureBox1",
+                    Size = new Size(220, 320),
+                    SizeMode = PictureBoxSizeMode.StretchImage,
+                    TabIndex = 1,
+                    TabStop = false,
+                };
+                Foto.DoubleClick += (object sender, EventArgs e) =>
+                {
+                    Detail detail = new Detail(this, buku);
+                    detail.ShowDialog();
+                };
+
+                System.Windows.Forms.Label judul = new System.Windows.Forms.Label
+                {
+                    Font = new Font("Sitka Banner", 10.1999989F, FontStyle.Regular, GraphicsUnit.Point, 0),
+                    Location = new Point(15, 337),
+                    Name = "label1",
+                    Size = new Size(220, 62),
+                    TabIndex = 0,
+                    Text = buku.Judul_buku,
+                    TextAlign = ContentAlignment.MiddleCenter,
+                };
+
+                Katalog.Controls.Add(Foto);
+                Katalog.Controls.Add(judul);
+                Vhome.flowLayoutPanel1.Controls.Add(Katalog);
+            }
+
         }
         public void Load_Katalog()
         {
