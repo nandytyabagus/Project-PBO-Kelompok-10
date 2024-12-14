@@ -29,8 +29,8 @@ namespace Projek_SimBuku.Views
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Controller.VPeminjamanPelanggan = new Keranjang(Controller);
-            Controller.switchViewPelanggan(Controller.VPeminjamanPelanggan);
+            Controller.Vkeranjang = new Keranjang(Controller);
+            Controller.switchViewPelanggan(Controller.Vkeranjang);
         }
         private void button3_Click(object sender, EventArgs e)
         {

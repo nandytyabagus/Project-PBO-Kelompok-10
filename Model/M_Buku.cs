@@ -29,5 +29,6 @@ namespace Projek_SimBuku.Model
         public string Penerbit { get; set; }
         [ForeignKey("M_Genre")]
         public string Genre { get; set; }
+        public virtual ICollection<M_Keranjang> Keranjang { get; set; }
     }
 }

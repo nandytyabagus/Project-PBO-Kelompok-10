@@ -28,31 +28,31 @@
         /// </summary>
         private void InitializeComponent()
         {
-            panel1 = new Panel();
+            flowLayoutPanel1 = new FlowLayoutPanel();
             SuspendLayout();
             // 
-            // panel1
+            // flowLayoutPanel1
             // 
-            panel1.BackColor = Color.Transparent;
-            panel1.BackgroundImage = Properties.Resources.c086f66e_0baf_426c_8627_adea8b1f6719;
-            panel1.Location = new Point(60, 60);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(1800, 770);
-            panel1.TabIndex = 0;
+            flowLayoutPanel1.BackgroundImage = Properties.Resources._2df56124_0a5c_431b_9c93_b3fd95214eef;
+            flowLayoutPanel1.Location = new Point(60, 60);
+            flowLayoutPanel1.Name = "flowLayoutPanel1";
+            flowLayoutPanel1.Size = new Size(1800, 770);
+            flowLayoutPanel1.TabIndex = 0;
             // 
             // Keranjang
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            Controls.Add(panel1);
+            Controls.Add(flowLayoutPanel1);
             Name = "Keranjang";
             Size = new Size(1920, 890);
+            Load += Keranjang_Load;
             ResumeLayout(false);
         }
 
         #endregion
 
-        private Panel panel1;
+        public FlowLayoutPanel flowLayoutPanel1;
     }
 }
