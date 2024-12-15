@@ -171,5 +171,18 @@ namespace Projek_SimBuku.Controller
                 CreateKatalog(buku);
             }
         }
+        public void AddKeranjang(int id_akun,int id_buku)
+        {
+            DataTable data = Execute_With_Return($"SELECT COUNT(*) FROM keranjang WHERE id_akun = {id_akun} AND id_buku = {id_buku}");
+            int count = Convert.ToInt32(data.Rows[0][0]);
+            if (count == 0)
+            {
+                Execute_No_Return($"INSERT INTO keranjang (id_akun,id_buku) VALUES ({id_akun},{id_buku})");
+            }
+            else
+            {
+                MessageBox.Show("Tidak Bisa Menyimpan Buku Lebih Dari Satu","WARNING",MessageBoxButtons.OK,MessageBoxIcon.Error);
+            }
+        }
     }
 }

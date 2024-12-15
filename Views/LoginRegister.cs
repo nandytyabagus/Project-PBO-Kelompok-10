@@ -19,10 +19,7 @@ namespace Projek_SimBuku
 
         private void button_Exit_Click(object sender, EventArgs e)
         {
-            //if (mainFrame.exit())
-            //{
-                Application.Exit();
-            //}
+           Application.Exit();
         }
         private void panel2_MouseDown(object sender, MouseEventArgs e)
         {

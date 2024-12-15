@@ -22,14 +22,14 @@ namespace Projek_SimBuku.Views.Pelanggan
             keranjang = new C_Keranjang(Controller, this);
         }
 
-        private void Keranjang_Load(object sender, EventArgs e)
-        {
-            keranjang.Load_Katalog();
-        }
-
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void Keranjang_Load(object sender, EventArgs e)
+        {
+            keranjang.LoadKatalog();
         }
     }
 }

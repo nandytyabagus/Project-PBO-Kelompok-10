@@ -19,6 +19,7 @@ namespace Projek_SimBuku.Views.Pelanggan.Home
     {
         C_Home Controller;
         M_Buku data;
+        int id;
         public Detail(C_Home controller, M_Buku data)
         {
             InitializeComponent();
@@ -30,7 +31,7 @@ namespace Projek_SimBuku.Views.Pelanggan.Home
             label3.Text = data.Pengarang;
             label4.Text = data.Penerbit;
             label5.Text = data.keterangan;
-            label6.Text = data.Id_Buku.ToString();
+            id = data.Id_Buku;
         }
 
         private void Detail_Load(object sender, EventArgs e)
@@ -41,7 +42,7 @@ namespace Projek_SimBuku.Views.Pelanggan.Home
 
         private void buttonAddKeranjang_Click(object sender, EventArgs e)
         {
-            Controller.Execute_No_Return($"INSERT INTO keranjang (id_buku, id_akun) VALUES ({label6.Text},{M_Akun.id_akun})");
+            Controller.AddKeranjang(M_Session.Id,id);
             this.Close();
         }
     }

@@ -8,6 +8,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static Projek_SimBuku.Controller.C_LoginRegister;
 
 namespace Projek_SimBuku.Controller
 {
@@ -15,15 +16,29 @@ namespace Projek_SimBuku.Controller
     {
         C_Homepage vhomepage;
         Setting vsetting;
-        M_Akun akun;
+        M_Akun m_akun = new M_Akun();
         public C_Profile(C_Homepage homepage, Setting setting) 
         { 
             vhomepage = homepage;
             vsetting = setting;
         }
+        public void Get(int id)
+        {
+            DataTable data = Execute_With_Return($"SELECT * FROM Data_Akun WHERE id_buku = {id}");
+
+            if (data.Rows.Count > 0)
+            {
+                m_akun.id_akun = int.Parse(data.Rows[0]["id_Akun"].ToString());
+                m_akun.username = data.Rows[0]["username"].ToString();
+                m_akun.password = data.Rows[0]["password"].ToString();
+                m_akun.nama = data.Rows[0]["nama"].ToString();
+                m_akun.email = data.Rows[0]["email"].ToString();
+                m_akun.nomor_hp = data.Rows[0]["nomor_hp"].ToString();
+            }
+        }
         public void loadDataAkun()
         {
-
+            
         }
         public void Update(object obj, int id)
         {

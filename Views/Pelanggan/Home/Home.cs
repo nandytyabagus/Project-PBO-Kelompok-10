@@ -32,5 +32,10 @@ namespace Projek_SimBuku.Views.Pelanggan
         {
             c_home.Search(Search.Text);
         }
+
+        private void vScrollBar1_Scroll(object sender, ScrollEventArgs e)
+        {
+
+        }
     }
 }

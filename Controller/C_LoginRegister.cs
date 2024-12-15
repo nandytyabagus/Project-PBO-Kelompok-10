@@ -38,12 +38,13 @@ namespace Projek_SimBuku.Controller
 
             if (data.Rows.Count > 0)
             {
-                M_Akun.id_akun = int.Parse(data.Rows[0]["id_Akun"].ToString());
-                M_Akun.username = data.Rows[0]["username"].ToString();
-                M_Akun.password = data.Rows[0]["password"].ToString();
-                M_Akun.nama = data.Rows[0]["nama"].ToString();
-                M_Akun.email = data.Rows[0]["email"].ToString();
-                M_Akun.nomor_hp = data.Rows[0]["nomor_hp"].ToString();
+                M_Session.Id = int.Parse(data.Rows[0]["id_Akun"].ToString());
+                m_akun.id_akun = int.Parse(data.Rows[0]["id_Akun"].ToString());
+                m_akun.username = data.Rows[0]["username"].ToString();
+                m_akun.password = data.Rows[0]["password"].ToString();
+                m_akun.nama = data.Rows[0]["nama"].ToString();
+                m_akun.email = data.Rows[0]["email"].ToString();
+                m_akun.nomor_hp = data.Rows[0]["nomor_hp"].ToString();
             }
         }
 
@@ -60,7 +61,7 @@ namespace Projek_SimBuku.Controller
         public void Login()
         {
             Get(Vlogin.textBoxUsername.Text, Vlogin.textBoxPassword.Text);
-            if (M_Akun.username == Vlogin.textBoxUsername.Text || M_Akun.password == Vlogin.textBoxPassword.Text)
+            if (m_akun.username == Vlogin.textBoxUsername.Text || m_akun.password == Vlogin.textBoxPassword.Text)
             {
                 C_MassageBox.showMassageBox("Berhasil Login");
                 Homepage_pelanggan homepage_Pelanggan = new Homepage_pelanggan();
@@ -76,13 +77,13 @@ namespace Projek_SimBuku.Controller
                 homePage.ShowDialog();
                 VloginRegister.Close();
             }
-            else if (M_Akun.username == Vlogin.textBoxUsername.Text || M_Akun.password != Vlogin.textBoxPassword.Text)
+            else if (m_akun.username == Vlogin.textBoxUsername.Text || m_akun.password != Vlogin.textBoxPassword.Text)
             {
                 Vlogin.textBoxPassword.Clear();
                 Vlogin.label3.Visible = true;
                 Vlogin.label3.Text = "Password Salah";
             }
-            else if (M_Akun.username != Vlogin.textBoxUsername.Text)
+            else if (m_akun.username != Vlogin.textBoxUsername.Text)
             {
                 Vlogin.textBoxUsername.Clear();
                 Vlogin.label2.Visible = true;

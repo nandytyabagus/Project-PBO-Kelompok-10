@@ -31,7 +31,7 @@ namespace Projek_SimBuku.Model
         public virtual M_Keranjang Keranjang { get; set; }
         [NotMapped]
         public string judul_buku => Keranjang?.Buku?.Judul_buku;
-        //[NotMapped]
-        //public string nama => Keranjang?.Akun?.nama;
+        [NotMapped]
+        public string nama => Keranjang?.Akun?.nama;
     }
 }

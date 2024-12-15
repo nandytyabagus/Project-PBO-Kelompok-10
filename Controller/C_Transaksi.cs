@@ -55,7 +55,7 @@ namespace Projek_SimBuku.Controller
                         },
                         Akun = new M_Akun
                         {
-                            //nama = data.Rows[i]["nama"].ToString()
+                            nama = data.Rows[i]["nama"].ToString()
                         }
                     }
                 };
