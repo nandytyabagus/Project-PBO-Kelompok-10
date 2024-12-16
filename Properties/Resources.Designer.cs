@@ -24,7 +24,7 @@ namespace Projek_SimBuku.Properties {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
-        internal static Image bg_Katalog;
+
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
@@ -60,7 +60,6 @@ namespace Projek_SimBuku.Properties {
                 resourceCulture = value;
             }
         }
-
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
@@ -69,6 +68,18 @@ namespace Projek_SimBuku.Properties {
             get
             {
                 object obj = ResourceManager.GetObject("Rectangle_78", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Delete
+        {
+            get
+            {
+                object obj = ResourceManager.GetObject("Delete", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

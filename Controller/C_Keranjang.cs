@@ -1,7 +1,9 @@
 ﻿using Projek_SimBuku.Model;
 using Projek_SimBuku.Views.Buku;
+using Projek_SimBuku.Views.Massage_Box;
 using Projek_SimBuku.Views.Pelanggan;
 using Projek_SimBuku.Views.Pelanggan.Home;
+using Projek_SimBuku.Views.Pelanggan.Transaksi;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -19,6 +21,7 @@ namespace Projek_SimBuku.Controller
         int HargaSewa;
         C_Homepage hompage;
         Keranjang vkeranjang;
+        M_Keranjang keranjang = new M_Keranjang();
         public C_Keranjang(C_Homepage c_Homepage, Keranjang view)
         {
             hompage = c_Homepage;
@@ -60,55 +63,69 @@ namespace Projek_SimBuku.Controller
                 Location = new Point(35, 30),
                 Margin = new Padding(35, 30, 0, 0),
                 Name = "Katalog",
-                Size = new Size(250, 400),
+                Size = new Size(250, 435),
                 TabIndex = 1,
             };
 
             PictureBox Foto = new PictureBox
             {
                 Image = new Bitmap(new MemoryStream(keranjang.Buku.Gambar)),
-                Location = new Point(15, 15),
+                Location = new Point(15, 45),
                 Name = "pictureBox1",
                 Size = new Size(220, 320),
                 SizeMode = PictureBoxSizeMode.StretchImage,
-                TabIndex = 1,
+                TabIndex = 0,
                 TabStop = false,
             };
 
-            System.Windows.Forms.Label judul = new System.Windows.Forms.Label
+            System.Windows.Forms.Label Judul = new System.Windows.Forms.Label
             {
                 Font = new Font("Sitka Banner", 10.1999989F, FontStyle.Regular, GraphicsUnit.Point, 0),
-                Location = new Point(51, 337),
+                Location = new Point(15, 368),
                 Name = "label1",
-                Size = new Size(184, 62),
+                Size = new Size(220, 62),
                 TabIndex = 0,
                 Text = keranjang.Buku.Judul_buku,
                 TextAlign = ContentAlignment.MiddleCenter,
             };
-            RJRadioButton Button = new RJRadioButton
+            Button Delete = new Button
             {
-                CheckedColor = SystemColors.AppWorkspace,
-                FlatAppearance  = { BorderSize = 0 },
+                BackColor = Color.Transparent,
+                BackgroundImage = Properties.Resources.Delete,
+                BackgroundImageLayout = ImageLayout.Stretch,
+                FlatAppearance = { BorderSize = 0 },
                 FlatStyle = FlatStyle.Flat,
-                Font = new Font("Segoe UI", 9F),
-                Location = new Point(15, 359),
-                MinimumSize = new Size(0, 21),
-                Name = "button_Transaksi",
-                Padding = new Padding(10, 0, 0, 0),
-                Size = new Size(30, 21),
+                Location = new Point(205, 10),
+                Name = "Delete",
+                Size = new Size(30, 30),
                 TabIndex = 2,
-                TabStop = true,
-                UnCheckedColor = Color.Black,
+                UseVisualStyleBackColor = false,
+            };
+            CheckBox Check = new CheckBox
+            {
+                AutoSize = true,
+                FlatAppearance = { BorderSize = 0 },
+                FlatStyle = FlatStyle.Flat,
+                Location = new Point(15, 13),
+                Name = "checkBox_keranjang",
+                Size = new Size(35, 24),
+                TabIndex = 2,
+                Text = "  ",
                 UseVisualStyleBackColor = true,
             };
-            Katalog.Controls.Add(Button);
+            Check.CheckedChanged += (sender, e) =>
+            {
+                
+            };
+            Katalog.Controls.Add(Check);
+            Katalog.Controls.Add(Delete);
             Katalog.Controls.Add(Foto);
-            Katalog.Controls.Add(judul);
+            Katalog.Controls.Add(Judul);
 
             vkeranjang.flowLayoutPanel1.Controls.Add(Katalog);
         }
 
-        public void LoadKatalog()
+        public void LoadKeranjang()
         {
             vkeranjang.flowLayoutPanel1.Controls.Clear();
             List<M_Keranjang> keranjang = getDataKeranjang(M_Session.Id);
@@ -116,10 +133,6 @@ namespace Projek_SimBuku.Controller
             {
                 Create(buku);
             }
-        }
-        public void TotalSewa()
-        {
-            DataTable data = Execute_With_Return("SELECT ");
         }
     }
 }

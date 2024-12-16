@@ -1,6 +1,7 @@
 ﻿using Projek_SimBuku.Model;
 using Projek_SimBuku.Views.Admin.Transaksi;
 using Projek_SimBuku.Views.Pelanggan;
+using Projek_SimBuku.Views.Pelanggan.Transaksi;
 using Projek_SimBuku.Views.Peminjaman;
 using System;
 using System.Collections.Generic;
@@ -17,8 +18,7 @@ namespace Projek_SimBuku.Controller
         C_Homepage chomepage;
         Transaksi vtransaksi;
         RiwayatPelanggan vriwayatPelanggan;
-        M_Akun akun;
-
+        FormTransaksi vForm;
         public C_Transaksi(C_Homepage homepage, Transaksi transaksi)
         {
             chomepage = homepage;
@@ -29,7 +29,6 @@ namespace Projek_SimBuku.Controller
             chomepage = homepage;
             vriwayatPelanggan = view;
         }
-
         public List<M_Transaksi> GetDataTransaksi()
         {
             List<M_Transaksi> transaksi = new List<M_Transaksi>();
@@ -63,6 +62,24 @@ namespace Projek_SimBuku.Controller
             }
             return transaksi;
         }
+        public void LoadData()
+        {
+            vtransaksi.dataTransaksi.DataSource = null;
+            vtransaksi.dataTransaksi.Columns.Clear();
+
+            vtransaksi.dataTransaksi.DataSource = GetDataTransaksi();
+
+            vtransaksi.dataTransaksi.Columns["id_transaksi"].Visible = false;
+            vtransaksi.dataTransaksi.Columns["tanggal_tansaksi"].HeaderText = "Tanggal Transaksi";
+            vtransaksi.dataTransaksi.Columns["nama"].HeaderText = "Nama Pelanggan";
+            vtransaksi.dataTransaksi.Columns["judul_buku"].HeaderText = "Buku";
+            vtransaksi.dataTransaksi.Columns["Harga_Sewa"].HeaderText = "Harga Sewa";
+            vtransaksi.dataTransaksi.Columns["Harga_Denda"].HeaderText = "Harga Denda";
+            vtransaksi.dataTransaksi.Columns["tanggal_pengambilan"].HeaderText = "Pengambilan";
+            vtransaksi.dataTransaksi.Columns["tanggal_pengembalian"].HeaderText = "Pengembalian";
+            vtransaksi.dataTransaksi.Columns["status"].HeaderText = "Status";
+            vtransaksi.dataTransaksi.Columns["metode"].HeaderText = "Metode Pembayaran";
+        }
 
         //public List<M_Transaksi> GetRiwayatTransaksi()
         //{
@@ -93,25 +110,6 @@ namespace Projek_SimBuku.Controller
         //    }
         //    return transaksi;
         //}
-
-        public void LoadData()
-        {
-            vtransaksi.dataTransaksi.DataSource = null;
-            vtransaksi.dataTransaksi.Columns.Clear();
-
-            vtransaksi.dataTransaksi.DataSource = GetDataTransaksi();
-
-            vtransaksi.dataTransaksi.Columns["id_transaksi"].Visible = false;
-            vtransaksi.dataTransaksi.Columns["tanggal_tansaksi"].HeaderText = "Tanggal Transaksi";
-            vtransaksi.dataTransaksi.Columns["nama"].HeaderText = "Nama Pelanggan";
-            vtransaksi.dataTransaksi.Columns["judul_buku"].HeaderText = "Buku";
-            vtransaksi.dataTransaksi.Columns["Harga_Sewa"].HeaderText = "Harga Sewa";
-            vtransaksi.dataTransaksi.Columns["Harga_Denda"].HeaderText = "Harga Denda";
-            vtransaksi.dataTransaksi.Columns["tanggal_pengambilan"].HeaderText = "Pengambilan";
-            vtransaksi.dataTransaksi.Columns["tanggal_pengembalian"].HeaderText = "Pengembalian";
-            vtransaksi.dataTransaksi.Columns["status"].HeaderText = "Status";
-            vtransaksi.dataTransaksi.Columns["metode"].HeaderText = "Metode Pembayaran";
-        }
         //public void LoadDatariwayat()
         //{
         //    vriwayatPelanggan.dataGridView1.DataSource = null;

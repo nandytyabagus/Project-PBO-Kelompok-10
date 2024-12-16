@@ -17,6 +17,6 @@ namespace Projek_SimBuku.Model
         [ForeignKey("M_Buku")]
         public int Id_Buku {  get; set; }
         public virtual M_Akun Akun { get; set; }
-        public virtual M_Buku Buku { get; set; }
+        public M_Buku Buku { get; set; }
     }
 }

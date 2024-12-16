@@ -1,4 +1,5 @@
 ﻿using Projek_SimBuku.Controller;
+using Projek_SimBuku.Views.Pelanggan.Transaksi;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -29,7 +30,22 @@ namespace Projek_SimBuku.Views.Pelanggan
 
         private void Keranjang_Load(object sender, EventArgs e)
         {
-            keranjang.LoadKatalog();
+            keranjang.LoadKeranjang();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
