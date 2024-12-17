@@ -24,9 +24,11 @@ namespace Projek_SimBuku.Model
         public string tanggal_pengambilan { get; set; }
         [Required]
         public string tanggal_pengembalian { get; set; }
-        [ForeignKey("M_Keranjang")]
-        public int Jumlah { get; set; }
+        [ForeignKey("M_Akun")]
+        public int id_akun {  get; set; }
+        [ForeignKey("M_Buku")]
+        public int Id_Buku { get; set; }
         [ForeignKey("M_MetodePembayaran")]
-        public string metode { get; set; }
+        public int metode { get; set; }
     }
 }

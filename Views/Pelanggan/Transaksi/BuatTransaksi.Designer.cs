@@ -33,10 +33,12 @@
             dateTimePicker1 = new DateTimePicker();
             label3 = new Label();
             label2 = new Label();
-            rjRadioButton2 = new RJRadioButton();
-            rjRadioButton1 = new RJRadioButton();
-            rjRadioButton3 = new RJRadioButton();
+            Tunai = new RJRadioButton();
+            E_wallet = new RJRadioButton();
+            Transfer = new RJRadioButton();
             comboBox1 = new ComboBox();
+            metode_pembayaran = new Panel();
+            metode_pembayaran.SuspendLayout();
             SuspendLayout();
             // 
             // button1
@@ -56,9 +58,9 @@
             label4.ImageAlign = ContentAlignment.MiddleLeft;
             label4.Location = new Point(26, 54);
             label4.Name = "label4";
-            label4.Size = new Size(214, 28);
+            label4.Size = new Size(195, 28);
             label4.TabIndex = 16;
-            label4.Text = "Tanggal Pengambilan";
+            label4.Text = "Durasi Peminjaman";
             // 
             // dateTimePicker1
             // 
@@ -90,53 +92,53 @@
             label2.TabIndex = 12;
             label2.Text = "Pilih Pembayaran";
             // 
-            // rjRadioButton2
+            // Tunai
             // 
-            rjRadioButton2.AutoSize = true;
-            rjRadioButton2.CheckedColor = Color.FromArgb(61, 65, 75);
-            rjRadioButton2.Font = new Font("Segoe UI", 10.2F);
-            rjRadioButton2.Location = new Point(32, 310);
-            rjRadioButton2.MinimumSize = new Size(0, 21);
-            rjRadioButton2.Name = "rjRadioButton2";
-            rjRadioButton2.Padding = new Padding(10, 0, 0, 0);
-            rjRadioButton2.Size = new Size(82, 27);
-            rjRadioButton2.TabIndex = 11;
-            rjRadioButton2.TabStop = true;
-            rjRadioButton2.Text = "Tunai";
-            rjRadioButton2.UnCheckedColor = Color.Gray;
-            rjRadioButton2.UseVisualStyleBackColor = true;
+            Tunai.AutoSize = true;
+            Tunai.CheckedColor = Color.FromArgb(61, 65, 75);
+            Tunai.Font = new Font("Segoe UI", 10.2F);
+            Tunai.Location = new Point(3, 69);
+            Tunai.MinimumSize = new Size(0, 21);
+            Tunai.Name = "Tunai";
+            Tunai.Padding = new Padding(10, 0, 0, 0);
+            Tunai.Size = new Size(82, 27);
+            Tunai.TabIndex = 11;
+            Tunai.TabStop = true;
+            Tunai.Text = "Tunai";
+            Tunai.UnCheckedColor = Color.Gray;
+            Tunai.UseVisualStyleBackColor = true;
             // 
-            // rjRadioButton1
+            // E_wallet
             // 
-            rjRadioButton1.AutoSize = true;
-            rjRadioButton1.CheckedColor = Color.FromArgb(61, 65, 75);
-            rjRadioButton1.Font = new Font("Segoe UI", 10.2F);
-            rjRadioButton1.Location = new Point(32, 244);
-            rjRadioButton1.MinimumSize = new Size(0, 21);
-            rjRadioButton1.Name = "rjRadioButton1";
-            rjRadioButton1.Padding = new Padding(10, 0, 0, 0);
-            rjRadioButton1.Size = new Size(113, 27);
-            rjRadioButton1.TabIndex = 10;
-            rjRadioButton1.TabStop = true;
-            rjRadioButton1.Text = "E - Wallet";
-            rjRadioButton1.UnCheckedColor = Color.Gray;
-            rjRadioButton1.UseVisualStyleBackColor = true;
+            E_wallet.AutoSize = true;
+            E_wallet.CheckedColor = Color.FromArgb(61, 65, 75);
+            E_wallet.Font = new Font("Segoe UI", 10.2F);
+            E_wallet.Location = new Point(3, 3);
+            E_wallet.MinimumSize = new Size(0, 21);
+            E_wallet.Name = "E_wallet";
+            E_wallet.Padding = new Padding(10, 0, 0, 0);
+            E_wallet.Size = new Size(113, 27);
+            E_wallet.TabIndex = 10;
+            E_wallet.TabStop = true;
+            E_wallet.Text = "E - Wallet";
+            E_wallet.UnCheckedColor = Color.Gray;
+            E_wallet.UseVisualStyleBackColor = true;
             // 
-            // rjRadioButton3
+            // Transfer
             // 
-            rjRadioButton3.AutoSize = true;
-            rjRadioButton3.CheckedColor = Color.FromArgb(61, 65, 75);
-            rjRadioButton3.Font = new Font("Segoe UI", 10.2F);
-            rjRadioButton3.Location = new Point(32, 277);
-            rjRadioButton3.MinimumSize = new Size(0, 21);
-            rjRadioButton3.Name = "rjRadioButton3";
-            rjRadioButton3.Padding = new Padding(10, 0, 0, 0);
-            rjRadioButton3.Size = new Size(142, 27);
-            rjRadioButton3.TabIndex = 18;
-            rjRadioButton3.TabStop = true;
-            rjRadioButton3.Text = "Transfer Bank";
-            rjRadioButton3.UnCheckedColor = Color.Gray;
-            rjRadioButton3.UseVisualStyleBackColor = true;
+            Transfer.AutoSize = true;
+            Transfer.CheckedColor = Color.FromArgb(61, 65, 75);
+            Transfer.Font = new Font("Segoe UI", 10.2F);
+            Transfer.Location = new Point(3, 36);
+            Transfer.MinimumSize = new Size(0, 21);
+            Transfer.Name = "Transfer";
+            Transfer.Padding = new Padding(10, 0, 0, 0);
+            Transfer.Size = new Size(142, 27);
+            Transfer.TabIndex = 18;
+            Transfer.TabStop = true;
+            Transfer.Text = "Transfer Bank";
+            Transfer.UnCheckedColor = Color.Gray;
+            Transfer.UseVisualStyleBackColor = true;
             // 
             // comboBox1
             // 
@@ -150,23 +152,33 @@
             comboBox1.TabIndex = 14;
             comboBox1.ValueMember = "1";
             // 
+            // metode_pembayaran
+            // 
+            metode_pembayaran.Controls.Add(Transfer);
+            metode_pembayaran.Controls.Add(E_wallet);
+            metode_pembayaran.Controls.Add(Tunai);
+            metode_pembayaran.Location = new Point(26, 244);
+            metode_pembayaran.Name = "metode_pembayaran";
+            metode_pembayaran.Size = new Size(250, 125);
+            metode_pembayaran.TabIndex = 19;
+            // 
             // BuatTransaksi
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            Controls.Add(rjRadioButton3);
             Controls.Add(button1);
             Controls.Add(label4);
             Controls.Add(dateTimePicker1);
             Controls.Add(comboBox1);
             Controls.Add(label3);
             Controls.Add(label2);
-            Controls.Add(rjRadioButton2);
-            Controls.Add(rjRadioButton1);
+            Controls.Add(metode_pembayaran);
             Name = "BuatTransaksi";
             Size = new Size(550, 450);
             Load += BuatTransaksi_Load;
+            metode_pembayaran.ResumeLayout(false);
+            metode_pembayaran.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -174,12 +186,13 @@
         #endregion
         private Button button1;
         private Label label4;
-        private DateTimePicker dateTimePicker1;
         private Label label3;
         private Label label2;
-        private RJRadioButton rjRadioButton2;
-        private RJRadioButton rjRadioButton1;
-        private RJRadioButton rjRadioButton3;
         public ComboBox comboBox1;
+        public Panel metode_pembayaran;
+        public DateTimePicker dateTimePicker1;
+        public RJRadioButton Tunai;
+        public RJRadioButton E_wallet;
+        public RJRadioButton Transfer;
     }
 }

@@ -71,8 +71,7 @@
         }
 
         #endregion
-
-        private Button Close_Button;
         public Panel panel1;
+        public Button Close_Button;
     }
 }

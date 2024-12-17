@@ -29,7 +29,7 @@ namespace Projek_SimBuku.Controller
         }
         public void Get()
         {
-            DataTable data = Execute_With_Return($"SELECT * FROM Data_Akun WHERE id_akun = {M_Session.Id}");
+            DataTable data = Execute_With_Return($"SELECT * FROM Data_Akun WHERE id_akun = {M_Sementara.id}");
             if (data.Rows.Count > 0)
             {
                 DataRow row = data.Rows[0];

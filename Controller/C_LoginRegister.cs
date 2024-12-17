@@ -38,7 +38,7 @@ namespace Projek_SimBuku.Controller
 
             if (data.Rows.Count > 0)
             {
-                M_Session.Id = int.Parse(data.Rows[0]["id_Akun"].ToString());
+                M_Sementara.id = int.Parse(data.Rows[0]["id_Akun"].ToString());
                 m_akun.id_akun = int.Parse(data.Rows[0]["id_Akun"].ToString());
                 m_akun.username = data.Rows[0]["username"].ToString();
                 m_akun.password = data.Rows[0]["password"].ToString();

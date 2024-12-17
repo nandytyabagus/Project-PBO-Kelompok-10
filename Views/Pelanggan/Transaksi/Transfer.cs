@@ -1,5 +1,4 @@
-﻿using Org.BouncyCastle.Asn1.X509;
-using Projek_SimBuku.Controller;
+﻿using Projek_SimBuku.Controller;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,19 +11,13 @@ using System.Windows.Forms;
 
 namespace Projek_SimBuku.Views.Pelanggan.Transaksi
 {
-    public partial class FormTransaksi : Form
+    public partial class Transfer : UserControl
     {
         C_Transaksi Controller;
-        BuatTransaksi buatTransaksi;
-        public FormTransaksi(C_Transaksi controller,UserControl view)
+        public Transfer(C_Transaksi controller)
         {
             InitializeComponent();
             Controller = controller;
-            panel1.Controls.Add(view);
-        }
-        private void Close_Button_Click(object sender, EventArgs e)
-        {
-            this.Close();
         }
     }
 }

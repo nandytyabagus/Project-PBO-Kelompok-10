@@ -58,11 +58,5 @@ namespace Projek_SimBuku.Controller
                 M_Keranjang.StaticCartItems.Remove(itemToRemove);
             }
         }
-
-        public void buat_keranjang()
-        {
-            FormTransaksi view = new FormTransaksi(c_Transaksi, this, new BuatTransaksi(c_Transaksi,this));
-            view.ShowDialog();
-        }
     }
 }

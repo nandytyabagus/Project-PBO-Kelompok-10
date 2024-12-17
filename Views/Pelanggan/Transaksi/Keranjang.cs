@@ -1,5 +1,7 @@
 ﻿using Projek_SimBuku.Controller;
 using Projek_SimBuku.Model;
+using Projek_SimBuku.Views.Admin.Transaksi;
+using Projek_SimBuku.Views.Massage_Box;
 using Projek_SimBuku.Views.Pelanggan.Transaksi;
 using System;
 using System.Collections.Generic;
@@ -17,7 +19,7 @@ namespace Projek_SimBuku.Views.Pelanggan
     {
         C_Homepage Controller;
         C_Keranjang keranjang;
-        BuatTransaksi vBuatTransaksi;
+        FormTransaksi formTransaksi;
         M_Keranjang m_Keranjang;
         public Keranjang(C_Homepage controller)
         {
@@ -48,7 +50,16 @@ namespace Projek_SimBuku.Views.Pelanggan
 
         private void button1_Click(object sender, EventArgs e)
         {
-            keranjang.buat_keranjang();
+            if (M_Keranjang.StaticCartItems == null || M_Keranjang.StaticCartItems.Count == 0)
+            {
+                MessageBox.Show("Pilih Buku terlebih dahulu");
+            }
+            else
+            {
+                C_Transaksi transaksi = new C_Transaksi(formTransaksi);
+                FormTransaksi view = new FormTransaksi(transaksi, new BuatTransaksi(transaksi));
+                view.ShowDialog();
+            }
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
