@@ -78,16 +78,16 @@ namespace Projek_SimBuku.Controller
 
             try
             {
-                Execute_No_Return("INSERT INTO metode_pembayaran(metode) VALUES ('Tunai')");
-                Execute_No_Return("INSERT INTO metode_pembayaran(metode) VALUES ('E - Wallet')");
-                Execute_No_Return("INSERT INTO metode_pembayaran(metode) VALUES ('Transfer Bank')");
-                Execute_No_Return("INSERT INTO genre(genre) VALUES ('Novel')");
-                Execute_No_Return("INSERT INTO genre(genre) VALUES ('Fiksi')");
-                Execute_No_Return("INSERT INTO genre(genre) VALUES ('Non Fiksi')");
-                Execute_No_Return("INSERT INTO genre(genre) VALUES ('Horor')");
-                Execute_No_Return("INSERT INTO genre(genre) VALUES ('Ilmiah')");
-                Execute_No_Return("INSERT INTO genre(genre) VALUES ('Fantasi')");
-                Execute_No_Return("INSERT INTO genre(genre) VALUES ('Romantis')");
+                //Execute_No_Return("INSERT INTO metode_pembayaran(metode) VALUES ('Tunai')");
+                //Execute_No_Return("INSERT INTO metode_pembayaran(metode) VALUES ('E - Wallet')");
+                //Execute_No_Return("INSERT INTO metode_pembayaran(metode) VALUES ('Transfer Bank')");
+                //Execute_No_Return("INSERT INTO genre(genre) VALUES ('Novel')");
+                //Execute_No_Return("INSERT INTO genre(genre) VALUES ('Fiksi')");
+                //Execute_No_Return("INSERT INTO genre(genre) VALUES ('Non Fiksi')");
+                //Execute_No_Return("INSERT INTO genre(genre) VALUES ('Horor')");
+                //Execute_No_Return("INSERT INTO genre(genre) VALUES ('Ilmiah')");
+                //Execute_No_Return("INSERT INTO genre(genre) VALUES ('Fantasi')");
+                //Execute_No_Return("INSERT INTO genre(genre) VALUES ('Romantis')");
 
             }
             catch { }

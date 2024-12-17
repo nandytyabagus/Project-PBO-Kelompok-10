@@ -29,9 +29,9 @@ namespace Projek_SimBuku.Views.Pelanggan.Transaksi
 
         private void BuatTransaksi_Load(object sender, EventArgs e)
         {
-            E_wallet.Tag = 1;
+            Tunai.Tag = 1;
             E_wallet.Tag = 2;
-            E_wallet.Tag = 3;
+            Transfer.Tag = 3;
         }
 
         private void button1_Click(object sender, EventArgs e)

@@ -60,6 +60,7 @@ namespace Projek_SimBuku.Views.Pelanggan
                 FormTransaksi view = new FormTransaksi(transaksi, new BuatTransaksi(transaksi));
                 view.ShowDialog();
             }
+            keranjang.load();
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)

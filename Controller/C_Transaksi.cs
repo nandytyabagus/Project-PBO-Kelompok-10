@@ -120,64 +120,88 @@ namespace Projek_SimBuku.Controller
                 }
             }
         }
+        private int GetTotalBukuBelumDikembalikan(int idAkun)
+        {
+            string query = $"SELECT COUNT(*) FROM transaksi WHERE id_akun = {idAkun} AND status != 'Dikembalikan';";
+            DataTable result = Execute_With_Return(query);
+            return result.Rows.Count > 0 ? Convert.ToInt32(result.Rows[0][0]) : 0;
+        }
         public void Buat_transaks(BuatTransaksi view)
         {
-            transaksi transaksi = new transaksi();
-
-            RadioButton selectedRadioButton = view.metode_pembayaran.Controls.OfType<RadioButton>().FirstOrDefault(rb => rb.Checked);
-            if (selectedRadioButton != null)
-            {
-                transaksi.id_metode = Convert.ToInt32(selectedRadioButton.Tag);
-            }
-            else
-            {
-                MessageBox.Show("Pilih metode pembayaran");
-                return;
-            }
-
-            if (M_Keranjang.StaticCartItems.Any())
-            {
-                transaksi.id_buku = M_Keranjang.StaticCartItems[0].Id_Buku;
-            }
-            else
+            if (!M_Keranjang.StaticCartItems.Any())
             {
                 MessageBox.Show("Pilih buku yang akan disewa");
                 return;
             }
-
-            if (view.comboBox1.SelectedItem != null)
+            int totalBukuDipinjam = GetTotalBukuBelumDikembalikan(M_Sementara.id);
+            if (totalBukuDipinjam >= 3)
             {
-                dynamic selectedItem = view.comboBox1.SelectedValue;
-                transaksi.durasi = Convert.ToInt32(selectedItem);
-            }
-            else
-            {
-                MessageBox.Show("Pilih durasi peminjaman");
+                MessageBox.Show("Anda masih memiliki 3 buku yang belum dikembalikan. Silakan kembalikan buku terlebih dahulu.");
                 return;
             }
 
-            if (view.dateTimePicker1.Value == null)
+            if (totalBukuDipinjam + M_Keranjang.StaticCartItems.Count > 3)
             {
-                MessageBox.Show("Pilih tanggal pengambilan");
+                MessageBox.Show("Maksimal 3 buku per akun. Kurangi jumlah buku yang ingin dipinjam.");
                 return;
             }
-            else
+
+            foreach (var item in M_Keranjang.StaticCartItems)
             {
-                transaksi.Pengambilan = view.dateTimePicker1.Value;
+                transaksi transaksi = new transaksi();
+
+                RadioButton selectedRadioButton = view.metode_pembayaran.Controls.OfType<RadioButton>().FirstOrDefault(rb => rb.Checked);
+                if (selectedRadioButton != null)
+                {
+                    transaksi.id_metode = Convert.ToInt32(selectedRadioButton.Tag);
+                }
+                else
+                {
+                    MessageBox.Show("Pilih metode pembayaran");
+                    return;
+                }
+
+                transaksi.id_buku = item.Id_Buku;
+
+                if (view.comboBox1.SelectedItem != null)
+                {
+                    dynamic selectedItem = view.comboBox1.SelectedValue;
+                    transaksi.durasi = Convert.ToInt32(selectedItem);
+                }
+                else
+                {
+                    MessageBox.Show("Pilih durasi peminjaman");
+                    return;
+                }
+
+                if (view.dateTimePicker1.Value == null)
+                {
+                    MessageBox.Show("Pilih tanggal pengambilan");
+                    return;
+                }
+                else
+                {
+                    transaksi.Pengambilan = view.dateTimePicker1.Value;
+                }
+
+                transaksi.Pengembalian = transaksi.Pengambilan.AddDays(transaksi.durasi);
+
+                decimal hargaSewaPerBuku = 10000;
+                transaksi.harga_sewa = (int)(hargaSewaPerBuku * transaksi.durasi);
+
+                if (transaksi.harga_sewa <= 0)
+                {
+                    MessageBox.Show("Harga sewa tidak valid.");
+                    return;
+                }
+                Insert(transaksi, M_Sementara.id);
             }
 
-            transaksi.Pengembalian = transaksi.Pengambilan.AddDays(transaksi.durasi);
-
-            decimal hargaSewaPerBuku = 10000;
-            transaksi.harga_sewa = (int)hargaSewaPerBuku * transaksi.durasi;
-
-            if (transaksi.harga_sewa <= 0)
-            {
-                MessageBox.Show("Harga sewa tidak valid.");
-                return;
-            }
-            Insert(transaksi, M_Sementara.id);
+            M_Keranjang.StaticCartItems.Clear();
         }
+
+
+
 
 
         public void Insert(object obj, int id)
