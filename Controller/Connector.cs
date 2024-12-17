@@ -37,7 +37,8 @@ namespace Projek_SimBuku.Controller
                 "password VARCHAR(50) NOT NULL," +
                 "nama VARCHAR(100) NOT NULL," +
                 "email VARCHAR(50) NOT NULL UNIQUE," +
-                "nomor_Hp VARCHAR(13) NOT NULL UNIQUE)");
+                "nomor_Hp VARCHAR(13) NOT NULL UNIQUE," +
+                "gambar BYTEA);");
 
             Execute_No_Return("CREATE TABLE IF NOT EXISTS genre (" +
                 "id_genre SERIAL NOT NULL UNIQUE PRIMARY KEY," +
@@ -53,7 +54,7 @@ namespace Projek_SimBuku.Controller
                 "penerbit VARCHAR(50) NOT NULL," +
                 "pengarang VARCHAR(50) NOT NULL," +
                 "id_genre INT NOT NULL," +
-                "FOREIGN KEY (id_genre) REFERENCES genre(id_genre))");
+                "FOREIGN KEY (id_genre) REFERENCES genre(id_genre));");
 
             Execute_No_Return("CREATE TABLE IF NOT EXISTS metode_pembayaran (" +
                 "id_metode_pembayaran SERIAL NOT NULL UNIQUE PRIMARY KEY," +

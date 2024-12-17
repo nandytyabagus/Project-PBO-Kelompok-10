@@ -51,7 +51,7 @@ namespace Projek_SimBuku.Controller
         public void Insert(object item)
         {
             Akun akun = item as Akun;
-            Execute_No_Return($"INSERT INTO Data_Akun(username,password,nama,email,nomor_hp) VALUES ('{akun.Username}','{akun.Password}','{akun.Nama}','{akun.Email}','{akun.Nomor_Hp}')");
+            Execute_No_Return($"INSERT INTO Data_Akun(username,password,nama,email,nomor_hp,gambar) VALUES ('{akun.Username}','{akun.Password}','{akun.Nama}','{akun.Email}','{akun.Nomor_Hp}',null)");
         }
         public void Update(object data, int id)
         {

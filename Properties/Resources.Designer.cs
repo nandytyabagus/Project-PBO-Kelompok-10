@@ -63,11 +63,55 @@ namespace Projek_SimBuku.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _5087e4eb_d9f0_48b7_b288_0b1c111c4ad61
+        {
+            get
+            {
+                object obj = ResourceManager.GetObject("_5087e4eb_d9f0_48b7_b288_0b1c111c4ad61", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }         
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _11fa4e45_8e51_481f_9d9f_4b636ac183e7
+        {
+            get
+            {
+                object obj = ResourceManager.GetObject("_11fa4e45_8e51_481f_9d9f_4b636ac183e7", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }            
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _18125641_a7c4_4225_a69d_984e8fdeb2e2
+        {
+            get
+            {
+                object obj = ResourceManager.GetObject("_18125641_a7c4_4225_a69d_984e8fdeb2e2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }        
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Rectangle_78
         {
             get
             {
                 object obj = ResourceManager.GetObject("Rectangle_78", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _53b509f7_67d5_4d88_b55f_b174e0439833
+        {
+            get
+            {
+                object obj = ResourceManager.GetObject("_53b509f7_67d5_4d88_b55f_b174e0439833", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

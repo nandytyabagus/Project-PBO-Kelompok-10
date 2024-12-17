@@ -18,5 +18,6 @@ namespace Projek_SimBuku.Model
         [Required] public string nama { get; set; }
         [Required] public string email { get; set; }
         [Required] public string nomor_hp { get; set; }
+        [Required] public byte[] gambar {  get; set; }
     }
 }
