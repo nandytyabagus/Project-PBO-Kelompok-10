@@ -1,4 +1,5 @@
 ﻿using Projek_SimBuku.Controller;
+using Projek_SimBuku.Model;
 using Projek_SimBuku.Views.Pelanggan.Transaksi;
 using System;
 using System.Collections.Generic;
@@ -16,6 +17,8 @@ namespace Projek_SimBuku.Views.Pelanggan
     {
         C_Homepage Controller;
         C_Keranjang keranjang;
+        BuatTransaksi vBuatTransaksi;
+        M_Keranjang m_Keranjang;
         public Keranjang(C_Homepage controller)
         {
             InitializeComponent();
@@ -30,7 +33,7 @@ namespace Projek_SimBuku.Views.Pelanggan
 
         private void Keranjang_Load(object sender, EventArgs e)
         {
-            keranjang.LoadKeranjang();
+            keranjang.load();
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -45,7 +48,28 @@ namespace Projek_SimBuku.Views.Pelanggan
 
         private void button1_Click(object sender, EventArgs e)
         {
+            keranjang.buat_keranjang();
+        }
 
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                int idBuku = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells["Id_Buku"].Value);
+                M_Keranjang mkeranjang = new M_Keranjang
+                {
+                    Id_Buku = idBuku,
+                    Gambar = (byte[])dataGridView1.Rows[e.RowIndex].Cells["gambar"].Value,
+                    Judul_buku = dataGridView1.Rows[e.RowIndex].Cells["Judul_buku"].Value.ToString(),
+                    Genre = dataGridView1.Rows[e.RowIndex].Cells["Genre"].Value.ToString()
+                };
+                if (e.ColumnIndex == dataGridView1.Columns["Delete"].Index)
+                {
+                    keranjang.DeleteFromCart(idBuku);
+                    keranjang.load();
+                }
+
+            }
         }
     }
 }

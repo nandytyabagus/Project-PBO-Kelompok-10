@@ -15,10 +15,13 @@ namespace Projek_SimBuku.Views.Pelanggan.Transaksi
     public partial class FormTransaksi : Form
     {
         C_Transaksi Controller;
-        public FormTransaksi(C_Transaksi controller,BuatTransaksi view)
+        C_Keranjang Controller_Keranjang;
+        BuatTransaksi buatTransaksi;
+        public FormTransaksi(C_Transaksi controller,C_Keranjang controller_keranjang,UserControl view)
         {
             InitializeComponent();
             Controller = controller;
+            Controller_Keranjang = controller_keranjang;
             panel1.Controls.Add(view);
         }
         private void Close_Button_Click(object sender, EventArgs e)

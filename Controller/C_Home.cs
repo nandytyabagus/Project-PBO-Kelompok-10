@@ -25,6 +25,7 @@ namespace Projek_SimBuku.Controller
         M_Buku mbuku;
         M_Akun m_Akun;
         Detail vdetail;
+        public List<(int idAkun, int idBuku)> keranjangSementara = new List<(int, int)>();
         public C_Home(C_Homepage homepage, HomeKatalog home)
         {
             c_Homepage = homepage;
@@ -97,7 +98,7 @@ namespace Projek_SimBuku.Controller
                 };
                 Foto.DoubleClick += (object sender, EventArgs e) =>
                 {
-                    Detail detail = new Detail(this,buku);
+                    Detail detail = new Detail(this, buku);
                     detail.ShowDialog();
                 };
 
@@ -169,19 +170,6 @@ namespace Projek_SimBuku.Controller
             foreach (var buku in data)
             {
                 CreateKatalog(buku);
-            }
-        }
-        public void AddKeranjang(int id_akun,int id_buku)
-        {
-            DataTable data = Execute_With_Return($"SELECT COUNT(*) FROM keranjang WHERE id_akun = {id_akun} AND id_buku = {id_buku}");
-            int count = Convert.ToInt32(data.Rows[0][0]);
-            if (count == 0)
-            {
-                Execute_No_Return($"INSERT INTO keranjang (id_akun,id_buku) VALUES ({id_akun},{id_buku})");
-            }
-            else
-            {
-                MessageBox.Show("Tidak Bisa Menyimpan Buku Lebih Dari Satu","WARNING",MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
         }
     }

@@ -28,10 +28,5 @@ namespace Projek_SimBuku.Model
         public int Jumlah { get; set; }
         [ForeignKey("M_MetodePembayaran")]
         public string metode { get; set; }
-        public virtual M_Keranjang Keranjang { get; set; }
-        [NotMapped]
-        public string judul_buku => Keranjang?.Buku?.Judul_buku;
-        [NotMapped]
-        public string nama => Keranjang?.Akun?.nama;
     }
 }

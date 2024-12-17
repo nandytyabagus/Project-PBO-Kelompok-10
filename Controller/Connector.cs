@@ -55,20 +55,14 @@ namespace Projek_SimBuku.Controller
                 "id_genre INT NOT NULL," +
                 "FOREIGN KEY (id_genre) REFERENCES genre(id_genre))");
 
-            Execute_No_Return("CREATE TABLE IF NOT EXISTS keranjang (" +
-                "id_keranjang SERIAL NOT NULL UNIQUE PRIMARY KEY," +
-                "id_akun INT NOT NULL," +
-                "id_buku INT NOT NULL," +
-                "FOREIGN KEY (id_akun) REFERENCES Data_Akun(id_Akun)," +
-                "FOREIGN KEY (id_buku) REFERENCES buku(id_buku))");
-
             Execute_No_Return("CREATE TABLE IF NOT EXISTS metode_pembayaran (" +
                 "id_metode_pembayaran SERIAL NOT NULL UNIQUE PRIMARY KEY," +
                 "metode VARCHAR(50) NOT NULL)");
 
             Execute_No_Return("CREATE TABLE IF NOT EXISTS transaksi (" +
                 "id_transaksi SERIAL NOT NULL UNIQUE PRIMARY KEY," +
-                "id_keranjang INT NOT NULL," +
+                "id_akun INT NOT NULL," +
+                "id_buku INT NOT NULL," +
                 "id_metode_pembayaran INT NOT NULL," +
                 "Tanggal_transaksi TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP," +
                 "status VARCHAR(50) NOT NULL," +
@@ -76,13 +70,16 @@ namespace Projek_SimBuku.Controller
                 "harga_denda DECIMAL(10, 2)," +
                 "tanggal_pengambilan DATE," +
                 "tanggal_pengembalian DATE," +
-                "FOREIGN KEY (id_keranjang) REFERENCES keranjang(id_keranjang)," +
-                "FOREIGN KEY (id_metode_pembayaran) REFERENCES metode_pembayaran(id_metode_pembayaran))");
+                "FOREIGN KEY (id_akun) REFERENCES Data_Akun(id_Akun)," +
+                "FOREIGN KEY (id_buku) REFERENCES buku(id_buku)," +
+                "FOREIGN KEY (id_metode_pembayaran) REFERENCES metode_pembayaran(id_metode_pembayaran));");
+
 
             try
             {
-                Execute_No_Return("INSERT INTO metode_pembayaran(metode) VALUES ('Cash')");
-                Execute_No_Return("INSERT INTO metode_pembayaran(metode) VALUES ('Qris')");
+                Execute_No_Return("INSERT INTO metode_pembayaran(metode) VALUES ('Tunai')");
+                Execute_No_Return("INSERT INTO metode_pembayaran(metode) VALUES ('E - Wallet')");
+                Execute_No_Return("INSERT INTO metode_pembayaran(metode) VALUES ('Transfer Bank')");
                 Execute_No_Return("INSERT INTO genre(genre) VALUES ('Novel')");
                 Execute_No_Return("INSERT INTO genre(genre) VALUES ('Fiksi')");
                 Execute_No_Return("INSERT INTO genre(genre) VALUES ('Non Fiksi')");

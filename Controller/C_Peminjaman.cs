@@ -33,17 +33,6 @@ namespace Projek_SimBuku.Controller
                     status = data.Rows[i]["status"].ToString(),
                     harga_sewa = Convert.ToDecimal(data.Rows[i]["harga_sewa"]),
                     tanggal_pengambilan = data.Rows[i]["tanggal_pengambilan"].ToString(),
-                    Keranjang = new M_Keranjang
-                    {
-                        Akun = new M_Akun
-                        {
-                            nama = data.Rows[i]["nama"].ToString()
-                        },
-                        Buku = new M_Buku
-                        {
-                            Judul_buku = data.Rows[i]["judul_buku"].ToString()
-                        }
-                    }
                 };
                 Peminjaman.Add(m_Peminjaman);
             }

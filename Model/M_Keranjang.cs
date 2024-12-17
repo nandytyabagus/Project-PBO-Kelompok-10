@@ -10,13 +10,11 @@ namespace Projek_SimBuku.Model
 {
     public class M_Keranjang
     {
-        [Key]
-        public int Id_Keranjang { get; set; }
-        [ForeignKey("M_Akun")]
-        public int id_akun {  get; set; }
-        [ForeignKey("M_Buku")]
-        public int Id_Buku {  get; set; }
-        public virtual M_Akun Akun { get; set; }
-        public M_Buku Buku { get; set; }
+        public static List<M_Keranjang> StaticCartItems = new List<M_Keranjang>();
+        public int Id_Buku { get; set; }
+        public string Judul_buku { get; set; }
+        public byte[] Gambar { get; set; }
+        public string Genre { get; set; }
     }
+
 }

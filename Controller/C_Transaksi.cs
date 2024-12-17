@@ -1,4 +1,5 @@
 ﻿using Projek_SimBuku.Model;
+using Projek_SimBuku.Views.Admin.Buku;
 using Projek_SimBuku.Views.Admin.Transaksi;
 using Projek_SimBuku.Views.Pelanggan;
 using Projek_SimBuku.Views.Pelanggan.Transaksi;
@@ -7,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -16,9 +18,11 @@ namespace Projek_SimBuku.Controller
     public class C_Transaksi : Connector
     {
         C_Homepage chomepage;
+        C_Keranjang cKeranjang;
         Transaksi vtransaksi;
         RiwayatPelanggan vriwayatPelanggan;
         FormTransaksi vForm;
+        BuatTransaksi vbuatTransaksi;
         public C_Transaksi(C_Homepage homepage, Transaksi transaksi)
         {
             chomepage = homepage;
@@ -28,6 +32,10 @@ namespace Projek_SimBuku.Controller
         {
             chomepage = homepage;
             vriwayatPelanggan = view;
+        }
+        public C_Transaksi(FormTransaksi formTransaksi)
+        {
+            vForm = formTransaksi;
         }
         public List<M_Transaksi> GetDataTransaksi()
         {
@@ -46,17 +54,6 @@ namespace Projek_SimBuku.Controller
                     tanggal_pengambilan = data.Rows[i]["tanggal_pengambilan"].ToString(),
                     tanggal_pengembalian = data.Rows[i]["tanggal_pengembalian"].ToString(),
                     metode = data.Rows[i]["metode"].ToString(),
-                    Keranjang = new M_Keranjang
-                    {
-                        Buku = new M_Buku
-                        {
-                            Judul_buku = data.Rows[i]["judul_buku"].ToString()
-                        },
-                        Akun = new M_Akun
-                        {
-                            nama = data.Rows[i]["nama"].ToString()
-                        }
-                    }
                 };
                 transaksi.Add(m_transaksi);
             }
@@ -80,7 +77,18 @@ namespace Projek_SimBuku.Controller
             vtransaksi.dataTransaksi.Columns["status"].HeaderText = "Status";
             vtransaksi.dataTransaksi.Columns["metode"].HeaderText = "Metode Pembayaran";
         }
-
+        public void Metode_pembayaran(BuatTransaksi view)
+        {
+            DataTable data = Execute_With_Return("SELECT * FROM metode_pembayaran");
+            view.comboBox1.DataSource = data;
+            view.comboBox1.DisplayMember = "metode";
+            view.comboBox1.ValueMember = "id_metode_pembayaran";
+            view.comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
+        }
+        public void Buat_transaksi(int id_akun,int metode_pembayaran)
+        {
+            
+        }
         //public List<M_Transaksi> GetRiwayatTransaksi()
         //{
         //    List<M_Transaksi> transaksi = new List<M_Transaksi>();
@@ -127,4 +135,5 @@ namespace Projek_SimBuku.Controller
         //    vriwayatPelanggan.dataGridView1.Columns["metode"].Visible = false;
         //}
     }
-}
+    }
+

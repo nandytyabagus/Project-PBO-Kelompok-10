@@ -18,10 +18,5 @@ namespace Projek_SimBuku.Model
         public string tanggal_pengembalian{ get; set; }
         [Required]
         public string status { get; set; }
-        public virtual M_Keranjang Keranjang { get; set; }
-        [NotMapped]
-        public string judul_buku => Keranjang?.Buku?.Judul_buku;
-        [NotMapped]
-        public string nama => Keranjang?.Akun?.nama;
     }
 }

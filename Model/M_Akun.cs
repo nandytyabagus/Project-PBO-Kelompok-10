@@ -18,6 +18,5 @@ namespace Projek_SimBuku.Model
         [Required] public string nama { get; set; }
         [Required] public string email { get; set; }
         [Required] public string nomor_hp { get; set; }
-        public virtual ICollection<M_Keranjang> Keranjang { get; set; }
     }
 }

@@ -28,17 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             flowLayoutPanel1 = new FlowLayoutPanel();
-            Katalog = new Panel();
-            pictureBox1 = new PictureBox();
-            checkBox_keranjang = new CheckBox();
-            Delete = new Button();
-            label1 = new Label();
+            dataGridView1 = new DataGridView();
             panel1 = new Panel();
             button1 = new Button();
             flowLayoutPanel1.SuspendLayout();
-            Katalog.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -47,72 +44,54 @@
             flowLayoutPanel1.AutoScroll = true;
             flowLayoutPanel1.AutoSize = true;
             flowLayoutPanel1.BackgroundImage = Properties.Resources._2df56124_0a5c_431b_9c93_b3fd95214eef;
-            flowLayoutPanel1.Controls.Add(Katalog);
+            flowLayoutPanel1.Controls.Add(dataGridView1);
             flowLayoutPanel1.Location = new Point(60, 60);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(1803, 690);
+            flowLayoutPanel1.Size = new Size(1800, 696);
             flowLayoutPanel1.TabIndex = 0;
             // 
-            // Katalog
+            // dataGridView1
             // 
-            Katalog.BackColor = Color.White;
-            Katalog.BackgroundImageLayout = ImageLayout.Stretch;
-            Katalog.Controls.Add(pictureBox1);
-            Katalog.Controls.Add(checkBox_keranjang);
-            Katalog.Controls.Add(Delete);
-            Katalog.Controls.Add(label1);
-            Katalog.Location = new Point(35, 30);
-            Katalog.Margin = new Padding(35, 30, 0, 0);
-            Katalog.Name = "Katalog";
-            Katalog.Size = new Size(250, 435);
-            Katalog.TabIndex = 1;
-            // 
-            // pictureBox1
-            // 
-            pictureBox1.Location = new Point(15, 45);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(220, 320);
-            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox1.TabIndex = 0;
-            pictureBox1.TabStop = false;
-            // 
-            // checkBox_keranjang
-            // 
-            checkBox_keranjang.AutoSize = true;
-            checkBox_keranjang.FlatAppearance.BorderSize = 0;
-            checkBox_keranjang.FlatStyle = FlatStyle.Flat;
-            checkBox_keranjang.Location = new Point(15, 13);
-            checkBox_keranjang.Name = "checkBox_keranjang";
-            checkBox_keranjang.Size = new Size(35, 24);
-            checkBox_keranjang.TabIndex = 2;
-            checkBox_keranjang.Text = "  ";
-            checkBox_keranjang.UseVisualStyleBackColor = true;
-            checkBox_keranjang.CheckedChanged += checkBox1_CheckedChanged;
-            // 
-            // Delete
-            // 
-            Delete.BackColor = Color.Transparent;
-            Delete.BackgroundImage = Properties.Resources.Delete;
-            Delete.BackgroundImageLayout = ImageLayout.Stretch;
-            Delete.FlatAppearance.BorderSize = 0;
-            Delete.FlatStyle = FlatStyle.Flat;
-            Delete.Location = new Point(205, 10);
-            Delete.Name = "Delete";
-            Delete.Size = new Size(30, 30);
-            Delete.TabIndex = 2;
-            Delete.UseVisualStyleBackColor = false;
-            // 
-            // label1
-            // 
-            label1.Font = new Font("Sitka Banner", 10.1999989F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.Location = new Point(15, 368);
-            label1.Margin = new Padding(0);
-            label1.Name = "label1";
-            label1.Size = new Size(220, 62);
-            label1.TabIndex = 1;
-            label1.Text = "Judul Buku";
-            label1.TextAlign = ContentAlignment.MiddleLeft;
-            label1.Click += label1_Click;
+            dataGridView1.AllowUserToAddRows = false;
+            dataGridView1.AllowUserToDeleteRows = false;
+            dataGridView1.AllowUserToResizeColumns = false;
+            dataGridView1.AllowUserToResizeRows = false;
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridView1.BackgroundColor = Color.White;
+            dataGridView1.BorderStyle = BorderStyle.None;
+            dataGridView1.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            dataGridView1.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = Color.Transparent;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle1.ForeColor = Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = Color.DimGray;
+            dataGridViewCellStyle1.SelectionForeColor = Color.White;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridView1.ColumnHeadersHeight = 29;
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = Color.White;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle2.ForeColor = Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridView1.EnableHeadersVisualStyles = false;
+            dataGridView1.Location = new Point(20, 3);
+            dataGridView1.Margin = new Padding(20, 3, 3, 3);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.ReadOnly = true;
+            dataGridView1.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dataGridView1.RowHeadersVisible = false;
+            dataGridView1.RowHeadersWidth = 51;
+            dataGridView1.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            dataGridView1.ScrollBars = ScrollBars.Vertical;
+            dataGridView1.Size = new Size(1760, 690);
+            dataGridView1.TabIndex = 0;
+            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
             // panel1
             // 
@@ -144,9 +123,7 @@
             Size = new Size(1920, 890);
             Load += Keranjang_Load;
             flowLayoutPanel1.ResumeLayout(false);
-            Katalog.ResumeLayout(false);
-            Katalog.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             panel1.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
@@ -155,14 +132,10 @@
         #endregion
 
         public FlowLayoutPanel flowLayoutPanel1;
-        public Panel Katalog;
-        public PictureBox pictureBox1;
-        public Label label1;
         private RJRadioButton button_Transaksi;
         private Panel panel1;
         private Button button1;
-        private Button Delete;
-        public CheckBox checkBox_keranjang;
         private CheckBox checkBox1;
+        public DataGridView dataGridView1;
     }
 }

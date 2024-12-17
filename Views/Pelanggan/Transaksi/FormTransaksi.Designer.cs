@@ -52,7 +52,7 @@
             panel1.Dock = DockStyle.Fill;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(550, 700);
+            panel1.Size = new Size(550, 450);
             panel1.TabIndex = 1;
             // 
             // FormTransaksi
@@ -60,7 +60,7 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(550, 700);
+            ClientSize = new Size(550, 450);
             Controls.Add(Close_Button);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
