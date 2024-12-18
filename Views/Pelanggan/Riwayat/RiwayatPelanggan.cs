@@ -1,4 +1,5 @@
 ﻿using Projek_SimBuku.Controller;
+using Projek_SimBuku.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -24,7 +25,18 @@ namespace Projek_SimBuku.Views.Pelanggan
 
         private void RiwayatPelanggan_Load(object sender, EventArgs e)
         {
-            //transaksi.LoadDatariwayat();
+            transaksi.LoadDatariwayat();
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                if (e.ColumnIndex == dataGridView1.Columns["Detail"].Index)
+                {
+                    transaksi.LoadDetailTransaksi(M_Sementara.id);
+                }
+            }
         }
     }
 }

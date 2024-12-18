@@ -32,7 +32,7 @@ namespace Projek_SimBuku.Views.Pelanggan.Transaksi
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-
+            this.ParentForm.Close();
         }
     }
 }

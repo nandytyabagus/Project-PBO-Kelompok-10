@@ -34,12 +34,13 @@
             // 
             // button1
             // 
-            button1.Location = new Point(208, 375);
+            button1.Location = new Point(190, 378);
             button1.Name = "button1";
             button1.Size = new Size(152, 45);
             button1.TabIndex = 0;
             button1.Text = "button1";
             button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // label1
             // 
@@ -50,14 +51,14 @@
             label1.TabIndex = 1;
             label1.Text = "label1";
             // 
-            // Pembayaran
+            // Ewallet
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             Controls.Add(label1);
             Controls.Add(button1);
-            Name = "Pembayaran";
+            Name = "Ewallet";
             Size = new Size(550, 450);
             Load += Pembayaran_Load;
             ResumeLayout(false);

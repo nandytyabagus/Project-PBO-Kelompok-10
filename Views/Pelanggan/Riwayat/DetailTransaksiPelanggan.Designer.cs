@@ -1,6 +1,6 @@
-﻿namespace Projek_SimBuku.Views.Pelanggan.Transaksi
+﻿namespace Projek_SimBuku.Views.Pelanggan.Riwayat
 {
-    partial class FormTransaksi
+    partial class DetailTransaksiPelanggan
     {
         /// <summary>
         /// Required designer variable.
@@ -28,32 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
-            panel1 = new Panel();
             SuspendLayout();
             // 
-            // panel1
-            // 
-            panel1.Dock = DockStyle.Fill;
-            panel1.Location = new Point(0, 0);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(550, 450);
-            panel1.TabIndex = 1;
-            // 
-            // FormTransaksi
+            // DetailTransaksiPelanggan
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.White;
-            ClientSize = new Size(550, 450);
-            Controls.Add(panel1);
+            ClientSize = new Size(800, 450);
             FormBorderStyle = FormBorderStyle.None;
-            Name = "FormTransaksi";
+            Name = "DetailTransaksiPelanggan";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Buat_Transaksi";
+            Text = "DetailTransaksiPelanggan";
             ResumeLayout(false);
         }
 
         #endregion
-        public Panel panel1;
     }
 }

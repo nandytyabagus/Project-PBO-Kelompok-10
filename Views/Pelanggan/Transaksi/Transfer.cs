@@ -19,5 +19,12 @@ namespace Projek_SimBuku.Views.Pelanggan.Transaksi
             InitializeComponent();
             Controller = controller;
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Controller.UbahStatusTransaksi();
+            FormTransaksi View = new FormTransaksi(Controller, new Bukti_Pembayaran(Controller));
+            View.ShowDialog();
+        }
     }
 }

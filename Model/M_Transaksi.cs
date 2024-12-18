@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Projek_SimBuku.Views.Buku;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -13,7 +14,7 @@ namespace Projek_SimBuku.Model
         [Key]
         public int id_transaksi { get; set; }
         [Required]
-        public string tanggal_tansaksi { get; set; }
+        public string tanggal_transaksi { get; set; }
         [Required]
         public string status { get; set; }
         [Required]
@@ -28,7 +29,9 @@ namespace Projek_SimBuku.Model
         public int id_akun {  get; set; }
         [ForeignKey("M_Buku")]
         public int Id_Buku { get; set; }
-        [ForeignKey("M_MetodePembayaran")]
-        public int metode { get; set; }
+        [ForeignKey("M_Metode_Pembayaran")]
+        public string metode { get; set; }
+        public string judul_buku { get; set; }
+        public List<dynamic[]> Detail { get; set; }
     }
 }

@@ -33,11 +33,11 @@
             // 
             // button1
             // 
-            button1.Location = new Point(151, 305);
+            button1.Location = new Point(164, 355);
             button1.Name = "button1";
-            button1.Size = new Size(217, 97);
+            button1.Size = new Size(217, 54);
             button1.TabIndex = 0;
-            button1.Text = "button1";
+            button1.Text = "Selesai";
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click_1;
             // 

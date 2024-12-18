@@ -7,6 +7,8 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.ComponentModel.Design.ObjectSelectorEditor;
+using System.Windows.Forms;
 
 namespace Projek_SimBuku.Controller
 {
@@ -14,7 +16,6 @@ namespace Projek_SimBuku.Controller
     {
         C_Homepage Homepage;
         Peminjaman vpeminjaman;
-        M_Peminjaman m_peminjaman = new M_Peminjaman();
         public C_Peminjaman(C_Homepage homepage, Peminjaman peminjaman)
         {
             Homepage = homepage;
@@ -23,7 +24,7 @@ namespace Projek_SimBuku.Controller
         public List<M_Peminjaman> GetDataPeminjaman()
         {
             List<M_Peminjaman> Peminjaman = new List<M_Peminjaman>();
-            DataTable data = Execute_With_Return("SELECT t.id_transaksi, t.status, t.harga_sewa, t.tanggal_pengambilan, a.nama, b.judul_buku FROM transaksi t JOIN keranjang k ON t.id_keranjang = k.id_keranjang JOIN data_akun a ON k.id_akun = a.id_akun JOIN buku b ON k.id_buku = b.id_buku;");
+            DataTable data = Execute_With_Return("SELECT  t.id_transaksi, t.status, t.harga_sewa, t.tanggal_pengambilan, a.nama, b.judul_buku, b.pengarang, g.genre FROM transaksi t JOIN data_akun a ON t.id_akun = a.id_akun JOIN buku b ON t.id_buku = b.id_buku JOIN genre g ON b.id_genre = g.id_genre WHERE t.status = 'Dipinjam'; ");
 
             for (int i = 0; i < data.Rows.Count; i++)
             {
@@ -33,12 +34,14 @@ namespace Projek_SimBuku.Controller
                     status = data.Rows[i]["status"].ToString(),
                     harga_sewa = Convert.ToDecimal(data.Rows[i]["harga_sewa"]),
                     tanggal_pengambilan = data.Rows[i]["tanggal_pengambilan"].ToString(),
+                    Nama = data.Rows[i]["nama"].ToString(),
+                    Judul_buku = data.Rows[i]["judul_buku"].ToString()
                 };
                 Peminjaman.Add(m_Peminjaman);
             }
             return Peminjaman;
         }
-        public void Insert()
+        public void Update(int id)
         {
 
         }
@@ -58,7 +61,6 @@ namespace Projek_SimBuku.Controller
             vpeminjaman.dataPeminjaman.DataSource = GetDataPeminjaman();
 
             vpeminjaman.dataPeminjaman.Columns["Id_Transaksi"].Visible = false;
-
             vpeminjaman.dataPeminjaman.Columns["nama"].HeaderText = "Nama Pelanggan";
             vpeminjaman.dataPeminjaman.Columns["Judul_buku"].HeaderText = "Buku";
             vpeminjaman.dataPeminjaman.Columns["harga_sewa"].HeaderText = "Harga Sewa";
@@ -66,11 +68,7 @@ namespace Projek_SimBuku.Controller
             vpeminjaman.dataPeminjaman.Columns["status"].HeaderText = "Status";
 
             vpeminjaman.dataPeminjaman.Columns.Add(UbahStatus);
-
-        }
-        public void Update()
-        { 
-
+            vpeminjaman.dataPeminjaman.Refresh();
         }
     }
 }

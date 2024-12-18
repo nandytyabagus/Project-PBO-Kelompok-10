@@ -13,10 +13,15 @@ namespace Projek_SimBuku.Model
         [Key]
         public int Id_Transaksi { get; set; }
         [Required]
+        public string tanggal_pengambilan { get; set; }
+        [Required]
         public decimal denda { get; set; }
         [Required]
-        public string tanggal_pengembalian{ get; set; }
+        public decimal harga_sewa { get; set; }
         [Required]
         public string status { get; set; }
+        public string Nama { get; set; }
+        public string Judul_buku { get; set; }
+        public string pengarang { get; set; }
     }
 }

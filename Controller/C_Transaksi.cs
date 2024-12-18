@@ -1,7 +1,9 @@
 ﻿using Projek_SimBuku.Model;
 using Projek_SimBuku.Views.Admin.Buku;
 using Projek_SimBuku.Views.Admin.Transaksi;
+using Projek_SimBuku.Views.Buku;
 using Projek_SimBuku.Views.Pelanggan;
+using Projek_SimBuku.Views.Pelanggan.Riwayat;
 using Projek_SimBuku.Views.Pelanggan.Transaksi;
 using Projek_SimBuku.Views.Peminjaman;
 using System;
@@ -25,6 +27,7 @@ namespace Projek_SimBuku.Controller
         RiwayatPelanggan vriwayatPelanggan;
         BuatTransaksi vbuatTransaksi;
         FormTransaksi vForm;
+        DetailTransaksiPelanggan vdetailTransaksiPelanggan;
         M_Transaksi m_transaksi = new M_Transaksi();
         public C_Transaksi(C_Homepage homepage, Transaksi transaksi)
         {
@@ -50,13 +53,13 @@ namespace Projek_SimBuku.Controller
                 M_Transaksi m_transaksi = new M_Transaksi
                 {
                     id_transaksi = Convert.ToInt32(data.Rows[i]["id_transaksi"]),
-                    tanggal_tansaksi = data.Rows[i]["tanggal_tansaksi"].ToString(),
+                    tanggal_transaksi = data.Rows[i]["tanggal_tansaksi"].ToString(),
                     status = data.Rows[i]["status"].ToString(),
                     harga_sewa = Convert.ToDecimal(data.Rows[i]["harga_sewa"]),
                     harga_denda = Convert.ToDecimal(data.Rows[i]["harga_denda"]),
                     tanggal_pengambilan = data.Rows[i]["tanggal_pengambilan"].ToString(),
                     tanggal_pengembalian = data.Rows[i]["tanggal_pengembalian"].ToString(),
-                    metode = Convert.ToInt32(data.Rows[i]["i"])
+                    //metode = Convert.ToInt32(data.Rows[i]["i"])
                 };
                 transaksi.Add(m_transaksi);
             }
@@ -92,33 +95,25 @@ namespace Projek_SimBuku.Controller
             view.comboBox1.DisplayMember = "hari";
             view.comboBox1.ValueMember = "value";
             view.comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
-        } 
+        }
         public void Validasi_Transaksi(BuatTransaksi view)
         {
-            RadioButton selectedRadioButton = view.metode_pembayaran.Controls.OfType<RadioButton>().FirstOrDefault(rb => rb.Checked);
-            if (selectedRadioButton == null || view.comboBox1.SelectedValue == null || view.dateTimePicker1.Value == null)
+            if (view.E_wallet.Checked)
             {
-                MessageBox.Show("Lengkapi Data");
+                FormTransaksi View = new FormTransaksi(this, new Ewallet(this));
+                View.ShowDialog();
             }
-            else
+            else if (view.Transfer.Checked)
             {
-                MessageBox.Show("apakah anda yakin?");
-                if (view.E_wallet.Checked)
-                {
-                    FormTransaksi View = new FormTransaksi(this, new Bukti_Pembayaran(this));
-                    View.ShowDialog();
-                }
-                else if (view.Transfer.Checked)
-                {
-                    FormTransaksi View = new FormTransaksi(this, new Bukti_Pembayaran(this));
-                    View.ShowDialog();
-                }
-                else if (!view.Tunai.Checked)
-                {
-                    FormTransaksi View = new FormTransaksi(this, new Bukti_Pembayaran(this));
-                    View.ShowDialog();
-                }
+                FormTransaksi View = new FormTransaksi(this, new Transfer(this));
+                View.ShowDialog();
             }
+            else if (view.Tunai.Checked)
+            {
+                FormTransaksi View = new FormTransaksi(this, new Bukti_Pembayaran(this));
+                View.ShowDialog();
+            }
+
         }
         private int GetTotalBukuBelumDikembalikan(int idAkun)
         {
@@ -139,7 +134,6 @@ namespace Projek_SimBuku.Controller
                 MessageBox.Show("Anda masih memiliki 3 buku yang belum dikembalikan. Silakan kembalikan buku terlebih dahulu.");
                 return;
             }
-
             if (totalBukuDipinjam + M_Keranjang.StaticCartItems.Count > 3)
             {
                 MessageBox.Show("Maksimal 3 buku per akun. Kurangi jumlah buku yang ingin dipinjam.");
@@ -196,13 +190,13 @@ namespace Projek_SimBuku.Controller
                 }
                 Insert(transaksi, M_Sementara.id);
             }
-
             M_Keranjang.StaticCartItems.Clear();
         }
-
-
-
-
+        public void UbahStatusTransaksi()
+        {
+            string query = $"UPDATE INTO transaksi SET status = 'Lunas' Where id_akun = {M_Sementara.id};";
+            Execute_No_Return(query);
+        }
 
         public void Insert(object obj, int id)
         {
@@ -213,7 +207,7 @@ namespace Projek_SimBuku.Controller
                 return;
             }
             string query = $"INSERT INTO transaksi (id_akun, id_buku, id_metode_pembayaran, tanggal_pengambilan, tanggal_pengembalian, harga_sewa, status, harga_denda) " +
-                           $"VALUES ({id}, {transaksi.id_buku}, {transaksi.id_metode}, '{transaksi.Pengambilan:yyyy-MM-dd}', '{transaksi.Pengembalian:yyyy-MM-dd}', {transaksi.harga_sewa}, 'Lunas', null);";
+                           $"VALUES ({id}, {transaksi.id_buku}, {transaksi.id_metode}, '{transaksi.Pengambilan:yyyy-MM-dd}', '{transaksi.Pengembalian:yyyy-MM-dd}', {transaksi.harga_sewa}, 'Belum Dibayar', null);";
             try
             {
                 Execute_No_Return(query);
@@ -232,55 +226,104 @@ namespace Projek_SimBuku.Controller
             public DateTime Pengambilan { get; set; }
             public DateTime Pengembalian { get; set; }
             public int harga_sewa {  get; set; }
-
-
         }
 
-        //public List<M_Transaksi> GetRiwayatTransaksi()
-        //{
-        //    List<M_Transaksi> transaksi = new List<M_Transaksi>();
-        //    DataTable data = Execute_With_Return($"SELECT t.id_transaksi, t.tanggal_transaksi, t.status, t.harga_sewa, t.harga_denda, t.tanggal_pengambilan, t.tanggal_pengembalian, a.nama, b.judul_buku, mp.metode FROM transaksi t JOIN keranjang k ON t.id_keranjang = k.id_keranjang JOIN data_akun a ON k.id_akun = a.id_akun JOIN buku b ON k.id_buku = b.id_buku JOIN metode_pembayaran mp ON t.id_metode_pembayaran = mp.id_metode_pembayaran WHERE a.id_akun = {akun.id_akun};");
+        public List<M_Transaksi> GetRiwayatTransaksi(int id)
+        {
+            List<M_Transaksi> transaksi = new List<M_Transaksi>();
+            DataTable data = Execute_With_Return(
+                $"SELECT t.id_transaksi, t.tanggal_transaksi, t.status, t.harga_sewa," +
+                $"t.tanggal_pengambilan, t.tanggal_pengembalian, b.judul_buku, " +
+                $"mp.metode AS metode_pembayaran " +
+                $"FROM transaksi t " +
+                $"JOIN buku b ON t.id_buku = b.id_buku " +
+                $"JOIN metode_pembayaran mp ON t.id_metode_pembayaran = mp.id_metode_pembayaran WHERE id_akun = {M_Sementara.id};");
+            foreach (DataRow row in data.Rows)
+            {
+                M_Transaksi m_transaksi = new M_Transaksi
+                {
+                    id_transaksi = Convert.ToInt32(row["id_transaksi"]),
+                    metode = row["metode_pembayaran"].ToString(),
+                    tanggal_transaksi = row["tanggal_transaksi"].ToString(),
+                    status = row["status"].ToString(),
+                    harga_sewa = Convert.ToDecimal(row["harga_sewa"]),
+                    tanggal_pengambilan = row["tanggal_pengambilan"] == DBNull.Value ? null : row["tanggal_pengambilan"].ToString(),
+                    tanggal_pengembalian = row["tanggal_pengembalian"] == DBNull.Value ? null : row["tanggal_pengembalian"].ToString(),
+                    judul_buku = row["judul_buku"].ToString()
+                };
+                transaksi.Add(m_transaksi);
+            }
+            return transaksi;
+        }
+        public void LoadDatariwayat()
+        {
+            vriwayatPelanggan.dataGridView1.DataSource = null;
+            vriwayatPelanggan.dataGridView1.Columns.Clear();
 
-        //    for (int i = 0; i < data.Rows.Count; i++)
-        //    {
-        //        M_Transaksi m_transaksi = new M_Transaksi
-        //        {
-        //            id_transaksi = Convert.ToInt32(data.Rows[i]["id_transaksi"]),
-        //            tanggal_tansaksi = data.Rows[i]["tanggal_tansaksi"].ToString(),
-        //            status = data.Rows[i]["status"].ToString(),
-        //            harga_sewa = Convert.ToDecimal(data.Rows[i]["harga_sewa"]),
-        //            harga_denda = Convert.ToDecimal(data.Rows[i]["harga_denda"]),
-        //            tanggal_pengambilan = data.Rows[i]["tanggal_pengambilan"].ToString(),
-        //            tanggal_pengembalian = data.Rows[i]["tanggal_pengembalian"].ToString(),
-        //            metode = data.Rows[i]["metode"].ToString(),
-        //            Keranjang = new M_Keranjang
-        //            {
-        //                Buku = new M_Buku
-        //                {
-        //                    Judul_buku = data.Rows[i]["judul_buku"].ToString()
-        //                },
-        //            }
-        //        };
-        //        transaksi.Add(m_transaksi);
-        //    }
-        //    return transaksi;
-        //}
-        //public void LoadDatariwayat()
-        //{
-        //    vriwayatPelanggan.dataGridView1.DataSource = null;
-        //    vriwayatPelanggan.dataGridView1.Columns.Clear();
+            DataGridViewButtonColumn Detail = new DataGridViewButtonColumn
+            {
+                Name = "Detail",
+                UseColumnTextForButtonValue = true,
+                Text = "Detail"
+            };
 
-        //    vriwayatPelanggan.dataGridView1.DataSource = GetRiwayatTransaksi();
+            vriwayatPelanggan.dataGridView1.DataSource = GetRiwayatTransaksi(M_Sementara.id);
 
-        //    vriwayatPelanggan.dataGridView1.Columns["id_transaksi"].Visible = false;
-        //    vriwayatPelanggan.dataGridView1.Columns["tanggal_tansaksi"].HeaderText = "Tanggal Transaksi";
-        //    vriwayatPelanggan.dataGridView1.Columns["judul_buku"].HeaderText = "Buku";
-        //    vriwayatPelanggan.dataGridView1.Columns["Harga_Sewa"].HeaderText = "Harga Sewa";
-        //    vriwayatPelanggan.dataGridView1.Columns["Harga_Denda"].Visible = false;
-        //    vriwayatPelanggan.dataGridView1.Columns["tanggal_pengambilan"].Visible = false;
-        //    vriwayatPelanggan.dataGridView1.Columns["tanggal_pengembalian"].Visible = false;
-        //    vriwayatPelanggan.dataGridView1.Columns["metode"].Visible = false;
-        //}
+            vriwayatPelanggan.dataGridView1.Columns["id_transaksi"].Visible = false;
+            vriwayatPelanggan.dataGridView1.Columns["id_akun"].Visible = false;
+            vriwayatPelanggan.dataGridView1.Columns["Id_Buku"].Visible = false;
+            vriwayatPelanggan.dataGridView1.Columns["harga_denda"].Visible = false;
+            vriwayatPelanggan.dataGridView1.Columns["tanggal_transaksi"].HeaderText = "Tanggal Transaksi";
+            vriwayatPelanggan.dataGridView1.Columns["judul_buku"].HeaderText = "Judul Buku";
+            vriwayatPelanggan.dataGridView1.Columns["harga_sewa"].HeaderText = "Harga Sewa";
+            vriwayatPelanggan.dataGridView1.Columns["metode"].HeaderText = "Pembayaran";
+            vriwayatPelanggan.dataGridView1.Columns["tanggal_pengambilan"].HeaderText = "Tanggal Pengambilan";
+            vriwayatPelanggan.dataGridView1.Columns["status"].HeaderText = "Status";
+            vriwayatPelanggan.dataGridView1.Columns["tanggal_pengembalian"].HeaderText = "Tanggal Kembali";
+
+            vriwayatPelanggan.dataGridView1.Columns.Add(Detail);
+
+            vriwayatPelanggan.dataGridView1.Columns["Detail"].HeaderText = "";
+            vriwayatPelanggan.dataGridView1.Refresh();
+        }
+        public M_Transaksi getDetailTransaksi(int id)
+        {
+            DataTable data = Execute_With_Return(
+                "SELECT t.id_transaksi, t.tanggal_transaksi, t.status, t.harga_sewa, " +
+                "t.tanggal_pengambilan, t.tanggal_pengembalian, mp.metode AS metode_pembayaran, " +
+                "b.judul_buku, b.pengarang, b.tahun_terbit, g.genre " +
+                "FROM transaksi t " +
+                "JOIN metode_pembayaran mp ON t.id_metode_pembayaran = mp.id_metode_pembayaran " +
+                "JOIN buku b ON t.id_buku = b.id_buku " +
+                "JOIN genre g ON b.id_genre = g.id_genre " +
+                $"WHERE t.id_transaksi = {M_Sementara.id};");
+            M_Transaksi detail = new M_Transaksi();
+            detail.Detail = new List<dynamic[]>();
+            for (int i = 0; i < data.Rows.Count; i++)
+            {
+                detail.id_transaksi = (int)data.Rows[i]["id_transaksi"];
+                detail.tanggal_transaksi = data.Rows[i]["tanggal_transaksi"].ToString();
+                detail.status = data.Rows[i]["status"].ToString();
+                detail.harga_sewa = (decimal)data.Rows[i]["harga_sewa"];
+                detail.tanggal_pengambilan = data.Rows[i]["tanggal_pengambilan"] == DBNull.Value ? null : data.Rows[i]["tanggal_pengambilan"].ToString();
+                detail.tanggal_pengembalian = data.Rows[i]["tanggal_pengembalian"] == DBNull.Value ? null : data.Rows[i]["tanggal_pengembalian"].ToString();
+                detail.metode = data.Rows[i]["metode_pembayaran"].ToString();
+                detail.Detail.Add(new dynamic[]
+                {
+                    data.Rows[i]["judul_buku"].ToString(),
+                    data.Rows[i]["pengarang"].ToString(),
+                    data.Rows[i]["tahun_terbit"].ToString(),
+                    data.Rows[i]["nama_genre"].ToString()
+                });
+            }
+            return detail;
+        }
+        public void LoadDetailTransaksi(int id)
+        {
+            M_Transaksi data = getDetailTransaksi(id);
+            vdetailTransaksiPelanggan = new DetailTransaksiPelanggan(this, data);
+            vdetailTransaksiPelanggan.ShowDialog();
+        }
     }
 }
 

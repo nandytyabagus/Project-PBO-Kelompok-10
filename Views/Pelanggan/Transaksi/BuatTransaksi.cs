@@ -38,5 +38,10 @@ namespace Projek_SimBuku.Views.Pelanggan.Transaksi
         {
             Controller.Buat_transaks(this);
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.ParentForm.Close();
+        }
     }
 }

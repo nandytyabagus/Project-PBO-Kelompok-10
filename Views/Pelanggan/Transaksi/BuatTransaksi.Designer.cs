@@ -38,12 +38,13 @@
             Transfer = new RJRadioButton();
             comboBox1 = new ComboBox();
             metode_pembayaran = new Panel();
+            button2 = new Button();
             metode_pembayaran.SuspendLayout();
             SuspendLayout();
             // 
             // button1
             // 
-            button1.Location = new Point(327, 375);
+            button1.Location = new Point(323, 375);
             button1.Name = "button1";
             button1.Size = new Size(200, 50);
             button1.TabIndex = 17;
@@ -162,11 +163,22 @@
             metode_pembayaran.Size = new Size(250, 125);
             metode_pembayaran.TabIndex = 19;
             // 
+            // button2
+            // 
+            button2.Location = new Point(26, 375);
+            button2.Name = "button2";
+            button2.Size = new Size(200, 50);
+            button2.TabIndex = 20;
+            button2.Text = "Batal";
+            button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
+            // 
             // BuatTransaksi
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
+            Controls.Add(button2);
             Controls.Add(button1);
             Controls.Add(label4);
             Controls.Add(dateTimePicker1);
@@ -194,5 +206,6 @@
         public RJRadioButton Tunai;
         public RJRadioButton E_wallet;
         public RJRadioButton Transfer;
+        private Button button2;
     }
 }

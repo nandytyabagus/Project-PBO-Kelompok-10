@@ -13,5 +13,6 @@ namespace Projek_SimBuku.Model
         public int Id_Genre { get; set; }
         [Required]
         public string Genre { get; set; }
+        public ICollection<M_Buku> Buku { get; set; }
     }
 }
