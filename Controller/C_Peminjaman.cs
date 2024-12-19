@@ -48,7 +48,7 @@ namespace Projek_SimBuku.Controller
         {
             if (C_MassageBox.showConfirm("Apakah Anda Yakin Mengubah Status Peminjaman ?"))
             {
-                Execute_No_Return($"UPDATE transaksi SET status = 'Dipinjam' WHERE id_akun = {id}");
+                Execute_No_Return($"UPDATE transaksi SET status = 'Dipinjam' WHERE id_transaksi = {id}");
             }
         }
         public void LoadData()

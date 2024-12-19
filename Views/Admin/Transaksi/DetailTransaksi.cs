@@ -27,7 +27,7 @@ namespace Projek_SimBuku.Views.Admin.Transaksi
         private void label2_Click(object sender, EventArgs e)
         {
 
-            
+
         }
 
         private void label4_Click(object sender, EventArgs e)
@@ -66,7 +66,6 @@ namespace Projek_SimBuku.Views.Admin.Transaksi
                 Nama.Text = data[0].ToString();
                 Email.Text = data[1].ToString();
             }
-            //Judul.Text
         }
 
         private void Email_Click(object sender, EventArgs e)
@@ -76,7 +75,12 @@ namespace Projek_SimBuku.Views.Admin.Transaksi
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Controller.vdetail.Close();
+            this.Close();
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

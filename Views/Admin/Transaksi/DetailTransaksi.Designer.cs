@@ -186,7 +186,6 @@
             Email.Size = new Size(50, 20);
             Email.TabIndex = 13;
             Email.Text = "label4";
-            Email.Click += Email_Click;
             // 
             // Nama
             // 

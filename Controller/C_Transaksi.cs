@@ -68,10 +68,10 @@ namespace Projek_SimBuku.Controller
                     judul_buku = data.Rows[i]["judul_buku"].ToString(),
                     harga_sewa = Convert.ToDecimal(data.Rows[i]["harga_sewa"]),
                     metode = data.Rows[i]["metode"].ToString(),
-                    harga_denda = Convert.ToDecimal(data.Rows[i]["harga_denda"]),
+                    harga_denda = data.Rows[i]["harga_denda"] == DBNull.Value ? 0 : Convert.ToDecimal(data.Rows[i]["harga_denda"]),
                     status = data.Rows[i]["status"].ToString(),
-                    tanggal_pengambilan = data.Rows[i]["tanggal_pengambilan"].ToString(),
-                    tanggal_pengembalian = data.Rows[i]["tanggal_pengembalian"].ToString()
+                    tanggal_pengambilan = data.Rows[i]["tanggal_pengambilan"] == DBNull.Value ? null : data.Rows[i]["tanggal_pengambilan"].ToString(),
+                    tanggal_pengembalian = data.Rows[i]["tanggal_pengembalian"] == DBNull.Value ? null : data.Rows[i]["tanggal_pengembalian"].ToString()
                 };
                 transaksi.Add(m_transaksi);
             }
@@ -330,6 +330,7 @@ namespace Projek_SimBuku.Controller
             vriwayatPelanggan.dataGridView1.Columns["id_akun"].Visible = false;
             vriwayatPelanggan.dataGridView1.Columns["Id_Buku"].Visible = false;
             vriwayatPelanggan.dataGridView1.Columns["harga_denda"].Visible = false;
+            vriwayatPelanggan.dataGridView1.Columns["nama"].Visible = false;
             vriwayatPelanggan.dataGridView1.Columns["tanggal_transaksi"].HeaderText = "Tanggal Transaksi";
             vriwayatPelanggan.dataGridView1.Columns["judul_buku"].HeaderText = "Judul Buku";
             vriwayatPelanggan.dataGridView1.Columns["harga_sewa"].HeaderText = "Harga Sewa";
@@ -348,12 +349,12 @@ namespace Projek_SimBuku.Controller
             DataTable data = Execute_With_Return(
                 "SELECT t.id_transaksi, t.tanggal_transaksi, t.status, t.harga_sewa, " +
                 "t.tanggal_pengambilan, t.tanggal_pengembalian, mp.metode AS metode_pembayaran, " +
-                "b.judul_buku, b.pengarang, b.tahun_terbit, g.genre " +
+                "b.judul_buku, b.pengarang, b.tahun_terbit, b.penerbit, b.gambar, g.genre " +
                 "FROM transaksi t " +
                 "JOIN metode_pembayaran mp ON t.id_metode_pembayaran = mp.id_metode_pembayaran " +
                 "JOIN buku b ON t.id_buku = b.id_buku " +
                 "JOIN genre g ON b.id_genre = g.id_genre " +
-                $"WHERE t.id_transaksi = {M_Sementara.id};");
+                $"WHERE t.id_transaksi = {id};");
             M_Transaksi detail = new M_Transaksi();
             detail.Detail = new List<dynamic[]>();
             for (int i = 0; i < data.Rows.Count; i++)
@@ -369,8 +370,11 @@ namespace Projek_SimBuku.Controller
                 {
                     data.Rows[i]["judul_buku"].ToString(),
                     data.Rows[i]["pengarang"].ToString(),
+                    data.Rows[i]["penerbit"].ToString(),
                     data.Rows[i]["tahun_terbit"].ToString(),
-                    data.Rows[i]["nama_genre"].ToString()
+                    data.Rows[i]["genre"].ToString(),
+                    data.Rows[i]["Gambar"] != DBNull.Value ? (byte[])data.Rows[i]["Gambar"] : new byte[0],
+
                 });
             }
             return detail;

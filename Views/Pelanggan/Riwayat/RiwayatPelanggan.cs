@@ -32,9 +32,10 @@ namespace Projek_SimBuku.Views.Pelanggan
         {
             if (e.RowIndex >= 0)
             {
+                int idTransaksi = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells["id_transaksi"].Value);
                 if (e.ColumnIndex == dataGridView1.Columns["Detail"].Index)
                 {
-                    transaksi.LoadDetailTransaksi(M_Sementara.id);
+                    transaksi.LoadDetailTransaksi(idTransaksi);
                 }
             }
         }

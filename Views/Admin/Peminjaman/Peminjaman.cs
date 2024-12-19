@@ -32,10 +32,10 @@ namespace Projek_SimBuku.Views.Peminjaman
         {
             if (e.RowIndex >= 0)
             {
-                int idAkun = Convert.ToInt32(dataPeminjaman.Rows[e.RowIndex].Cells["id_akun"].Value);
+                int id = Convert.ToInt32(dataPeminjaman.Rows[e.RowIndex].Cells["id_transaksi"].Value);
                 if (e.ColumnIndex == dataPeminjaman.Columns["Ubah Status"].Index)
                 {
-                    peminjaman.Update(idAkun);
+                    peminjaman.Update(id);
                     peminjaman.LoadData();
                 }
             }
