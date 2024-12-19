@@ -1,4 +1,5 @@
 ﻿using Projek_SimBuku.Controller;
+using Projek_SimBuku.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -29,9 +30,26 @@ namespace Projek_SimBuku.Views.Peminjaman
 
         private void dataPeminjaman_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == dataPeminjaman.Columns["Ubah Status"].Index)
+            if (e.RowIndex >= 0)
             {
+                int idAkun = Convert.ToInt32(dataPeminjaman.Rows[e.RowIndex].Cells["id_akun"].Value);
+                if (e.ColumnIndex == dataPeminjaman.Columns["Ubah Status"].Index)
+                {
+                    peminjaman.Update(idAkun);
+                    peminjaman.LoadData();
+                }
+            }
+        }
 
+        private void Search_TextChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(Search.Text))
+            {
+                peminjaman.LoadData();
+            }
+            else
+            {
+                peminjaman.CariPeminjaman(Search.Text);
             }
         }
     }

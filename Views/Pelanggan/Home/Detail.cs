@@ -51,16 +51,24 @@ namespace Projek_SimBuku.Views.Pelanggan.Home
                 this.Close();
                 return;
             }
-            M_Keranjang keranjang = new M_Keranjang
+            if (Controller.CekPeminjaman(M_Sementara.id, bookId))
             {
-                Id_Buku = bookId,
-                Judul_buku = label1.Text,
-                Gambar = (byte[])new ImageConverter().ConvertTo(pictureBox1.Image, typeof(byte[])),
-                Genre = label2.Text,
-            };
-            M_Keranjang.StaticCartItems.Add(keranjang);
-            MessageBox.Show("Book has been added to your cart!");
-            this.Close();
+                MessageBox.Show("Book has been Borrowing!");
+                this.Close();
+            }
+            else
+            { 
+                M_Keranjang keranjang = new M_Keranjang
+                {
+                    Id_Buku = bookId,
+                    Judul_buku = label1.Text,
+                    Gambar = (byte[])new ImageConverter().ConvertTo(pictureBox1.Image, typeof(byte[])),
+                    Genre = label2.Text,
+                };
+                M_Keranjang.StaticCartItems.Add(keranjang);
+                MessageBox.Show("Book has been added to your cart!");
+                this.Close();
+            }
         }
 
         private void label7_Click(object sender, EventArgs e)

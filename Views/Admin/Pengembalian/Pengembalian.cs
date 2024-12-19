@@ -1,4 +1,5 @@
 ﻿using Projek_SimBuku.Controller;
+using Projek_SimBuku.Model;
 using Projek_SimBuku.Views.Peminjaman;
 using System;
 using System.Collections.Generic;
@@ -26,6 +27,36 @@ namespace Projek_SimBuku.Views.Pengembalian
         private void Pengembalian_Load(object sender, EventArgs e)
         {
             pengembalian.LoadData();
+        }
+
+        private void dataPengembalian_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                int id = Convert.ToInt32(dataPengembalian.Rows[e.RowIndex].Cells["Id_Transaksi"].Value);
+                if (e.ColumnIndex == dataPengembalian.Columns["Ubah Status"].Index)
+                {
+                    pengembalian.UpdateStatus(id);
+                    pengembalian.LoadData();
+                }
+            }
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void Search_TextChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(Search.Text))
+            {
+                pengembalian.LoadData();
+            }
+            else
+            {
+                pengembalian.CariPengembalian(Search.Text);
+            }
         }
     }
 }

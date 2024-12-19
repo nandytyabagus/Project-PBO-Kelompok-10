@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             dataPengembalian = new DataGridView();
             panel2 = new Panel();
             panel1 = new Panel();
@@ -42,20 +42,21 @@
             // dataPengembalian
             // 
             dataPengembalian.BackgroundColor = Color.White;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = SystemColors.Control;
-            dataGridViewCellStyle1.Font = new Font("Myanmar Text", 10.8F, FontStyle.Bold);
-            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dataPengembalian.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.Control;
+            dataGridViewCellStyle2.Font = new Font("Myanmar Text", 10.8F, FontStyle.Bold);
+            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            dataPengembalian.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dataPengembalian.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataPengembalian.Location = new Point(20, 20);
             dataPengembalian.Name = "dataPengembalian";
             dataPengembalian.RowHeadersWidth = 51;
             dataPengembalian.Size = new Size(1378, 710);
             dataPengembalian.TabIndex = 0;
+            dataPengembalian.CellContentClick += dataPengembalian_CellContentClick;
             // 
             // panel2
             // 
@@ -76,6 +77,7 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(400, 80);
             panel1.TabIndex = 5;
+            panel1.Paint += panel1_Paint;
             // 
             // Search
             // 
@@ -88,6 +90,7 @@
             Search.PlaceholderText = "Search";
             Search.Size = new Size(272, 39);
             Search.TabIndex = 1;
+            Search.TextChanged += Search_TextChanged;
             // 
             // button1
             // 

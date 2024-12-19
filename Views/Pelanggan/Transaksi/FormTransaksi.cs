@@ -21,6 +21,7 @@ namespace Projek_SimBuku.Views.Pelanggan.Transaksi
             InitializeComponent();
             Controller = controller;
             panel1.Controls.Add(view);
+            Controller = new C_Transaksi(this);
         }
         private void Close_Button_Click(object sender, EventArgs e)
         {

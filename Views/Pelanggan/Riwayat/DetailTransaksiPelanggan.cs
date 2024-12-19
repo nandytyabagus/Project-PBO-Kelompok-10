@@ -15,10 +15,13 @@ namespace Projek_SimBuku.Views.Pelanggan.Riwayat
     public partial class DetailTransaksiPelanggan : Form
     {
         C_Transaksi Controller;
+        M_Transaksi Model;
         public DetailTransaksiPelanggan(C_Transaksi controller,M_Transaksi data)
         {
             InitializeComponent();
             Controller = controller;
+            Model = data;
         }
+
     }
 }

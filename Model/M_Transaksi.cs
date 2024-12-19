@@ -32,6 +32,8 @@ namespace Projek_SimBuku.Model
         [ForeignKey("M_Metode_Pembayaran")]
         public string metode { get; set; }
         public string judul_buku { get; set; }
+        public string nama { get; set; }
         public List<dynamic[]> Detail { get; set; }
+        public List<dynamic[]> DetailAkun { get; set; }
     }
 }

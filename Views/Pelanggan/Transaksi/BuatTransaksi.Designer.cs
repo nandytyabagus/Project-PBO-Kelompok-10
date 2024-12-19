@@ -155,6 +155,7 @@
             // 
             // metode_pembayaran
             // 
+            metode_pembayaran.BackColor = Color.White;
             metode_pembayaran.Controls.Add(Transfer);
             metode_pembayaran.Controls.Add(E_wallet);
             metode_pembayaran.Controls.Add(Tunai);

@@ -1,6 +1,6 @@
-﻿namespace Projek_SimBuku.Views.Pelanggan.Riwayat
+﻿namespace Projek_SimBuku.Views.Admin.Transaksi
 {
-    partial class DetailTransaksiPelanggan
+    partial class DetailTransaksi
     {
         /// <summary>
         /// Required designer variable.
@@ -28,21 +28,34 @@
         /// </summary>
         private void InitializeComponent()
         {
+            pictureBox1 = new PictureBox();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
-            // DetailTransaksiPelanggan
+            // pictureBox1
+            // 
+            pictureBox1.Location = new Point(38, 37);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(200, 250);
+            pictureBox1.TabIndex = 0;
+            pictureBox1.TabStop = false;
+            // 
+            // DetailTransaksi
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(1000, 600);
+            Controls.Add(pictureBox1);
             FormBorderStyle = FormBorderStyle.None;
-            Name = "DetailTransaksiPelanggan";
-            StartPosition = FormStartPosition.CenterScreen;
-            Text = "DetailTransaksiPelanggan";
+            Name = "DetailTransaksi";
+            Text = "DetailTransaksi";
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
+
+        private PictureBox pictureBox1;
     }
 }

@@ -34,7 +34,7 @@ namespace Projek_SimBuku.Controller
         public List<M_Buku> GetListBuku()
         {
             List<M_Buku> bukuList = new List<M_Buku>();
-            DataTable data = Execute_With_Return("SELECT Buku.Id_Buku, Buku.Judul_Buku, Buku.Tahun_Terbit, Buku.Stok, Buku.Gambar, Buku.keterangan, Buku.pengarang, Buku.penerbit, genre.genre  FROM Buku JOIN Genre ON Buku.Id_Genre = Genre.Id_Genre;");
+            DataTable data = Execute_With_Return("SELECT Buku.Id_Buku, Buku.Judul_Buku, Buku.Tahun_Terbit, Buku.Stok, Buku.Gambar, Buku.keterangan, Buku.pengarang, Buku.penerbit, genre.genre  FROM Buku JOIN Genre ON Buku.Id_Genre = Genre.Id_Genre WHERE stok > 0;");
 
             foreach (DataRow row in data.Rows)
             {
@@ -171,6 +171,12 @@ namespace Projek_SimBuku.Controller
             {
                 CreateKatalog(buku);
             }
+        }
+        public bool CekPeminjaman(int idAkun, int idBuku)
+        {
+            string query = $"SELECT COUNT(*) FROM transaksi WHERE id_akun = {idAkun} AND id_buku = {idBuku} AND status != 'Dikembalikan';";
+            DataTable result = Execute_With_Return(query);
+            return result.Rows.Count > 0 && Convert.ToInt32(result.Rows[0][0]) > 0;
         }
     }
 }

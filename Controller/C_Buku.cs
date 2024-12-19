@@ -161,8 +161,9 @@ namespace Projek_SimBuku.Controller
             var filteredData = GetListBuku().Where(b => 
             b.Judul_buku.Contains(keyword, StringComparison.OrdinalIgnoreCase) || 
             b.Pengarang.Contains(keyword, StringComparison.OrdinalIgnoreCase) || 
-            b.Genre.Contains(keyword, StringComparison.OrdinalIgnoreCase) || 
-            b.Penerbit.Contains(keyword, StringComparison.OrdinalIgnoreCase)).ToList();
+            b.Genre.Contains(keyword, StringComparison.OrdinalIgnoreCase) ||
+            b.Penerbit.Contains(keyword, StringComparison.OrdinalIgnoreCase) ||
+            b.Stok.ToString().Contains(keyword, StringComparison.OrdinalIgnoreCase)).ToList();
 
 
             DataGridViewButtonColumn Delete = new DataGridViewButtonColumn

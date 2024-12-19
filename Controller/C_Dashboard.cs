@@ -31,10 +31,10 @@ namespace Projek_SimBuku.Controller
             DataTable DataBuku = Execute_With_Return("SELECT COUNT(*) AS total FROM buku");
             info.dataBuku = Convert.ToInt32(DataBuku.Rows[0]["total"]);
 
-            DataTable DataPeminjaman = Execute_With_Return("SELECT COUNT(*) AS total FROM transaksi WHERE status = 'dipinjam'");
+            DataTable DataPeminjaman = Execute_With_Return("SELECT COUNT(*) AS total FROM transaksi WHERE status = 'Dipinjam'");
             info.dataPeminjaman = Convert.ToInt32(DataPeminjaman.Rows[0]["total"]);
 
-            DataTable DataPengembalian = Execute_With_Return("SELECT COUNT(*) AS total FROM transaksi WHERE status = 'dikembalikan'");
+            DataTable DataPengembalian = Execute_With_Return("SELECT COUNT(*) AS total FROM transaksi WHERE status = 'Kembali'");
             info.dataPengembalian = Convert.ToInt32(DataPengembalian.Rows[0]["total"]);
 
             if (info.dataAkun != 0)

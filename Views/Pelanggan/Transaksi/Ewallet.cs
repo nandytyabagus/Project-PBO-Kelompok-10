@@ -28,8 +28,10 @@ namespace Projek_SimBuku.Views.Pelanggan.Transaksi
         private void button1_Click(object sender, EventArgs e)
         {
             Controller.UbahStatusTransaksi();
+            this.ParentForm.Close();
             FormTransaksi View = new FormTransaksi(Controller, new Bukti_Pembayaran(Controller));
             View.ShowDialog();
+
         }
     }
 }

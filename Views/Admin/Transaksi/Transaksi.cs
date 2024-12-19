@@ -19,12 +19,25 @@ namespace Projek_SimBuku.Views.Admin.Transaksi
         {
             InitializeComponent();
             Controller = controller;
-            transaksi = new C_Transaksi(controller,this);
+            transaksi = new C_Transaksi(controller, this);
         }
 
         private void Transaksi_Load(object sender, EventArgs e)
         {
             transaksi.LoadData();
+
+        }
+
+        private void Search_TextChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(Search.Text))
+            {
+                transaksi.LoadData();
+            }
+            else
+            {
+                transaksi.SearchTransaksi(Search.Text);
+            }
         }
     }
 }
