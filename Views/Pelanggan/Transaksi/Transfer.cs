@@ -26,5 +26,15 @@ namespace Projek_SimBuku.Views.Pelanggan.Transaksi
             FormTransaksi View = new FormTransaksi(Controller, new Bukti_Pembayaran(Controller));
             View.ShowDialog();
         }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Transfer_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Projek_SimBuku.Controller;
+using Projek_SimBuku.Model;
 using Projek_SimBuku.Views.Pelanggan;
 using System;
 using System.Collections.Generic;
@@ -51,6 +52,16 @@ namespace Projek_SimBuku.Views
         private void button_Hide_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void panel3_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void Homepage_pelanggan_Load(object sender, EventArgs e)
+        {
+            Controller.NamaFoto(M_Sementara.id);
         }
     }
 }

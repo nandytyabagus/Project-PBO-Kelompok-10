@@ -13,6 +13,7 @@ using System.Windows.Forms;
 using static Projek_SimBuku.Controller.C_Buku;
 using static Projek_SimBuku.Controller.C_LoginRegister;
 using static System.Runtime.InteropServices.JavaScript.JSType;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace Projek_SimBuku.Controller
 {
@@ -21,56 +22,76 @@ namespace Projek_SimBuku.Controller
         C_Homepage vhomepage;
         Setting vsetting;
         M_Akun m_akun = new M_Akun();
+        C_MassageBox C_MassageBox = new C_MassageBox();
         bool edit;
         public C_Profile(C_Homepage homepage, Setting setting) 
         { 
             vhomepage = homepage;
             vsetting = setting;
         }
-        public void Get()
+        public M_Akun GetDataAkun(int id)
         {
-            DataTable data = Execute_With_Return($"SELECT * FROM Data_Akun WHERE id_akun = {M_Sementara.id}");
+            DataTable data = Execute_With_Return($"SELECT * FROM Data_Akun WHERE id_akun = {id}");
+            M_Akun akun = new M_Akun();
+
             if (data.Rows.Count > 0)
             {
                 DataRow row = data.Rows[0];
-                m_akun.id_akun = Convert.ToInt32(row["id_Akun"]);
-                m_akun.username = row["username"].ToString();
-                m_akun.password = row["password"].ToString();
-                m_akun.nama = row["nama"].ToString();
-                m_akun.email = row["email"].ToString();
-                m_akun.nomor_hp = row["nomor_hp"].ToString();
-                m_akun.gambar = row["Gambar"] != DBNull.Value ? (byte[])row["Gambar"] : null;
+
+                akun.id_akun = Convert.ToInt32(row["id_akun"]);
+                akun.username = row["username"].ToString();
+                akun.password = row["password"].ToString();
+                akun.nama = row["nama"].ToString();
+                akun.email = row["email"].ToString();
+                akun.nomor_hp = row["nomor_hp"].ToString();
+                akun.gambar = row["gambar"] != DBNull.Value ? (byte[])row["gambar"] : null;
+            }
+            return akun;
+        }
+
+        public void LoadDataAkun()
+        {
+            M_Akun akun = GetDataAkun(M_Sementara.id);
+            vsetting.textBox1.Text = akun.nama;
+            vsetting.textBox2.Text = akun.username;
+            vsetting.textBox3.Text = akun.password;
+            vsetting.textBox4.Text = akun.email;
+            vsetting.textBox5.Text = akun.nomor_hp;
+
+            if (akun.gambar != null && akun.gambar.Length > 0)
+            {
+                using (MemoryStream ms = new MemoryStream(akun.gambar))
+                {
+                    vsetting.pictureBox1.Image = Image.FromStream(ms);
+                }
+            }
+            else
+            {
+                vsetting.pictureBox1.Image = null;
             }
         }
 
-        public void loadDataAkun()
-        {
-            if (m_akun.gambar != null && m_akun.gambar.Length > 0)
-                vsetting.pictureBox1.Image = Image.FromStream(new MemoryStream(m_akun.gambar));
-
-            //vsetting.nama.Text = m_akun.nama;
-            //vsetting.username.Text = m_akun.username;
-            //vsetting.password.Text = m_akun.password;
-            //vsetting.email.Text = m_akun.email;
-            //vsetting.nomor.Text = m_akun.nomor_hp;
-        }
         public void UbahData()
         {
-            Akun data = new Akun()
+            if (C_MassageBox.showConfirm("Apakah Anda Suda Yakin Mengubah Data ?"))
             {
-                //Password = vsetting.password.Text,
-                //Nama = vsetting.nama.Text,
-                //Email = vsetting.email.Text,
-                gambar = (byte[])new ImageConverter().ConvertTo(vsetting.pictureBox1.Image, typeof(byte[]))
-            };
-            try
-            {
-                Update(data,M_Sementara.id);
-                vhomepage.switchViewPelanggan(vsetting);
-            }
-            catch 
-            {
-                MessageBox.Show($"Terjadi kesalahan", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Akun akun = new Akun
+                {
+                    Nama = vsetting.textBox1.Text,
+                    Username = vsetting.textBox2.Text,
+                    Password = vsetting.textBox3.Text,
+                    Email = vsetting.textBox4.Text,
+                    Nomor_Hp = vsetting.textBox5.Text,
+                    gambar = (byte[])new ImageConverter().ConvertTo(vsetting.pictureBox1.Image, typeof(byte[]))
+                };
+                try
+                {
+                    Update(akun,M_Sementara.id);
+                    LoadDataAkun();
+                    C_MassageBox.showMassageBox("Data Berhasil Dirubah");
+                }
+                catch { }
+
             }
         }
         public void Update(object obj,int id)

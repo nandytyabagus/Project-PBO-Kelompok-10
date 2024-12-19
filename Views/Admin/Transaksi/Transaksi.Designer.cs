@@ -56,6 +56,7 @@
             dataTransaksi.RowHeadersWidth = 51;
             dataTransaksi.Size = new Size(1378, 710);
             dataTransaksi.TabIndex = 0;
+            dataTransaksi.CellContentClick += dataTransaksi_CellContentClick;
             // 
             // panel2
             // 

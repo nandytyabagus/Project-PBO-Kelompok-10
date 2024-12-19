@@ -16,7 +16,9 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static Projek_SimBuku.Controller.C_Transaksi;
 using static System.Runtime.InteropServices.JavaScript.JSType;
+using QRCoder;
 
 namespace Projek_SimBuku.Controller
 {
@@ -29,6 +31,7 @@ namespace Projek_SimBuku.Controller
         BuatTransaksi vbuatTransaksi;
         FormTransaksi vForm;
         DetailTransaksiPelanggan vdetailTransaksiPelanggan;
+        public DetailTransaksi ? vdetail;
         M_Transaksi m_transaksi = new M_Transaksi();
         public C_Transaksi(C_Homepage homepage, Transaksi transaksi)
         {
@@ -79,6 +82,14 @@ namespace Projek_SimBuku.Controller
             vtransaksi.dataTransaksi.DataSource = null;
             vtransaksi.dataTransaksi.Columns.Clear();
 
+            DataGridViewButtonColumn Detail = new DataGridViewButtonColumn
+            {
+                Name = "Detail",
+                UseColumnTextForButtonValue = true,
+                Text = "Detail",
+                HeaderText = ""
+            };
+
             vtransaksi.dataTransaksi.DataSource = GetDataTransaksi(); 
 
             vtransaksi.dataTransaksi.Columns["id_transaksi"].Visible = false;
@@ -94,6 +105,7 @@ namespace Projek_SimBuku.Controller
             vtransaksi.dataTransaksi.Columns["judul_buku"].HeaderText = "Buku";
             vtransaksi.dataTransaksi.Columns["harga_sewa"].HeaderText = "Harga Sewa";
 
+            vtransaksi.dataTransaksi.Columns.Add(Detail);
             vtransaksi.dataTransaksi.Refresh();
         }
         public void SearchTransaksi(string keyword)
@@ -368,6 +380,57 @@ namespace Projek_SimBuku.Controller
             M_Transaksi data = getDetailTransaksiPelanggan(id);
             vdetailTransaksiPelanggan = new DetailTransaksiPelanggan(this, data);
             vdetailTransaksiPelanggan.ShowDialog();
+        }
+        public M_Transaksi getDetailTransaksi(int id)
+        {
+            DataTable data = Execute_With_Return(
+                "SELECT t.id_transaksi, t.tanggal_transaksi, t.status, t.harga_sewa, " +
+                "t.tanggal_pengambilan, t.tanggal_pengembalian, mp.metode AS metode_pembayaran, " +
+                "b.judul_buku, b.pengarang, b.penerbit, b.tahun_terbit, b.gambar, g.genre, " +
+                "a.nama, a.email " +
+                "FROM transaksi t " +
+                "JOIN metode_pembayaran mp ON t.id_metode_pembayaran = mp.id_metode_pembayaran " +
+                "JOIN buku b ON t.id_buku = b.id_buku " +
+                "JOIN genre g ON b.id_genre = g.id_genre " +
+                "JOIN data_akun a ON t.id_akun = a.id_akun " +
+                $"WHERE t.id_transaksi = {id};");
+
+            M_Transaksi detail = new M_Transaksi();
+
+            detail.Detail = new List<dynamic[]>();
+            detail.DetailAkun = new List<dynamic[]>();
+
+            for (int i = 0; i < data.Rows.Count; i++)
+            {
+                detail.id_transaksi = (int)data.Rows[i]["id_transaksi"];
+                detail.tanggal_transaksi = data.Rows[i]["tanggal_transaksi"].ToString();
+                detail.status = data.Rows[i]["status"].ToString();
+                detail.harga_sewa = (decimal)data.Rows[i]["harga_sewa"];
+                detail.tanggal_pengambilan = data.Rows[i]["tanggal_pengambilan"] == DBNull.Value ? null : data.Rows[i]["tanggal_pengambilan"].ToString();
+                detail.tanggal_pengembalian = data.Rows[i]["tanggal_pengembalian"] == DBNull.Value ? null : data.Rows[i]["tanggal_pengembalian"].ToString();
+                detail.metode = data.Rows[i]["metode_pembayaran"].ToString();
+                detail.Detail.Add(new dynamic[]
+                {
+                    data.Rows[i]["judul_buku"].ToString(),
+                    data.Rows[i]["pengarang"].ToString(),
+                    data.Rows[i]["penerbit"].ToString(),
+                    data.Rows[i]["tahun_terbit"].ToString(),
+                    data.Rows[i]["genre"].ToString(),
+                    data.Rows[i]["Gambar"] != DBNull.Value ? (byte[])data.Rows[i]["Gambar"] : new byte[0],
+                });
+                detail.DetailAkun.Add(new dynamic[]
+                {
+                    data.Rows[i]["nama"].ToString(),
+                    data.Rows[i]["email"].ToString()
+                });
+            }
+            return detail;
+        }
+        public void LoadDetail(int id)
+        {
+            M_Transaksi data = getDetailTransaksi(id);
+            vdetail = new DetailTransaksi(this, data);
+            vdetail.ShowDialog();
         }
     }
 }

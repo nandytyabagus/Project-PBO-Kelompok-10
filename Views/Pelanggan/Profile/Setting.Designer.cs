@@ -30,29 +30,43 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Setting));
             panel1 = new Panel();
-            button6 = new Button();
-            button3 = new Button();
-            button2 = new Button();
+            batal = new Button();
+            simpan = new Button();
+            edit = new Button();
+            hapusfoto = new Button();
+            gantifoto = new Button();
             panel7 = new Panel();
             pictureBox1 = new PictureBox();
             panel6 = new Panel();
+            textBox5 = new TextBox();
             panel5 = new Panel();
+            textBox4 = new TextBox();
             panel4 = new Panel();
+            textBox3 = new TextBox();
             panel3 = new Panel();
+            textBox2 = new TextBox();
             panel2 = new Panel();
+            textBox1 = new TextBox();
             button1 = new Button();
             panel1.SuspendLayout();
             panel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            panel6.SuspendLayout();
+            panel5.SuspendLayout();
+            panel4.SuspendLayout();
+            panel3.SuspendLayout();
+            panel2.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
             // 
             panel1.BackColor = Color.Transparent;
             panel1.BackgroundImage = Properties.Resources.c086f66e_0baf_426c_8627_adea8b1f6719;
-            panel1.Controls.Add(button6);
-            panel1.Controls.Add(button3);
-            panel1.Controls.Add(button2);
+            panel1.Controls.Add(batal);
+            panel1.Controls.Add(simpan);
+            panel1.Controls.Add(edit);
+            panel1.Controls.Add(hapusfoto);
+            panel1.Controls.Add(gantifoto);
             panel1.Controls.Add(panel7);
             panel1.Controls.Add(panel6);
             panel1.Controls.Add(panel5);
@@ -65,55 +79,89 @@
             panel1.Size = new Size(1800, 770);
             panel1.TabIndex = 2;
             // 
-            // button6
+            // batal
             // 
-            button6.BackColor = Color.Transparent;
-            button6.BackgroundImage = (Image)resources.GetObject("button6.BackgroundImage");
-            button6.BackgroundImageLayout = ImageLayout.Stretch;
-            button6.FlatAppearance.BorderSize = 0;
-            button6.FlatStyle = FlatStyle.Flat;
-            button6.Font = new Font("Myanmar Text", 13.8F, FontStyle.Bold);
-            button6.Location = new Point(725, 677);
-            button6.Name = "button6";
-            button6.Size = new Size(350, 73);
-            button6.TabIndex = 11;
-            button6.Text = "EDIT";
-            button6.UseVisualStyleBackColor = false;
-            button6.Click += button6_Click;
+            batal.BackColor = Color.Transparent;
+            batal.BackgroundImage = (Image)resources.GetObject("batal.BackgroundImage");
+            batal.BackgroundImageLayout = ImageLayout.Stretch;
+            batal.FlatAppearance.BorderSize = 0;
+            batal.FlatStyle = FlatStyle.Flat;
+            batal.Font = new Font("Myanmar Text", 13.8F, FontStyle.Bold);
+            batal.Location = new Point(994, 677);
+            batal.Name = "batal";
+            batal.Size = new Size(350, 73);
+            batal.TabIndex = 13;
+            batal.Text = "BATAL";
+            batal.UseVisualStyleBackColor = false;
+            batal.Visible = false;
+            batal.Click += batal_Click;
             // 
-            // button3
+            // simpan
             // 
-            button3.BackColor = Color.Transparent;
-            button3.BackgroundImage = (Image)resources.GetObject("button3.BackgroundImage");
-            button3.BackgroundImageLayout = ImageLayout.Stretch;
-            button3.FlatAppearance.BorderSize = 0;
-            button3.FlatStyle = FlatStyle.Flat;
-            button3.Font = new Font("Myanmar Text", 13.8F, FontStyle.Bold);
-            button3.Location = new Point(100, 543);
-            button3.Name = "button3";
-            button3.Size = new Size(350, 73);
-            button3.TabIndex = 7;
-            button3.Text = "Hapus Foto";
-            button3.UseVisualStyleBackColor = false;
-            button3.Visible = false;
-            button3.Click += button3_Click;
+            simpan.BackColor = Color.Transparent;
+            simpan.BackgroundImage = (Image)resources.GetObject("simpan.BackgroundImage");
+            simpan.BackgroundImageLayout = ImageLayout.Stretch;
+            simpan.FlatAppearance.BorderSize = 0;
+            simpan.FlatStyle = FlatStyle.Flat;
+            simpan.Font = new Font("Myanmar Text", 13.8F, FontStyle.Bold);
+            simpan.Location = new Point(1350, 677);
+            simpan.Name = "simpan";
+            simpan.Size = new Size(350, 73);
+            simpan.TabIndex = 12;
+            simpan.Text = "SIMPAN";
+            simpan.UseVisualStyleBackColor = false;
+            simpan.Visible = false;
+            simpan.Click += button4_Click;
             // 
-            // button2
+            // edit
             // 
-            button2.BackColor = Color.Transparent;
-            button2.BackgroundImage = (Image)resources.GetObject("button2.BackgroundImage");
-            button2.BackgroundImageLayout = ImageLayout.Stretch;
-            button2.FlatAppearance.BorderSize = 0;
-            button2.FlatStyle = FlatStyle.Flat;
-            button2.Font = new Font("Myanmar Text", 13.8F, FontStyle.Bold);
-            button2.Location = new Point(100, 455);
-            button2.Name = "button2";
-            button2.Size = new Size(350, 73);
-            button2.TabIndex = 6;
-            button2.Text = "Ganti Foto";
-            button2.UseVisualStyleBackColor = false;
-            button2.Visible = false;
-            button2.Click += button2_Click;
+            edit.BackColor = Color.Transparent;
+            edit.BackgroundImage = (Image)resources.GetObject("edit.BackgroundImage");
+            edit.BackgroundImageLayout = ImageLayout.Stretch;
+            edit.FlatAppearance.BorderSize = 0;
+            edit.FlatStyle = FlatStyle.Flat;
+            edit.Font = new Font("Myanmar Text", 13.8F, FontStyle.Bold);
+            edit.Location = new Point(725, 677);
+            edit.Name = "edit";
+            edit.Size = new Size(350, 73);
+            edit.TabIndex = 11;
+            edit.Text = "EDIT";
+            edit.UseVisualStyleBackColor = false;
+            edit.Click += button6_Click;
+            // 
+            // hapusfoto
+            // 
+            hapusfoto.BackColor = Color.Transparent;
+            hapusfoto.BackgroundImage = (Image)resources.GetObject("hapusfoto.BackgroundImage");
+            hapusfoto.BackgroundImageLayout = ImageLayout.Stretch;
+            hapusfoto.FlatAppearance.BorderSize = 0;
+            hapusfoto.FlatStyle = FlatStyle.Flat;
+            hapusfoto.Font = new Font("Myanmar Text", 13.8F, FontStyle.Bold);
+            hapusfoto.Location = new Point(100, 543);
+            hapusfoto.Name = "hapusfoto";
+            hapusfoto.Size = new Size(350, 73);
+            hapusfoto.TabIndex = 7;
+            hapusfoto.Text = "Hapus Foto";
+            hapusfoto.UseVisualStyleBackColor = false;
+            hapusfoto.Visible = false;
+            hapusfoto.Click += button3_Click;
+            // 
+            // gantifoto
+            // 
+            gantifoto.BackColor = Color.Transparent;
+            gantifoto.BackgroundImage = (Image)resources.GetObject("gantifoto.BackgroundImage");
+            gantifoto.BackgroundImageLayout = ImageLayout.Stretch;
+            gantifoto.FlatAppearance.BorderSize = 0;
+            gantifoto.FlatStyle = FlatStyle.Flat;
+            gantifoto.Font = new Font("Myanmar Text", 13.8F, FontStyle.Bold);
+            gantifoto.Location = new Point(100, 455);
+            gantifoto.Name = "gantifoto";
+            gantifoto.Size = new Size(350, 73);
+            gantifoto.TabIndex = 6;
+            gantifoto.Text = "Ganti Foto";
+            gantifoto.UseVisualStyleBackColor = false;
+            gantifoto.Visible = false;
+            gantifoto.Click += button2_Click;
             // 
             // panel7
             // 
@@ -139,50 +187,106 @@
             panel6.BackColor = Color.Transparent;
             panel6.BackgroundImage = (Image)resources.GetObject("panel6.BackgroundImage");
             panel6.BackgroundImageLayout = ImageLayout.Stretch;
+            panel6.Controls.Add(textBox5);
             panel6.Location = new Point(1163, 295);
             panel6.Name = "panel6";
             panel6.Size = new Size(537, 80);
             panel6.TabIndex = 3;
+            // 
+            // textBox5
+            // 
+            textBox5.BorderStyle = BorderStyle.None;
+            textBox5.Enabled = false;
+            textBox5.Font = new Font("Myanmar Text", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            textBox5.Location = new Point(25, 18);
+            textBox5.Name = "textBox5";
+            textBox5.Size = new Size(492, 44);
+            textBox5.TabIndex = 4;
             // 
             // panel5
             // 
             panel5.BackColor = Color.Transparent;
             panel5.BackgroundImage = (Image)resources.GetObject("panel5.BackgroundImage");
             panel5.BackgroundImageLayout = ImageLayout.Stretch;
+            panel5.Controls.Add(textBox4);
             panel5.Location = new Point(1163, 139);
             panel5.Name = "panel5";
             panel5.Size = new Size(537, 80);
             panel5.TabIndex = 2;
+            // 
+            // textBox4
+            // 
+            textBox4.BorderStyle = BorderStyle.None;
+            textBox4.Enabled = false;
+            textBox4.Font = new Font("Myanmar Text", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            textBox4.Location = new Point(25, 17);
+            textBox4.Name = "textBox4";
+            textBox4.Size = new Size(492, 44);
+            textBox4.TabIndex = 3;
             // 
             // panel4
             // 
             panel4.BackColor = Color.Transparent;
             panel4.BackgroundImage = (Image)resources.GetObject("panel4.BackgroundImage");
             panel4.BackgroundImageLayout = ImageLayout.Stretch;
+            panel4.Controls.Add(textBox3);
             panel4.Location = new Point(550, 450);
             panel4.Name = "panel4";
             panel4.Size = new Size(537, 80);
             panel4.TabIndex = 3;
+            // 
+            // textBox3
+            // 
+            textBox3.BorderStyle = BorderStyle.None;
+            textBox3.Enabled = false;
+            textBox3.Font = new Font("Myanmar Text", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            textBox3.Location = new Point(23, 21);
+            textBox3.Name = "textBox3";
+            textBox3.Size = new Size(492, 44);
+            textBox3.TabIndex = 2;
             // 
             // panel3
             // 
             panel3.BackColor = Color.Transparent;
             panel3.BackgroundImage = (Image)resources.GetObject("panel3.BackgroundImage");
             panel3.BackgroundImageLayout = ImageLayout.Stretch;
+            panel3.Controls.Add(textBox2);
             panel3.Location = new Point(550, 295);
             panel3.Name = "panel3";
             panel3.Size = new Size(537, 80);
             panel3.TabIndex = 2;
+            // 
+            // textBox2
+            // 
+            textBox2.BorderStyle = BorderStyle.None;
+            textBox2.Enabled = false;
+            textBox2.Font = new Font("Myanmar Text", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            textBox2.Location = new Point(23, 18);
+            textBox2.Name = "textBox2";
+            textBox2.Size = new Size(492, 44);
+            textBox2.TabIndex = 1;
+            textBox2.TextChanged += textBox2_TextChanged;
             // 
             // panel2
             // 
             panel2.BackColor = Color.Transparent;
             panel2.BackgroundImage = (Image)resources.GetObject("panel2.BackgroundImage");
             panel2.BackgroundImageLayout = ImageLayout.Stretch;
+            panel2.Controls.Add(textBox1);
             panel2.Location = new Point(550, 139);
             panel2.Name = "panel2";
             panel2.Size = new Size(537, 80);
             panel2.TabIndex = 1;
+            // 
+            // textBox1
+            // 
+            textBox1.BorderStyle = BorderStyle.None;
+            textBox1.Enabled = false;
+            textBox1.Font = new Font("Myanmar Text", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            textBox1.Location = new Point(23, 17);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(492, 44);
+            textBox1.TabIndex = 0;
             // 
             // button1
             // 
@@ -209,6 +313,16 @@
             panel1.ResumeLayout(false);
             panel7.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            panel6.ResumeLayout(false);
+            panel6.PerformLayout();
+            panel5.ResumeLayout(false);
+            panel5.PerformLayout();
+            panel4.ResumeLayout(false);
+            panel4.PerformLayout();
+            panel3.ResumeLayout(false);
+            panel3.PerformLayout();
+            panel2.ResumeLayout(false);
+            panel2.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -219,12 +333,19 @@
         public Panel panel2;
         public Panel panel3;
         public Panel panel4;
-        public Button button2;
+        public Button gantifoto;
         public Panel panel7;
         public PictureBox pictureBox1;
         public Panel panel6;
         public Panel panel5;
-        public Button button3;
-        public Button button6;
+        public Button hapusfoto;
+        public Button edit;
+        public TextBox textBox1;
+        public TextBox textBox3;
+        public TextBox textBox2;
+        public Button batal;
+        public Button simpan;
+        public TextBox textBox5;
+        public TextBox textBox4;
     }
 }

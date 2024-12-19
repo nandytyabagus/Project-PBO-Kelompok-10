@@ -30,37 +30,51 @@
         {
             button1 = new Button();
             label1 = new Label();
+            pictureBox1 = new PictureBox();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // button1
             // 
-            button1.Location = new Point(190, 378);
+            button1.Location = new Point(175, 375);
             button1.Name = "button1";
-            button1.Size = new Size(152, 45);
+            button1.Size = new Size(200, 50);
             button1.TabIndex = 0;
-            button1.Text = "button1";
+            button1.Text = "Lanjut";
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(29, 30);
+            label1.Font = new Font("Segoe MDL2 Assets", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.Location = new Point(214, 29);
             label1.Name = "label1";
-            label1.Size = new Size(50, 20);
+            label1.Size = new Size(122, 30);
             label1.TabIndex = 1;
-            label1.Text = "label1";
+            label1.Text = "E - Wallet";
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.Location = new Point(124, 69);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(300, 300);
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox1.TabIndex = 2;
+            pictureBox1.TabStop = false;
             // 
             // Ewallet
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
+            Controls.Add(pictureBox1);
             Controls.Add(label1);
             Controls.Add(button1);
             Name = "Ewallet";
             Size = new Size(550, 450);
             Load += Pembayaran_Load;
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -69,5 +83,6 @@
 
         private Button button1;
         private Label label1;
+        private PictureBox pictureBox1;
     }
 }

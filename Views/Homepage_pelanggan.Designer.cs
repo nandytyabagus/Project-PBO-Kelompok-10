@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Homepage_pelanggan));
             button_Hide = new Button();
             button_Exit = new Button();
             panel2 = new Panel();
@@ -108,7 +107,6 @@
             // 
             // pictureBox1
             // 
-            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
             pictureBox1.Location = new Point(40, 25);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(100, 100);
@@ -171,6 +169,7 @@
             panel3.Name = "panel3";
             panel3.Size = new Size(1920, 890);
             panel3.TabIndex = 5;
+            panel3.Paint += panel3_Paint;
             // 
             // Homepage_pelanggan
             // 
@@ -185,6 +184,7 @@
             Name = "Homepage_pelanggan";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Homepage_pelanggan";
+            Load += Homepage_pelanggan_Load;
             panel2.ResumeLayout(false);
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
@@ -203,7 +203,7 @@
         private Button button4;
         private Button button3;
         private Button button2;
-        private Label label1;
-        private PictureBox pictureBox1;
+        public Label label1;
+        public PictureBox pictureBox1;
     }
 }

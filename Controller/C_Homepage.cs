@@ -33,6 +33,7 @@ namespace Projek_SimBuku.Controller
         M_Peminjaman m_Peminjaman = new M_Peminjaman();
         M_Pengembalian m_Pengembalian = new M_Pengembalian();
         M_Transaksi m_Transaksi = new M_Transaksi();
+        Connector conn = new Connector();
         public C_Homepage(HomePage homePage)
         {
             this.Vhomepage = homePage;
@@ -69,6 +70,31 @@ namespace Projek_SimBuku.Controller
             Vhomepage_Pelanggan.panel3.Controls.Clear();
             Vhomepage_Pelanggan.panel3.Controls.Add(view);
         }
+        public void NamaFoto(int id)
+        {
+            DataTable data = conn.Execute_With_Return($"SELECT nama, gambar FROM Data_Akun WHERE id_akun = {id}");
+
+            if (data.Rows.Count > 0)
+            {
+                DataRow row = data.Rows[0];
+                string nama = row["nama"].ToString();
+                byte[] gambar = row["gambar"] != DBNull.Value ? (byte[])row["gambar"] : null;
+                Vhomepage_Pelanggan.label1.Text = nama;
+
+                if (gambar != null && gambar.Length > 0)
+                {
+                    using (MemoryStream ms = new MemoryStream(gambar))
+                    {
+                        Vhomepage_Pelanggan.pictureBox1.Image = Image.FromStream(ms);
+                    }
+                }
+                else
+                {
+                    Vhomepage_Pelanggan.pictureBox1.Image = null;
+                }
+            }
+        }
+
         public void logOut_Admin()
         {
             if (showConfirm("Apakah Anda Yakin ?"))
