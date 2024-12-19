@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             dataPengembalian = new DataGridView();
             panel2 = new Panel();
             panel1 = new Panel();
@@ -41,19 +41,35 @@
             // 
             // dataPengembalian
             // 
+            dataPengembalian.AllowUserToAddRows = false;
+            dataPengembalian.AllowUserToDeleteRows = false;
+            dataPengembalian.AllowUserToOrderColumns = true;
+            dataPengembalian.AllowUserToResizeColumns = false;
+            dataPengembalian.AllowUserToResizeRows = false;
+            dataPengembalian.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataPengembalian.BackgroundColor = Color.White;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = SystemColors.Control;
-            dataGridViewCellStyle2.Font = new Font("Myanmar Text", 10.8F, FontStyle.Bold);
-            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            dataPengembalian.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            dataPengembalian.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataPengembalian.BorderStyle = BorderStyle.None;
+            dataPengembalian.CellBorderStyle = DataGridViewCellBorderStyle.RaisedHorizontal;
+            dataPengembalian.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.Control;
+            dataGridViewCellStyle1.Font = new Font("Myanmar Text", 10.8F, FontStyle.Bold);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dataPengembalian.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataPengembalian.ColumnHeadersHeight = 29;
+            dataPengembalian.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dataPengembalian.EnableHeadersVisualStyles = false;
             dataPengembalian.Location = new Point(20, 20);
             dataPengembalian.Name = "dataPengembalian";
+            dataPengembalian.ReadOnly = true;
+            dataPengembalian.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dataPengembalian.RowHeadersVisible = false;
             dataPengembalian.RowHeadersWidth = 51;
+            dataPengembalian.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            dataPengembalian.ScrollBars = ScrollBars.Vertical;
             dataPengembalian.Size = new Size(1378, 710);
             dataPengembalian.TabIndex = 0;
             dataPengembalian.CellContentClick += dataPengembalian_CellContentClick;

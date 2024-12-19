@@ -46,10 +46,9 @@
             dataPeminjaman.AllowUserToResizeColumns = false;
             dataPeminjaman.AllowUserToResizeRows = false;
             dataPeminjaman.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataPeminjaman.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.DisplayedCells;
             dataPeminjaman.BackgroundColor = Color.White;
             dataPeminjaman.BorderStyle = BorderStyle.None;
-            dataPeminjaman.CellBorderStyle = DataGridViewCellBorderStyle.None;
+            dataPeminjaman.CellBorderStyle = DataGridViewCellBorderStyle.RaisedHorizontal;
             dataPeminjaman.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = Color.White;
@@ -61,15 +60,17 @@
             dataPeminjaman.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dataPeminjaman.ColumnHeadersHeight = 29;
             dataPeminjaman.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dataPeminjaman.EnableHeadersVisualStyles = false;
             dataPeminjaman.Location = new Point(20, 20);
             dataPeminjaman.Name = "dataPeminjaman";
             dataPeminjaman.ReadOnly = true;
             dataPeminjaman.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dataPeminjaman.RowHeadersVisible = false;
             dataPeminjaman.RowHeadersWidth = 51;
+            dataPeminjaman.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            dataPeminjaman.ScrollBars = ScrollBars.Vertical;
             dataPeminjaman.Size = new Size(1378, 710);
             dataPeminjaman.TabIndex = 0;
-            dataPeminjaman.UseWaitCursor = true;
             dataPeminjaman.CellContentClick += dataPeminjaman_CellContentClick;
             // 
             // panel2

@@ -41,7 +41,15 @@
             // 
             // dataTransaksi
             // 
+            dataTransaksi.AllowUserToAddRows = false;
+            dataTransaksi.AllowUserToDeleteRows = false;
+            dataTransaksi.AllowUserToResizeColumns = false;
+            dataTransaksi.AllowUserToResizeRows = false;
+            dataTransaksi.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataTransaksi.BackgroundColor = Color.White;
+            dataTransaksi.BorderStyle = BorderStyle.None;
+            dataTransaksi.CellBorderStyle = DataGridViewCellBorderStyle.RaisedHorizontal;
+            dataTransaksi.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = SystemColors.Control;
             dataGridViewCellStyle1.Font = new Font("Myanmar Text", 10.8F, FontStyle.Bold);
@@ -50,10 +58,17 @@
             dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
             dataTransaksi.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            dataTransaksi.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataTransaksi.ColumnHeadersHeight = 29;
+            dataTransaksi.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dataTransaksi.EnableHeadersVisualStyles = false;
             dataTransaksi.Location = new Point(20, 20);
             dataTransaksi.Name = "dataTransaksi";
+            dataTransaksi.ReadOnly = true;
+            dataTransaksi.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dataTransaksi.RowHeadersVisible = false;
             dataTransaksi.RowHeadersWidth = 51;
+            dataTransaksi.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            dataTransaksi.ScrollBars = ScrollBars.Vertical;
             dataTransaksi.Size = new Size(1378, 710);
             dataTransaksi.TabIndex = 0;
             dataTransaksi.CellContentClick += dataTransaksi_CellContentClick;

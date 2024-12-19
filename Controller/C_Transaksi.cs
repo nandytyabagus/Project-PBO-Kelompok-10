@@ -51,10 +51,11 @@ namespace Projek_SimBuku.Controller
         {
             List<M_Transaksi> transaksi = new List<M_Transaksi>();
             DataTable data = Execute_With_Return("SELECT t.id_transaksi ,t.id_akun ,t.id_buku ,t.tanggal_transaksi, t.status, t.harga_sewa, t.harga_denda, t.tanggal_pengambilan, t.tanggal_pengembalian, a.nama, b.judul_buku, mp.metode " +
-                   "FROM transaksi t " +
-                   "JOIN data_akun a ON t.id_akun = a.id_akun " +
-                   "JOIN buku b ON t.id_buku = b.id_buku " +
-                   "JOIN metode_pembayaran mp ON t.id_metode_pembayaran = mp.id_metode_pembayaran WHERE status = 'Kembali';");
+           "FROM transaksi t " +
+           "JOIN data_akun a ON t.id_akun = a.id_akun " +
+           "JOIN buku b ON t.id_buku = b.id_buku " +
+           "JOIN metode_pembayaran mp ON t.id_metode_pembayaran = mp.id_metode_pembayaran WHERE t.status = 'Kembali';");
+
 
             for (int i = 0; i < data.Rows.Count; i++)
             {

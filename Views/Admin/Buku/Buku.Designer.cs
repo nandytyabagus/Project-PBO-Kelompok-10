@@ -108,7 +108,7 @@
             TabelBuku.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             TabelBuku.BackgroundColor = Color.White;
             TabelBuku.BorderStyle = BorderStyle.None;
-            TabelBuku.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            TabelBuku.CellBorderStyle = DataGridViewCellBorderStyle.RaisedHorizontal;
             TabelBuku.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = Color.Transparent;

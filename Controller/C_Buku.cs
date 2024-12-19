@@ -150,7 +150,7 @@ namespace Projek_SimBuku.Controller
             };
             try
             {
-                if (c_MassageBox.showConfirm("Apakah Anda Sudah Yakin ?"))
+                if (c_MassageBox.showConfirm("Apakah Anda Yakin Menghapus Buku Ini ?"))
                 {
                     Update(data,id);
                     Load();
