@@ -45,11 +45,12 @@ namespace Projek_SimBuku.Controller
         {
             Execute_No_Return($"UPDATE transaksi SET harga_denda = {denda}, status = 'Denda' WHERE id_transaksi = {id};");
         }
-        public void UpdateStatus(int id)
+        public void UpdateStatus(int id,int idBuku)
         {
             if(C_MassageBox.showConfirm("Apakah Anda Sudah Yakin"))
             {
                 Execute_No_Return($"UPDATE transaksi SET status = 'Kembali' WHERE id_transaksi = {id};");
+                Execute_No_Return($"UPDATE buku SET stok = stok + 1 WHERE id_buku = {idBuku};");
             }
         }
         public void HitungDenda()

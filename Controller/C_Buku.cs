@@ -23,6 +23,7 @@ namespace Projek_SimBuku.Controller
         Buku Vbuku;
         CRUtambah vCRUtambah;
         M_Buku m_Buku;
+        C_MassageBox c_MassageBox = new C_MassageBox();
         public C_Buku(C_Homepage homepage, Buku buku)
         {
             c_hompage = homepage;
@@ -88,7 +89,7 @@ namespace Projek_SimBuku.Controller
         public List<M_Buku> GetListBuku()
         {
             List<M_Buku> bukuList = new List<M_Buku>();
-            DataTable data = Execute_With_Return("SELECT Buku.Id_Buku, Buku.Judul_Buku, Buku.Tahun_Terbit, Buku.Stok, Buku.Gambar, Buku.keterangan, Buku.pengarang, Buku.penerbit, genre.genre  FROM Buku JOIN Genre ON Buku.Id_Genre = Genre.Id_Genre;");
+            DataTable data = Execute_With_Return("SELECT Buku.Id_Buku, Buku.Judul_Buku, Buku.Tahun_Terbit, Buku.Stok, Buku.Gambar, Buku.keterangan, Buku.pengarang, Buku.penerbit, genre.genre  FROM Buku JOIN Genre ON Buku.Id_Genre = Genre.Id_Genre WHERE status = True;");
 
             foreach (DataRow row in data.Rows)
             {
@@ -125,8 +126,11 @@ namespace Projek_SimBuku.Controller
             };
             try
             {
-                insert(data);
-                Load();
+                if (c_MassageBox.showConfirm("Apakah Anda Sudah Yakin ?"))
+                {
+                    insert(data);
+                    Load();
+                }
             }
             catch { }
         }
@@ -142,11 +146,15 @@ namespace Projek_SimBuku.Controller
                 Pengarang = view.pengarang.Text,
                 Penerbit = view.penerbit.Text,
                 Genre = (int)view.BoxGenre.SelectedValue,
+
             };
             try
             {
-                Update(data,id);
-                Load();
+                if (c_MassageBox.showConfirm("Apakah Anda Sudah Yakin ?"))
+                {
+                    Update(data,id);
+                    Load();
+                }
             }
             catch { }
         }
@@ -193,6 +201,7 @@ namespace Projek_SimBuku.Controller
             Vbuku.TabelBuku.Columns["Id_Buku"].Visible = false;
             Vbuku.TabelBuku.Columns["keterangan"].Visible = false;
             Vbuku.TabelBuku.Columns["gambar"].Visible = false;
+            Vbuku.TabelBuku.Columns["status"].Visible = false;
             Vbuku.TabelBuku.Columns["Judul_buku"].HeaderText = "Judul";
             Vbuku.TabelBuku.Columns["Tahun_Terbit"].HeaderText = "Tahun Terbit";
             Vbuku.TabelBuku.Columns["Stok"].HeaderText = "Jumlah";
@@ -231,7 +240,7 @@ namespace Projek_SimBuku.Controller
         }
         public void Delete(int id)
         {
-            Execute_No_Return($"DELETE FROM Buku WHERE Id_Buku = {id}");
+            Execute_No_Return($"UPDATE buku SET status = false WHERE Id_Buku = {id}");
         }
         public void Update(object obj, int id)
         {

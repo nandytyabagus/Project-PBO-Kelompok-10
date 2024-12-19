@@ -53,6 +53,7 @@ namespace Projek_SimBuku.Controller
                 "keterangan TEXT," +
                 "penerbit VARCHAR(50) NOT NULL," +
                 "pengarang VARCHAR(50) NOT NULL," +
+                "status BOOLEN DEFAULT TRUE NOT NULL," +
                 "id_genre INT NOT NULL," +
                 "FOREIGN KEY (id_genre) REFERENCES genre(id_genre));");
 
