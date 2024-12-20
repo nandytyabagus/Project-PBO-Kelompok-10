@@ -37,5 +37,10 @@ namespace Projek_SimBuku.Views.Pelanggan
         {
 
         }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

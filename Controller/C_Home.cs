@@ -25,7 +25,6 @@ namespace Projek_SimBuku.Controller
         M_Buku mbuku;
         M_Akun m_Akun;
         Detail vdetail;
-        public List<(int idAkun, int idBuku)> keranjangSementara = new List<(int, int)>();
         public C_Home(C_Homepage homepage, HomeKatalog home)
         {
             c_Homepage = homepage;

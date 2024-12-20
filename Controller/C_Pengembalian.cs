@@ -23,7 +23,7 @@ namespace Projek_SimBuku.Controller
         public List<M_Pengembalian> GetDataPengembalian()
         {
             List<M_Pengembalian> M_pengembalian = new List<M_Pengembalian>();
-            DataTable data = Execute_With_Return("SELECT t.id_transaksi, t.status, t.harga_denda, t.tanggal_pengembalian, a.nama, a.id_akun, b.judul_buku, b.pengarang, g.genre FROM transaksi t JOIN data_akun a ON t.id_akun = a.id_akun JOIN buku b ON t.id_buku = b.id_buku JOIN genre g ON b.id_genre = g.id_genre WHERE t.status IN ('Dipinjam','Denda') ;");
+            DataTable data = Execute_With_Return("SELECT t.id_transaksi, t.status, t.harga_denda, t.tanggal_pengembalian, a.nama, a.id_akun, b.id_buku, b.judul_buku, b.pengarang, g.genre FROM transaksi t JOIN data_akun a ON t.id_akun = a.id_akun JOIN buku b ON t.id_buku = b.id_buku JOIN genre g ON b.id_genre = g.id_genre WHERE t.status IN ('Dipinjam','Denda') ;");
 
             for (int i = 0; i < data.Rows.Count; i++)
             {
@@ -35,7 +35,8 @@ namespace Projek_SimBuku.Controller
                     tanggal_pengembalian = data.Rows[i]["tanggal_pengembalian"].ToString(),
                     Nama = data.Rows[i]["nama"].ToString(),
                     Judul_buku = data.Rows[i]["judul_buku"].ToString(),
-                    id_akun = Convert.ToInt32(data.Rows[i]["id_akun"])
+                    id_akun = Convert.ToInt32(data.Rows[i]["id_akun"]),
+                    id_buku = Convert.ToInt32(data.Rows[i]["id_buku"])
                 };
                 M_pengembalian.Add(m_Pengembalian);
             }
@@ -92,6 +93,7 @@ namespace Projek_SimBuku.Controller
 
             vpengembalian.dataPengembalian.Columns["Id_Transaksi"].Visible = false;
             vpengembalian.dataPengembalian.Columns["id_akun"].Visible = false;
+            vpengembalian.dataPengembalian.Columns["id_buku"].Visible = false;
             vpengembalian.dataPengembalian.Columns["nama"].HeaderText = "Nama Pelanggan";
             vpengembalian.dataPengembalian.Columns["Judul_buku"].HeaderText = "Buku";
             vpengembalian.dataPengembalian.Columns["tanggal_pengembalian"].HeaderText = "Pengembalian";

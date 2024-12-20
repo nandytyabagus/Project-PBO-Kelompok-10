@@ -19,6 +19,8 @@ namespace Projek_SimBuku.Model
         [Required]
         public string status { get; set; }
         public int id_akun { get; set; }
+        public int id_buku { get; set; }
+        
         public string Nama { get; set; }
         public string Judul_buku { get; set; }
         public string pengarang { get; set; }

@@ -34,7 +34,7 @@ namespace Projek_SimBuku.Views.Pengembalian
             if (e.RowIndex >= 0)
             {
                 int id = Convert.ToInt32(dataPengembalian.Rows[e.RowIndex].Cells["Id_Transaksi"].Value);
-                int idbuku = Convert.ToInt32(dataPengembalian.Rows[e.RowIndex].Cells["Id_buku"].Value);
+                int idbuku = Convert.ToInt32(dataPengembalian.Rows[e.RowIndex].Cells["Id_Buku"].Value);
                 if (e.ColumnIndex == dataPengembalian.Columns["Ubah Status"].Index)
                 {
                     pengembalian.UpdateStatus(id,idbuku);
